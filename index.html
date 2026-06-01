@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Bacon GK">
+<meta name="apple-mobile-web-app-title" content="PB Coaching">
 <meta name="theme-color" content="#000000">
-<title>Bacon GK</title>
+<title>PB Coaching</title>
 <style>
 :root{--bg:#000000;--s1:#0F0F0F;--s2:#161616;--s3:#1E1E1E;--border:#2A2A2A;--text:#F0F0F0;--muted:#555555;--sub:#888888;--orange:#FFFFFF;--green:#AAAAAA;--blue:#FFFFFF;--purple:#AAAAAA;--red:#FFFFFF;--teal:#AAAAAA;--amber:#AAAAAA;--r:12px;--rs:8px;--safe-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -17,8 +17,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .screen.active{display:block}
 /* ── BOTTOM TAB ── */
 #tab-bar{position:fixed;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:var(--safe-bottom)}
-.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 4px;gap:3px;cursor:pointer;color:var(--muted);font-size:10px;font-weight:600;letter-spacing:.3px;border:none;background:none;-webkit-tap-highlight-color:transparent;transition:color .15s}
-.tab svg{width:22px;height:22px;stroke-width:2;fill:none}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 2px;gap:2px;cursor:pointer;color:var(--muted);font-size:9px;font-weight:600;letter-spacing:.2px;border:none;background:none;-webkit-tap-highlight-color:transparent;transition:color .15s}
+.tab svg{width:20px;height:20px;stroke-width:2;fill:none}
 .tab.active{color:var(--orange)}
 /* ── TODAY SCREEN ── */
 #today-header{background:var(--s1);border-bottom:1px solid var(--border);padding:16px 16px 12px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
@@ -235,6 +235,46 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 /* ── READINESS HISTORY ── */
 .rd-hist{margin:0 14px 14px;display:flex;gap:6px;align-items:flex-end;height:60px}
 .rd-bar{flex:1;border-radius:4px 4px 0 0;min-height:4px;transition:height .3s}
+/* ── ATHLETE ── */
+
+/* ── ATHLETE SCREEN ── */
+.athlete-rating-card{margin:12px 14px;background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:20px 16px;display:flex;align-items:center;gap:16px}
+.rating-circle{width:80px;height:80px;border-radius:50%;border:3px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.rating-circle .score{font-size:26px;font-weight:900;line-height:1}
+.rating-circle .lbl{font-size:9px;font-weight:700;letter-spacing:.5px;color:var(--muted);margin-top:2px}
+.rating-right{flex:1}
+.rating-right h3{font-size:14px;font-weight:700;margin-bottom:8px}
+.cat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
+.cat-bar-row span:first-child{font-size:10px;color:var(--sub);width:52px;flex-shrink:0}
+.cat-bar-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
+.cat-bar-fill{height:100%;background:#FFF;border-radius:2px;transition:width .6s}
+.cat-bar-row span:last-child{font-size:11px;font-weight:700;color:#CCC;width:28px;text-align:right;flex-shrink:0}
+.athlete-section{margin:0 14px 14px}
+.athlete-section h3{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.test-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.test-card{background:var(--s2);border-radius:var(--rs);border:1px solid var(--border);padding:12px;cursor:pointer;position:relative}
+.test-card:active{background:var(--s3)}
+.test-card .tc-label{font-size:11px;color:var(--sub);margin-bottom:4px}
+.test-card .tc-val{font-size:20px;font-weight:800;color:#FFF;line-height:1}
+.test-card .tc-unit{font-size:10px;color:var(--muted);margin-left:2px}
+.test-card .tc-date{font-size:9px;color:var(--muted);margin-top:3px}
+.test-card .tc-score{position:absolute;top:8px;right:8px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:6px}
+.tc-score-A{background:rgba(255,255,255,.1);color:#FFF}
+.tc-score-B{background:rgba(255,255,255,.07);color:#CCC}
+.tc-score-C{background:rgba(255,255,255,.05);color:#888}
+.tc-score-D{background:rgba(255,255,255,.04);color:#555}
+.test-card.no-data{border-style:dashed;opacity:.5}
+.test-card.no-data .tc-val{font-size:13px;color:var(--muted)}
+.profile-card{background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:12px;margin:0 14px 14px;cursor:pointer}
+.profile-avatar{width:52px;height:52px;border-radius:50%;background:var(--s3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex-shrink:0}
+.profile-info{flex:1}
+.profile-info h3{font-size:15px;font-weight:700}
+.profile-info p{font-size:12px;color:var(--sub);margin-top:2px}
+.hist-row{background:var(--s2);border-radius:var(--rs);border:1px solid var(--border);padding:10px 14px;display:flex;align-items:center;margin-bottom:5px}
+.hist-row .hr-date{font-size:11px;color:var(--muted);width:70px;flex-shrink:0}
+.hist-row .hr-name{flex:1;font-size:13px;font-weight:600}
+.hist-row .hr-val{font-size:14px;font-weight:700;color:#FFF;text-align:right}
+
 /* ── TOAST ── */
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;padding:9px 22px;border-radius:20px;font-size:13px;font-weight:700;z-index:1000;pointer-events:none;animation:ti .2s ease;white-space:nowrap}
 @keyframes ti{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
@@ -321,7 +361,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
     <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Program
   </button>
   <button class="tab" id="tab-progress" onclick="goTab('progress')">
-    <svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Progress
+    <svg viewBox="0 0 24 24" stroke="currentColor"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Charts
+  </button>
+  <button class="tab" id="tab-athlete" onclick="goTab('athlete')">
+    <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Athlete
   </button>
   <button class="tab" id="tab-settings" onclick="goTab('settings')">
     <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings
@@ -427,6 +470,21 @@ const LS={g:k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null
 const fR=s=>`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`;
 const TODAY=new Date().toISOString().slice(0,10);
 
+function parseRepCount(presc){
+  if(!presc||presc==='—')return '';
+  // "4×5", "3×8ea", "5×3 BW", "4×6(2s)" → grab the digit(s) after ×
+  const m=presc.match(/\d+[×x](\d+)/);
+  return m?m[1]:'';
+}
+function parseSetCount(presc){
+  if(!presc||presc==='—'||presc==='-')return 1;
+  // "3×4 + 2×3" style (two blocks)
+  if(/\d+[×x].*\+.*\d+[×x]/.test(presc)){
+    return presc.split('+').reduce((s,p)=>{const m=p.trim().match(/^(\d+)[×x]/);return s+(m?parseInt(m[1]):0);},0);
+  }
+  const m=presc.match(/^(\d+)[×x]/);
+  return m?Math.min(parseInt(m[1]),8):1;
+}
 function zC(z){if(!z)return'rpe';if(z.includes('COD')||z.includes('Agility')||z.includes('Reactive'))return'agil';if(z.includes('0.75')||z.includes('Speed-Str'))return'speed';if(z.includes('0.55')||z.includes('Str-Speed'))return'str';if(z.includes('0.40')||z.includes('Max'))return'max';if(z.includes('0.90')||z.includes('Snatch')||z.includes('Explosive')||z.includes('1.30')||z.includes('1.50'))return'oly';if(z.includes('OVR')||z.includes('Sprint'))return'ovr';if(z.includes('Eccentric')||z.includes('Full ROM')||z.includes('Mobility'))return'rec';return'rpe';}
 const ZCOL={speed:'#AAAAAA',str:'#AAAAAA',max:'#AAAAAA',oly:'#AAAAAA',ovr:'#AAAAAA',rpe:'#555555',rec:'#888888',agil:'#AAAAAA'};
 function rSec(z){if(!z)return 90;if(z.includes('COD')||z.includes('Agility')||z.includes('Reactive'))return 90;if(z.includes('Sprint'))return 120;if(z.includes('0.75'))return 180;if(z.includes('0.55'))return 120;if(z.includes('0.40'))return 270;if(z.includes('0.90')||z.includes('Explosive')||z.includes('1.30'))return 180;if(z.includes('OVR'))return 150;return 90;}
@@ -615,6 +673,7 @@ function goTab(tab){
   if(tab==='today')renderToday();
   if(tab==='program')renderProgram();
   if(tab==='progress')renderProgress();
+  if(tab==='athlete')renderAthlete();
   if(tab==='settings')renderSettings();
 }
 
@@ -813,14 +872,14 @@ function card(ex,i,d,wi,isCust,ai){
     const body=document.createElement('div');body.className='ex-body';
     let prevStr='';
     const pd=prev.filter(s=>s.done&&s.lbs);
-    if(pd.length>0){const ps=pd[0];prevStr=`Last: ${ps.lbs} lbs × ${ps.reps||'?'}${ps.rpe?' · RPE '+ps.rpe:''}`;}
+    if(pd.length>0){const ps=pd[0];const unit=LS.g('gk_unit')||'lbs';const sugg=ps.lbs?Math.round(parseFloat(ps.lbs)*1.025/2.5)*2.5:'';prevStr=`Last: ${ps.lbs}${unit} × ${ps.reps||'?'}${ps.rpe?' @ RPE'+ps.rpe:''} → Try ${sugg}${unit}`;}
     body.innerHTML=`<div class="ex-top"><div class="ex-bname">${ex.n}${ex.p?'<span class="pri-tag">PRIORITY</span>':''}</div><div class="ex-presc">${presc}</div></div>${prevStr?`<div class="ex-prev">${prevStr}</div>`:''}`;
     const lr=document.createElement('div');lr.className='set-lbl';
     lr.innerHTML='<span></span><span>Reps</span><span>Lbs</span><span>RPE</span><span></span>';
     body.appendChild(lr);
     const sd=document.createElement('div');sd.id=`sets-${i}`;body.appendChild(sd);
-    if(sets.length===0)addRow(sd,i,d.k,0,null);
-    else sets.forEach((s,si)=>addRow(sd,i,d.k,si,s));
+    if(sets.length===0){const n=parseSetCount(presc);const defR=parseRepCount(presc);const initSets=[];for(let si=0;si<n;si++){initSets.push({reps:defR,lbs:'',done:false});addRow(sd,i,d.k,si,{reps:defR,lbs:'',done:false},defR);}sl(S.pi,S.wi,d.k,ei,initSets);sd.dataset.defReps=defR;}
+    else{sets.forEach((s,si)=>addRow(sd,i,d.k,si,s));sd.dataset.defReps=parseRepCount(presc);}
     const ab=document.createElement('button');ab.className='add-set';ab.textContent='+ Add Set';ab.onclick=()=>addSet(i,d.k);body.appendChild(ab);
     const rt=RT[i]||{running:false,remaining:rs,done:false};
     const rb=document.createElement('div');rb.className='rest-bar';rb.id=`rb-${i}`;
@@ -834,12 +893,13 @@ function card(ex,i,d,wi,isCust,ai){
   return el;
 }
 
-function addRow(c,ei,dk,si,saved){
+function addRow(c,ei,dk,si,saved,defReps=''){
   const row=document.createElement('div');row.className='set-row';row.id=`sr-${ei}-${si}`;
   const done=saved&&saved.done;
   const rv=saved&&saved.rpe?+saved.rpe:0;
+  const repVal=(saved&&saved.reps)||defReps;
   const rpb=[6,7,8,9,10].map(v=>`<button class="rb${rv===v?' s':''}" onclick="setRPE(${ei},'${dk}',${si},${v})">${v}</button>`).join('');
-  row.innerHTML=`<span class="sn">${si+1}</span><input class="si${saved&&saved.reps?' v':''}" type="number" inputmode="numeric" placeholder="—" value="${saved&&saved.reps||''}" id="rp-${ei}-${si}" onchange="sv(${ei},'${dk}',${si})"><input class="si${saved&&saved.lbs?' v':''}" type="number" inputmode="decimal" step="2.5" placeholder="—" value="${saved&&saved.lbs||''}" id="lb-${ei}-${si}" onchange="sv(${ei},'${dk}',${si})"><div class="rpe-grp" id="rpg-${ei}-${si}">${rpb}</div><button class="ck${done?' d':''}" id="ck-${ei}-${si}" onclick="td(${ei},'${dk}',${si})">${done?'✓':'○'}</button>`;
+  row.innerHTML=`<span class="sn">${si+1}</span><input class="si${repVal?' v':''}" type="number" inputmode="numeric" placeholder="—" value="${repVal}" id="rp-${ei}-${si}" onchange="sv(${ei},'${dk}',${si})"><input class="si${saved&&saved.lbs?' v':''}" type="number" inputmode="decimal" step="2.5" placeholder="—" value="${saved&&saved.lbs||''}" id="lb-${ei}-${si}" onchange="sv(${ei},'${dk}',${si})"><div class="rpe-grp" id="rpg-${ei}-${si}">${rpb}</div><button class="ck${done?' d':''}" id="ck-${ei}-${si}" onclick="td(${ei},'${dk}',${si})">${done?'✓':'○'}</button>`;
   c.appendChild(row);
 }
 
@@ -885,8 +945,9 @@ function td(ei,dk,si){
   }
 }
 function addSet(ei,dk){
-  const sets=gl(S.pi,S.wi,dk,ei);sets.push({});sl(S.pi,S.wi,dk,ei,sets);
-  const c=$(`sets-${ei}`);if(c)addRow(c,ei,dk,sets.length-1,null);
+  const defR=($(`sets-${ei}`)?.dataset?.defReps)||'';
+  const sets=gl(S.pi,S.wi,dk,ei);const newSet={reps:defR,lbs:'',done:false};sets.push(newSet);sl(S.pi,S.wi,dk,ei,sets);
+  const c=$(`sets-${ei}`);if(c)addRow(c,ei,dk,sets.length-1,newSet,defR);
 }
 function toggleNotes(i){const b=$(`nb-${i}`),a=$(`na-${i}`);if(!b)return;b.classList.toggle('o');if(a)a.textContent=b.classList.contains('o')?'▾':'▸';}
 function toggleRest(ei,def){
@@ -1189,6 +1250,163 @@ function confirmReset(){
   }
 }
 
+
+// ── ATHLETE / TESTING ──
+const TESTS=[
+  {id:'cmj',label:'CMJ',unit:'cm',desc:'Countermovement Jump height',elite:65,good:55,avg:45,higher:true,cat:'power'},
+  {id:'vj',label:'Vertical Jump',unit:'cm',desc:'Max vertical jump height',elite:70,good:60,avg:50,higher:true,cat:'power'},
+  {id:'sl_vert',label:'SL Vertical',unit:'cm',desc:'Single-leg vertical CMJ',elite:55,good:47,avg:38,higher:true,cat:'power'},
+  {id:'broadjump',label:'Broad Jump',unit:'cm',desc:'Two-leg standing broad jump',elite:280,good:255,avg:225,higher:true,cat:'power'},
+  {id:'sl_broad',label:'SL Broad Jump',unit:'cm',desc:'Single-leg broad jump (best leg)',elite:225,good:200,avg:175,higher:true,cat:'power'},
+  {id:'sl_lat',label:'SL Lateral Jump',unit:'cm',desc:'Single-leg lateral jump (best side)',elite:185,good:165,avg:145,higher:true,cat:'power'},
+  {id:'rsi',label:'RSI',unit:'',desc:'Reactive Strength Index (height/contact time)',elite:2.0,good:1.5,avg:1.0,higher:true,cat:'power'},
+  {id:'sprint10',label:'10m Sprint',unit:'s',desc:'10 metre acceleration time',elite:1.65,good:1.75,avg:1.85,higher:false,cat:'speed'},
+  {id:'sprint40',label:'40yd Dash',unit:'s',desc:'40 yard dash time',elite:4.55,good:4.75,avg:4.95,higher:false,cat:'speed'},
+  {id:'cod',label:'5-10-5 COD',unit:'s',desc:'Change of direction agility test',elite:3.95,good:4.20,avg:4.50,higher:false,cat:'agility'},
+];
+const CAT_WEIGHTS={power:0.40,speed:0.30,strength:0.20,agility:0.10};
+let activeTestId=null;
+
+function rateVal(val,t){
+  if(!val||!t)return null;
+  const{elite,good,avg,higher}=t;let s;
+  if(higher){
+    if(val>=elite)s=90+Math.min(10,(val-elite)/elite*200);
+    else if(val>=good)s=70+(val-good)/(elite-good)*20;
+    else if(val>=avg)s=40+(val-avg)/(good-avg)*30;
+    else s=Math.max(1,40*val/avg);
+  }else{
+    if(val<=elite)s=90+Math.min(10,(elite-val)/elite*200);
+    else if(val<=good)s=70+(good-val)/(good-elite)*20;
+    else if(val<=avg)s=40+(avg-val)/(avg-good)*30;
+    else s=Math.max(1,40*avg/val);
+  }
+  return Math.round(Math.min(100,s));
+}
+function scoreGrade(s){if(!s)return'–';if(s>=90)return'A+';if(s>=80)return'A';if(s>=70)return'B';if(s>=60)return'B-';if(s>=50)return'C';if(s>=40)return'D';return'F';}
+function scoreClass(s){if(!s)return'';if(s>=70)return'tc-score-A';if(s>=50)return'tc-score-B';if(s>=35)return'tc-score-C';return'tc-score-D';}
+
+function getOverallRating(){
+  const cats={power:[],speed:[],strength:[],agility:[]};
+  TESTS.forEach(t=>{
+    const entries=LS.g('gk_test_'+t.id)||[];
+    if(entries.length){
+      const best=t.higher?Math.max(...entries.map(e=>e.val)):Math.min(...entries.map(e=>e.val));
+      const sc=rateVal(best,t);if(sc)cats[t.cat].push(sc);
+    }
+  });
+  // Strength from PRs (relative to body weight)
+  const bw=parseFloat((LS.g('gk_stats')||{}).weight)||180;
+  const prs=Object.keys(localStorage).filter(k=>k.startsWith('gk_pr_')).map(k=>LS.g(k)).filter(Boolean);
+  if(prs.length){
+    const top=prs.sort((a,b)=>b.e1rm-a.e1rm).slice(0,3);
+    const strScores=top.map(p=>{
+      const rel=p.e1rm/bw;
+      // Clean relative: elite=1.3, good=1.1, avg=0.9
+      return Math.round(Math.min(100,Math.max(1,(rel-0.4)/(1.3-0.4)*90+10)));
+    });
+    cats.strength.push(Math.round(strScores.reduce((a,b)=>a+b,0)/strScores.length));
+  }
+  const avg=arr=>arr.length?Math.round(arr.reduce((a,b)=>a+b,0)/arr.length):null;
+  const scores={power:avg(cats.power),speed:avg(cats.speed),strength:avg(cats.strength),agility:avg(cats.agility)};
+  let total=0,wSum=0;
+  Object.entries(scores).forEach(([cat,s])=>{if(s!==null){total+=s*CAT_WEIGHTS[cat];wSum+=CAT_WEIGHTS[cat];}});
+  return{overall:wSum>0?Math.round(total/wSum):null,cats:scores};
+}
+
+function renderAthlete(){
+  const stats=LS.g('gk_stats')||{};
+  const rating=getOverallRating();
+  const html=[];
+
+  // Profile card
+  const initials=(stats.name||'BG').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
+  html.push(`<div class="profile-card" onclick="openStatsModal()"><div class="profile-avatar">${initials}</div><div class="profile-info"><h3>${stats.name||'Tap to set up profile'}</h3><p>${[stats.pos||'Goalkeeper',stats.team,stats.height,stats.weight?stats.weight+'lbs':''].filter(Boolean).join(' · ')||'Add your details'}</p></div><div style="color:var(--muted)">›</div></div>`);
+
+  // Rating card
+  const sc=rating.overall;
+  const scColor=sc?(sc>=80?'#FFF':sc>=60?'#CCC':sc>=40?'#888':'#555'):'var(--muted)';
+  html.push(`<div class="athlete-rating-card"><div class="rating-circle" style="border-color:${scColor}"><div class="score" style="color:${scColor}">${sc||'—'}</div><div class="lbl">RATING</div></div><div class="rating-right"><h3>GK Performance Score</h3>${['power','speed','strength','agility'].map(cat=>{const s=rating.cats[cat];return`<div class="cat-bar-row"><span>${cat.charAt(0).toUpperCase()+cat.slice(1)}</span><div class="cat-bar-track"><div class="cat-bar-fill" style="width:${s||0}%"></div></div><span>${s||'–'}</span></div>`;}).join('')}<div style="font-size:10px;color:var(--muted);margin-top:6px">vs NCAA D1 GK benchmarks</div></div></div>`);
+
+  // Test grid
+  html.push(`<div class="athlete-section"><h3>Performance Tests <span style="color:var(--muted);font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">— tap to log</span></h3><div class="test-grid">`);
+  TESTS.forEach(t=>{
+    const entries=LS.g('gk_test_'+t.id)||[];
+    const best=entries.length?(t.higher?Math.max(...entries.map(e=>e.val)):Math.min(...entries.map(e=>e.val))):null;
+    const last=entries.length?entries[entries.length-1]:null;
+    const sc=rateVal(best,t);
+    if(best){
+      html.push(`<div class="test-card" onclick="openTestModal('${t.id}')"><div class="tc-label">${t.label}</div><div class="tc-val">${best}<span class="tc-unit">${t.unit}</span></div><div class="tc-date">${last?.date||''} · ${entries.length} entries</div><div class="tc-score ${scoreClass(sc)}">${scoreGrade(sc)}</div></div>`);
+    } else {
+      html.push(`<div class="test-card no-data" onclick="openTestModal('${t.id}')"><div class="tc-label">${t.label}</div><div class="tc-val">Tap to log</div><div class="tc-date">${t.desc}</div></div>`);
+    }
+  });
+  html.push(`</div></div>`);
+
+  // PR Board
+  const prs=Object.keys(localStorage).filter(k=>k.startsWith('gk_pr_')).map(k=>LS.g(k)).filter(Boolean).sort((a,b)=>b.e1rm-a.e1rm).slice(0,8);
+  if(prs.length){
+    html.push(`<div class="athlete-section"><h3>PR Board — Estimated 1RM</h3>`);
+    prs.forEach(p=>html.push(`<div class="hist-row"><div class="hr-date">${p.date}</div><div class="hr-name">${p.name}</div><div><div class="hr-val">${Math.round(p.e1rm)}lbs</div><div style="font-size:9px;color:var(--muted)">${p.lbs}×${p.reps}</div></div></div>`));
+    html.push(`</div>`);
+  }
+
+  // Session History
+  const sessions=[];
+  PH.forEach((ph,pi)=>ph.weeks.forEach((_,wi)=>ph.days.forEach(day=>{
+    if(LS.g(sk(pi,wi,day.k))){
+      const date=ph.dates?Object.entries(ph.dates).find(([k])=>k===`${pi}_${wi}_${day.k}`)?.[1]:'';
+      const notes=LS.g(`gk_notes_${pi}_${wi}_${day.k}`)||'';
+      sessions.push({date,label:`${ph.label} ${ph.weeks[wi].l}`,day:day.t,notes});
+    }
+  })));
+  sessions.sort((a,b)=>b.date.localeCompare(a.date));
+  if(sessions.length){
+    html.push(`<div class="athlete-section"><h3>Session History</h3>`);
+    sessions.slice(0,10).forEach(s=>html.push(`<div class="hist-row"><div class="hr-date">${s.date||'–'}</div><div class="hr-name">${s.day}<div style="font-size:10px;color:var(--muted)">${s.label}${s.notes?' · '+s.notes.slice(0,30)+(s.notes.length>30?'…':''):''}</div></div></div>`));
+    html.push(`</div>`);
+  } else {
+    html.push(`<div class="athlete-section"><div style="text-align:center;padding:20px;color:var(--sub);font-size:13px">Complete sessions to build your history.</div></div>`);
+  }
+
+  $('athlete-body').innerHTML=html.join('');
+}
+
+function openTestModal(id){
+  activeTestId=id;
+  const t=TESTS.find(x=>x.id===id);
+  $('test-modal-title').textContent='Log '+t.label;
+  $('test-unit-lbl').textContent=t.unit?`Unit: ${t.unit} · Benchmark: Elite ${t.elite}${t.unit} / Good ${t.good}${t.unit}`:`Benchmark: Elite ${t.elite} / Good ${t.good}`;
+  $('test-val').value='';
+  $('test-date').value=TODAY;
+  $('test-notes').value='';
+  $('test-modal').classList.add('show');
+}
+function closeTestModal(){$('test-modal').classList.remove('show');activeTestId=null;}
+function saveTestEntry(){
+  const val=parseFloat($('test-val').value);
+  if(!val){toast('Enter a value','var(--red)');return;}
+  const t=TESTS.find(x=>x.id===activeTestId);
+  const entries=LS.g('gk_test_'+activeTestId)||[];
+  entries.push({val,date:$('test-date').value,notes:$('test-notes').value.trim()});
+  LS.s('gk_test_'+activeTestId,entries);
+  const sc=rateVal(val,t);
+  closeTestModal();renderAthlete();
+  toast(`${t.label}: ${val}${t.unit} — ${scoreGrade(sc)}`);
+}
+
+function openStatsModal(){
+  const s=LS.g('gk_stats')||{};
+  $('st-name').value=s.name||'';$('st-pos').value=s.pos||'Goalkeeper';
+  $('st-team').value=s.team||'';$('st-height').value=s.height||'';$('st-weight').value=s.weight||'';
+  $('stats-modal').classList.add('show');
+}
+function closeStatsModal(){$('stats-modal').classList.remove('show');}
+function saveStats(){
+  LS.s('gk_stats',{name:$('st-name').value.trim(),pos:$('st-pos').value.trim(),team:$('st-team').value.trim(),height:$('st-height').value.trim(),weight:$('st-weight').value.trim()});
+  closeStatsModal();renderAthlete();toast('Profile saved ✓');
+}
+
 // ── INIT ──
 (()=>{
   const t=TODAY,m=DL[t];
@@ -1197,5 +1415,47 @@ function confirmReset(){
   renderToday();
 })();
 </script>
+
+<!-- ═══ ATHLETE SCREEN ═══ -->
+<div id="screen-athlete" class="screen">
+  <div id="athlete-header" style="background:var(--s1);border-bottom:1px solid var(--border);padding:16px 16px 12px;padding-top:calc(16px + env(safe-area-inset-top,0px))">
+    <h1 style="font-size:20px;font-weight:800">Athlete</h1>
+  </div>
+  <div id="athlete-body" style="padding-bottom:20px"></div>
+</div>
+
+<!-- TEST LOGGER MODAL -->
+<div class="ov-wrap" id="test-modal">
+  <div class="ov-inner">
+    <div class="ov-head"><span id="test-modal-title">Log Test</span><button onclick="closeTestModal()">✕</button></div>
+    <div class="field-lbl">Result</div>
+    <input id="test-val" class="field-inp" type="number" inputmode="decimal" placeholder="e.g. 58.5">
+    <div class="field-lbl" id="test-unit-lbl" style="margin-top:-8px;margin-bottom:12px;font-size:11px;color:var(--muted)"></div>
+    <div class="field-lbl">Date</div>
+    <input id="test-date" class="field-inp" type="date">
+    <div class="field-lbl">Notes (optional)</div>
+    <textarea id="test-notes" class="field-ta" rows="2" placeholder="Conditions, feelings, etc."></textarea>
+    <button class="btn-primary" onclick="saveTestEntry()">Save</button>
+  </div>
+</div>
+
+<!-- PHYSICAL STATS MODAL -->
+<div class="ov-wrap" id="stats-modal">
+  <div class="ov-inner">
+    <div class="ov-head"><span>Physical Stats</span><button onclick="closeStatsModal()">✕</button></div>
+    <div class="field-lbl">Name</div>
+    <input id="st-name" class="field-inp" placeholder="Your name">
+    <div class="field-lbl">Position</div>
+    <input id="st-pos" class="field-inp" placeholder="e.g. Goalkeeper" value="Goalkeeper">
+    <div class="field-lbl">Team</div>
+    <input id="st-team" class="field-inp" placeholder="e.g. College name">
+    <div class="field-lbl">Height</div>
+    <input id="st-height" class="field-inp" placeholder="e.g. 6'2&quot; or 188cm">
+    <div class="field-lbl">Weight (lbs)</div>
+    <input id="st-weight" class="field-inp" type="number" placeholder="e.g. 185">
+    <button class="btn-primary" onclick="saveStats()">Save</button>
+  </div>
+</div>
+
 </body>
 </html>
