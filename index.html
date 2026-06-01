@@ -21,7 +21,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .tab svg{width:20px;height:20px;stroke-width:2;fill:none}
 .tab.active{color:var(--orange)}
 /* ── TODAY SCREEN ── */
-#today-header{background:var(--s1);border-bottom:1px solid var(--border);padding:16px 16px 12px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
+#today-header{background:var(--s1);border-bottom:1px solid var(--border);padding:12px 16px 12px;padding-top:calc(12px + env(safe-area-inset-top,0px))}
 #today-header h1{font-size:20px;font-weight:800;letter-spacing:-.3px}
 #today-header .sub{font-size:12px;color:var(--sub);margin-top:2px}
 .rd-card{margin:12px 14px;background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
@@ -239,32 +239,55 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 
 /* ── ATHLETE SCREEN ── */
 .athlete-rating-card{margin:12px 14px;background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:20px 16px;display:flex;align-items:center;gap:16px}
-.rating-circle{width:80px;height:80px;border-radius:50%;border:3px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative}
-.rating-circle .score{font-size:26px;font-weight:900;line-height:1}
-.rating-circle .lbl{font-size:9px;font-weight:700;letter-spacing:.5px;color:var(--muted);margin-top:2px}
+.rating-ring-wrap{width:84px;height:84px;flex-shrink:0;position:relative;display:flex;align-items:center;justify-content:center}
+.rating-ring-wrap svg{position:absolute;top:0;left:0}
+.rating-ring-inner{text-align:center;z-index:1}
+.rating-ring-inner .score{font-size:24px;font-weight:900;line-height:1}
+.rating-ring-inner .lbl{font-size:8px;font-weight:700;letter-spacing:.5px;color:var(--muted);margin-top:2px;text-transform:uppercase}
 .rating-right{flex:1}
 .rating-right h3{font-size:14px;font-weight:700;margin-bottom:8px}
 .cat-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:5px}
 .cat-bar-row span:first-child{font-size:10px;color:var(--sub);width:52px;flex-shrink:0}
 .cat-bar-track{flex:1;height:4px;background:var(--border);border-radius:2px;overflow:hidden}
-.cat-bar-fill{height:100%;background:#FFF;border-radius:2px;transition:width .6s}
-.cat-bar-row span:last-child{font-size:11px;font-weight:700;color:#CCC;width:28px;text-align:right;flex-shrink:0}
+.cat-bar-fill{height:100%;border-radius:2px;transition:width .6s}
+.cat-bar-row span:last-child{font-size:11px;font-weight:700;color:#DDD;width:28px;text-align:right;flex-shrink:0}
 .athlete-section{margin:0 14px 14px}
 .athlete-section h3{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .test-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.test-card{background:var(--s2);border-radius:var(--rs);border:1px solid var(--border);padding:12px;cursor:pointer;position:relative}
-.test-card:active{background:var(--s3)}
-.test-card .tc-label{font-size:11px;color:var(--sub);margin-bottom:4px}
-.test-card .tc-val{font-size:20px;font-weight:800;color:#FFF;line-height:1}
-.test-card .tc-unit{font-size:10px;color:var(--muted);margin-left:2px}
-.test-card .tc-date{font-size:9px;color:var(--muted);margin-top:3px}
-.test-card .tc-score{position:absolute;top:8px;right:8px;font-size:10px;font-weight:700;padding:2px 6px;border-radius:6px}
-.tc-score-A{background:rgba(255,255,255,.1);color:#FFF}
-.tc-score-B{background:rgba(255,255,255,.07);color:#CCC}
-.tc-score-C{background:rgba(255,255,255,.05);color:#888}
-.tc-score-D{background:rgba(255,255,255,.04);color:#555}
-.test-card.no-data{border-style:dashed;opacity:.5}
-.test-card.no-data .tc-val{font-size:13px;color:var(--muted)}
+.test-card{background:var(--s2);border-radius:var(--rs);border:1px solid var(--border);padding:12px 12px 10px;cursor:pointer;position:relative;overflow:hidden}
+.test-card:active{opacity:.8}
+.test-card .tc-label{font-size:10px;color:#AAA;margin-bottom:5px;font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.test-card .tc-val{font-size:22px;font-weight:900;color:#FFFFFF;line-height:1}
+.test-card .tc-unit{font-size:11px;color:#AAA;margin-left:3px;font-weight:600}
+.test-card .tc-sub{font-size:10px;color:#666;margin-top:4px;display:flex;align-items:center;gap:4px}
+.test-card .tc-score{position:absolute;top:9px;right:9px;font-size:10px;font-weight:800;padding:3px 7px;border-radius:6px;letter-spacing:.2px}
+.tc-score-A{background:#3A3A3A;color:#FFFFFF;border:1px solid #555}
+.tc-score-B{background:#303030;color:#E0E0E0;border:1px solid #484848}
+.tc-score-C{background:#2B2B2B;color:#B8B8B8;border:1px solid #424242}
+.tc-score-D{background:#252525;color:#888;border:1px solid #383838}
+.tc-bar-track{height:3px;background:var(--s3);border-radius:2px;margin-top:8px;overflow:hidden}
+.tc-bar-fill{height:100%;border-radius:2px;background:#CCC;transition:width .5s ease}
+.tc-trend-up{color:#CCC;font-weight:800}
+.tc-trend-dn{color:#666;font-weight:800}
+.tc-trend-eq{color:#555}
+.test-card.no-data{border-style:dashed;border-color:#2A2A2A;background:var(--s1)}
+.test-card.no-data .tc-val{font-size:12px;color:#555;font-weight:600;margin-top:2px}
+.test-card.no-data .tc-label{color:#555}
+.test-card.no-data .tc-add{font-size:18px;color:#444;margin-bottom:3px}
+/* test modal benchmark preview */
+.bm-preview{margin:10px 0;padding:12px;background:var(--s3);border-radius:var(--rs);border:1px solid var(--border)}
+.bm-preview .bm-score{font-size:28px;font-weight:900;color:#FFF;text-align:center;line-height:1}
+.bm-preview .bm-grade{font-size:11px;color:var(--sub);text-align:center;margin-top:3px}
+.bm-preview .bm-bar-wrap{margin-top:10px}
+.bm-bar-outer{height:6px;background:var(--border);border-radius:3px;overflow:hidden;margin:4px 0 2px}
+.bm-bar-inner{height:100%;background:#CCC;border-radius:3px;transition:width .3s}
+.bm-refs{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}
+/* strength test e1rm calculator */
+.e1rm-calc{background:var(--s3);border-radius:var(--rs);border:1px solid var(--border);padding:12px;margin-bottom:10px}
+.e1rm-calc label{font-size:11px;color:var(--sub);display:block;margin-bottom:5px}
+.e1rm-row{display:flex;gap:8px;align-items:flex-end}
+.e1rm-row input{flex:1}
+.e1rm-result{font-size:12px;color:#CCC;margin-top:6px;font-weight:600;min-height:18px}
 .profile-card{background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:12px;margin:0 14px 14px;cursor:pointer}
 .profile-avatar{width:52px;height:52px;border-radius:50%;background:var(--s3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;flex-shrink:0}
 .profile-info{flex:1}
@@ -284,8 +307,16 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 <!-- ═══ TODAY SCREEN ═══ -->
 <div id="screen-today" class="screen active">
   <div id="today-header">
-    <h1>Today</h1>
-    <div class="sub" id="today-date"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between">
+      <svg width="130" height="48" viewBox="0 0 130 48" xmlns="http://www.w3.org/2000/svg">
+        <rect width="130" height="48" rx="4" fill="#000"/>
+        <text x="65" y="26" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" letter-spacing="-1">PB</text>
+        <line x1="8" y1="34" x2="122" y2="34" stroke="#FFFFFF" stroke-width="0.7" opacity="0.6"/>
+        <line x1="8" y1="36.5" x2="122" y2="36.5" stroke="#FFFFFF" stroke-width="0.7" opacity="0.6"/>
+        <text x="65" y="43" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif" font-size="5.5" font-weight="600" fill="#FFFFFF" letter-spacing="1.2" opacity="0.85">STRENGTH &amp; PERFORMANCE COACHING</text>
+      </svg>
+      <div class="sub" id="today-date" style="text-align:right"></div>
+    </div>
   </div>
   <div id="today-body"></div>
 </div>
@@ -878,7 +909,7 @@ function card(ex,i,d,wi,isCust,ai){
     lr.innerHTML='<span></span><span>Reps</span><span>Lbs</span><span>RPE</span><span></span>';
     body.appendChild(lr);
     const sd=document.createElement('div');sd.id=`sets-${i}`;body.appendChild(sd);
-    if(sets.length===0){const n=parseSetCount(presc);const defR=parseRepCount(presc);const initSets=[];for(let si=0;si<n;si++){initSets.push({reps:defR,lbs:'',done:false});addRow(sd,i,d.k,si,{reps:defR,lbs:'',done:false},defR);}sl(S.pi,S.wi,d.k,ei,initSets);sd.dataset.defReps=defR;}
+    if(sets.length===0){const n=parseSetCount(presc);const defR=parseRepCount(presc);const initSets=[];for(let si=0;si<n;si++){initSets.push({reps:defR,lbs:'',done:false});addRow(sd,i,d.k,si,{reps:defR,lbs:'',done:false},defR);}sl(S.pi,S.wi,d.k,i,initSets);sd.dataset.defReps=defR;}
     else{sets.forEach((s,si)=>addRow(sd,i,d.k,si,s));sd.dataset.defReps=parseRepCount(presc);}
     const ab=document.createElement('button');ab.className='add-set';ab.textContent='+ Add Set';ab.onclick=()=>addSet(i,d.k);body.appendChild(ab);
     const rt=RT[i]||{running:false,remaining:rs,done:false};
@@ -1263,6 +1294,11 @@ const TESTS=[
   {id:'sprint10',label:'10m Sprint',unit:'s',desc:'10 metre acceleration time',elite:1.65,good:1.75,avg:1.85,higher:false,cat:'speed'},
   {id:'sprint40',label:'40yd Dash',unit:'s',desc:'40 yard dash time',elite:4.55,good:4.75,avg:4.95,higher:false,cat:'speed'},
   {id:'cod',label:'5-10-5 COD',unit:'s',desc:'Change of direction agility test',elite:3.95,good:4.20,avg:4.50,higher:false,cat:'agility'},
+  {id:'str_squat',label:'Back Squat',unit:'lbs',desc:'Estimated 1RM — Back Squat',elite:385,good:315,avg:245,higher:true,cat:'strength',isStrength:true},
+  {id:'str_fsquat',label:'Front Squat',unit:'lbs',desc:'Estimated 1RM — Front Squat',elite:320,good:265,avg:205,higher:true,cat:'strength',isStrength:true},
+  {id:'str_pclean',label:'Power Clean',unit:'lbs',desc:'Estimated 1RM — Hang Power Clean',elite:275,good:230,avg:185,higher:true,cat:'strength',isStrength:true},
+  {id:'str_ppress',label:'Push Press',unit:'lbs',desc:'Estimated 1RM — Push Press',elite:230,good:190,avg:150,higher:true,cat:'strength',isStrength:true},
+  {id:'str_chinup',label:'Weighted Chin-Up',unit:'lbs',desc:'Added load — Weighted Chin-Up 1RM',elite:90,good:60,avg:30,higher:true,cat:'strength',isStrength:true},
 ];
 const CAT_WEIGHTS={power:0.40,speed:0.30,strength:0.20,agility:0.10};
 let activeTestId=null;
@@ -1295,17 +1331,15 @@ function getOverallRating(){
       const sc=rateVal(best,t);if(sc)cats[t.cat].push(sc);
     }
   });
-  // Strength from PRs (relative to body weight)
-  const bw=parseFloat((LS.g('gk_stats')||{}).weight)||180;
-  const prs=Object.keys(localStorage).filter(k=>k.startsWith('gk_pr_')).map(k=>LS.g(k)).filter(Boolean);
-  if(prs.length){
-    const top=prs.sort((a,b)=>b.e1rm-a.e1rm).slice(0,3);
-    const strScores=top.map(p=>{
-      const rel=p.e1rm/bw;
-      // Clean relative: elite=1.3, good=1.1, avg=0.9
-      return Math.round(Math.min(100,Math.max(1,(rel-0.4)/(1.3-0.4)*90+10)));
-    });
-    cats.strength.push(Math.round(strScores.reduce((a,b)=>a+b,0)/strScores.length));
+  // Strength also from workout PR board if no dedicated strength tests logged yet
+  if(!cats.strength.length){
+    const bw=parseFloat((LS.g('gk_stats')||{}).weight)||180;
+    const prs=Object.keys(localStorage).filter(k=>k.startsWith('gk_pr_')).map(k=>LS.g(k)).filter(Boolean);
+    if(prs.length){
+      const top=prs.sort((a,b)=>b.e1rm-a.e1rm).slice(0,3);
+      const strScores=top.map(p=>{const rel=p.e1rm/bw;return Math.round(Math.min(100,Math.max(1,(rel-0.4)/(1.3-0.4)*90+10)));});
+      cats.strength.push(Math.round(strScores.reduce((a,b)=>a+b,0)/strScores.length));
+    }
   }
   const avg=arr=>arr.length?Math.round(arr.reduce((a,b)=>a+b,0)/arr.length):null;
   const scores={power:avg(cats.power),speed:avg(cats.speed),strength:avg(cats.strength),agility:avg(cats.agility)};
@@ -1313,6 +1347,8 @@ function getOverallRating(){
   Object.entries(scores).forEach(([cat,s])=>{if(s!==null){total+=s*CAT_WEIGHTS[cat];wSum+=CAT_WEIGHTS[cat];}});
   return{overall:wSum>0?Math.round(total/wSum):null,cats:scores};
 }
+
+function catBarColor(cat){return cat==='power'?'#DDDDDD':cat==='speed'?'#BBBBBB':cat==='strength'?'#999999':'#777777';}
 
 function renderAthlete(){
   const stats=LS.g('gk_stats')||{};
@@ -1323,25 +1359,49 @@ function renderAthlete(){
   const initials=(stats.name||'BG').split(' ').map(w=>w[0]).join('').toUpperCase().slice(0,2);
   html.push(`<div class="profile-card" onclick="openStatsModal()"><div class="profile-avatar">${initials}</div><div class="profile-info"><h3>${stats.name||'Tap to set up profile'}</h3><p>${[stats.pos||'Goalkeeper',stats.team,stats.height,stats.weight?stats.weight+'lbs':''].filter(Boolean).join(' · ')||'Add your details'}</p></div><div style="color:var(--muted)">›</div></div>`);
 
-  // Rating card
+  // Rating card with SVG ring
   const sc=rating.overall;
-  const scColor=sc?(sc>=80?'#FFF':sc>=60?'#CCC':sc>=40?'#888':'#555'):'var(--muted)';
-  html.push(`<div class="athlete-rating-card"><div class="rating-circle" style="border-color:${scColor}"><div class="score" style="color:${scColor}">${sc||'—'}</div><div class="lbl">RATING</div></div><div class="rating-right"><h3>GK Performance Score</h3>${['power','speed','strength','agility'].map(cat=>{const s=rating.cats[cat];return`<div class="cat-bar-row"><span>${cat.charAt(0).toUpperCase()+cat.slice(1)}</span><div class="cat-bar-track"><div class="cat-bar-fill" style="width:${s||0}%"></div></div><span>${s||'–'}</span></div>`;}).join('')}<div style="font-size:10px;color:var(--muted);margin-top:6px">vs NCAA D1 GK benchmarks</div></div></div>`);
+  const r=34,circ=2*Math.PI*r;
+  const fill=sc?Math.round(sc/100*circ):0;
+  const ringColor=sc?(sc>=80?'#FFFFFF':sc>=60?'#DDDDDD':sc>=40?'#AAAAAA':'#777777'):'#333';
+  const ringHtml=`<div class="rating-ring-wrap"><svg width="84" height="84" viewBox="0 0 84 84"><circle cx="42" cy="42" r="${r}" fill="none" stroke="#222" stroke-width="6"/><circle cx="42" cy="42" r="${r}" fill="none" stroke="${ringColor}" stroke-width="6" stroke-dasharray="${fill} ${circ}" stroke-dashoffset="${circ*0.25}" stroke-linecap="round"/></svg><div class="rating-ring-inner"><div class="score" style="color:${ringColor}">${sc||'—'}</div><div class="lbl">RATING</div></div></div>`;
+  html.push(`<div class="athlete-rating-card">${ringHtml}<div class="rating-right"><h3>GK Performance Score</h3>${['power','speed','strength','agility'].map(cat=>{const s=rating.cats[cat];const bc=catBarColor(cat);return`<div class="cat-bar-row"><span>${cat.charAt(0).toUpperCase()+cat.slice(1)}</span><div class="cat-bar-track"><div class="cat-bar-fill" style="width:${s||0}%;background:${bc}"></div></div><span style="color:${bc}">${s||'–'}</span></div>`;}).join('')}<div style="font-size:10px;color:var(--muted);margin-top:6px">vs NCAA D1 GK benchmarks</div></div></div>`);
 
-  // Test grid
-  html.push(`<div class="athlete-section"><h3>Performance Tests <span style="color:var(--muted);font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">— tap to log</span></h3><div class="test-grid">`);
-  TESTS.forEach(t=>{
-    const entries=LS.g('gk_test_'+t.id)||[];
-    const best=entries.length?(t.higher?Math.max(...entries.map(e=>e.val)):Math.min(...entries.map(e=>e.val))):null;
-    const last=entries.length?entries[entries.length-1]:null;
-    const sc=rateVal(best,t);
-    if(best){
-      html.push(`<div class="test-card" onclick="openTestModal('${t.id}')"><div class="tc-label">${t.label}</div><div class="tc-val">${best}<span class="tc-unit">${t.unit}</span></div><div class="tc-date">${last?.date||''} · ${entries.length} entries</div><div class="tc-score ${scoreClass(sc)}">${scoreGrade(sc)}</div></div>`);
-    } else {
-      html.push(`<div class="test-card no-data" onclick="openTestModal('${t.id}')"><div class="tc-label">${t.label}</div><div class="tc-val">Tap to log</div><div class="tc-date">${t.desc}</div></div>`);
-    }
-  });
-  html.push(`</div></div>`);
+  // Helper to render a group of test cards
+  function renderTestSection(title,tests){
+    if(!tests.length)return;
+    html.push(`<div class="athlete-section"><h3>${title} <span style="color:var(--muted);font-size:10px;font-weight:400;text-transform:none;letter-spacing:0">— tap to log</span></h3><div class="test-grid">`);
+    tests.forEach(t=>{
+      const entries=LS.g('gk_test_'+t.id)||[];
+      const best=entries.length?(t.higher?Math.max(...entries.map(e=>e.val)):Math.min(...entries.map(e=>e.val))):null;
+      const prev=entries.length>=2?entries[entries.length-2].val:null;
+      const last=entries.length?entries[entries.length-1]:null;
+      const sc=rateVal(best,t);
+      if(best!==null){
+        // Trend
+        let trend='';
+        if(prev!==null){
+          const delta=t.higher?(best-prev):(prev-best);
+          if(Math.abs(delta)<0.01)trend=`<span class="tc-trend-eq">→</span>`;
+          else if(delta>0)trend=`<span class="tc-trend-up">↑</span>`;
+          else trend=`<span class="tc-trend-dn">↓</span>`;
+        }
+        // Progress bar toward elite
+        let pct=0;
+        if(t.higher)pct=Math.min(100,Math.round(best/t.elite*100));
+        else pct=Math.min(100,Math.round(t.elite/best*100));
+        html.push(`<div class="test-card" onclick="openTestModal('${t.id}')"><div class="tc-score ${scoreClass(sc)}">${scoreGrade(sc)}</div><div class="tc-label">${t.label}</div><div class="tc-val">${best}<span class="tc-unit">${t.unit}</span></div><div class="tc-sub">${trend}<span>${last?.date||''} · ${entries.length}×</span></div><div class="tc-bar-track"><div class="tc-bar-fill" style="width:${pct}%"></div></div></div>`);
+      } else {
+        html.push(`<div class="test-card no-data" onclick="openTestModal('${t.id}')"><div class="tc-add">+</div><div class="tc-label">${t.label}</div><div class="tc-val">No data yet</div></div>`);
+      }
+    });
+    html.push(`</div></div>`);
+  }
+
+  renderTestSection('Jump & Power',TESTS.filter(t=>t.cat==='power'));
+  renderTestSection('Speed',TESTS.filter(t=>t.cat==='speed'));
+  renderTestSection('Agility',TESTS.filter(t=>t.cat==='agility'));
+  renderTestSection('Strength (e1RM)',TESTS.filter(t=>t.cat==='strength'));
 
   // PR Board
   const prs=Object.keys(localStorage).filter(k=>k.startsWith('gk_pr_')).map(k=>LS.g(k)).filter(Boolean).sort((a,b)=>b.e1rm-a.e1rm).slice(0,8);
@@ -1376,16 +1436,46 @@ function openTestModal(id){
   activeTestId=id;
   const t=TESTS.find(x=>x.id===id);
   $('test-modal-title').textContent='Log '+t.label;
-  $('test-unit-lbl').textContent=t.unit?`Unit: ${t.unit} · Benchmark: Elite ${t.elite}${t.unit} / Good ${t.good}${t.unit}`:`Benchmark: Elite ${t.elite} / Good ${t.good}`;
+  // Benchmark ref line
+  $('test-unit-lbl').textContent=`${t.unit?t.unit+' · ':''}Avg: ${t.avg}  Good: ${t.good}  Elite: ${t.elite}`;
   $('test-val').value='';
   $('test-date').value=TODAY;
   $('test-notes').value='';
+  // Show/hide e1RM calculator
+  const calcWrap=$('e1rm-calc-wrap');
+  if(calcWrap)calcWrap.style.display=t.isStrength?'block':'none';
+  $('e1rm-result').textContent='';
+  $('e1rm-lbs-in').value='';$('e1rm-reps-in').value='';
+  updateTestPreview();
   $('test-modal').classList.add('show');
 }
 function closeTestModal(){$('test-modal').classList.remove('show');activeTestId=null;}
+function updateTestPreview(){
+  const val=parseFloat($('test-val').value);
+  const preview=$('bm-preview');
+  if(!val||!activeTestId){if(preview)preview.style.display='none';return;}
+  const t=TESTS.find(x=>x.id===activeTestId);
+  const sc=rateVal(val,t)||0;
+  const grade=scoreGrade(sc);
+  const pct=t.higher?Math.min(100,Math.round(val/t.elite*100)):Math.min(100,Math.round(t.elite/val*100));
+  const gradeColor=sc>=70?'#FFF':sc>=50?'#E0E0E0':sc>=35?'#AAAAAA':'#777777';
+  if(preview){
+    preview.style.display='block';
+    preview.innerHTML=`<div class="bm-score" style="color:${gradeColor}">${sc}<span style="font-size:14px;color:#666">/100</span></div><div class="bm-grade" style="color:${gradeColor}">${grade} — ${sc>=80?'Elite level':''}${sc>=70&&sc<80?'Above average':''}${sc>=50&&sc<70?'NCAA D1 average':''}${sc>=35&&sc<50?'Below average':''}${sc<35?'Needs work':''}</div><div class="bm-bar-wrap"><div class="bm-bar-outer"><div class="bm-bar-inner" style="width:${pct}%"></div></div><div class="bm-refs"><span>Avg ${t.avg}${t.unit}</span><span>Good ${t.good}${t.unit}</span><span>Elite ${t.elite}${t.unit}</span></div></div>`;
+  }
+}
+function calcE1RM(){
+  const w=parseFloat($('e1rm-lbs-in').value);
+  const reps=parseInt($('e1rm-reps-in').value);
+  if(!w||!reps)return;
+  const e1rm=Math.round(w*(1+reps/30)*10)/10;
+  $('e1rm-result').textContent=`Estimated 1RM: ${e1rm} lbs`;
+  $('test-val').value=e1rm;
+  updateTestPreview();
+}
 function saveTestEntry(){
   const val=parseFloat($('test-val').value);
-  if(!val){toast('Enter a value','var(--red)');return;}
+  if(!val){toast('Enter a value');return;}
   const t=TESTS.find(x=>x.id===activeTestId);
   const entries=LS.g('gk_test_'+activeTestId)||[];
   entries.push({val,date:$('test-date').value,notes:$('test-notes').value.trim()});
@@ -1428,9 +1518,20 @@ function saveStats(){
 <div class="ov-wrap" id="test-modal">
   <div class="ov-inner">
     <div class="ov-head"><span id="test-modal-title">Log Test</span><button onclick="closeTestModal()">✕</button></div>
+    <!-- e1RM calculator (shown for strength tests only) -->
+    <div id="e1rm-calc-wrap" class="e1rm-calc" style="display:none">
+      <label>Calculate e1RM from a working set</label>
+      <div class="e1rm-row">
+        <input id="e1rm-lbs-in" class="field-inp" type="number" inputmode="decimal" placeholder="Weight (lbs)" oninput="calcE1RM()">
+        <input id="e1rm-reps-in" class="field-inp" type="number" inputmode="numeric" placeholder="Reps (1–5)" min="1" max="10" oninput="calcE1RM()">
+      </div>
+      <div id="e1rm-result" class="e1rm-result"></div>
+    </div>
     <div class="field-lbl">Result</div>
-    <input id="test-val" class="field-inp" type="number" inputmode="decimal" placeholder="e.g. 58.5">
-    <div class="field-lbl" id="test-unit-lbl" style="margin-top:-8px;margin-bottom:12px;font-size:11px;color:var(--muted)"></div>
+    <input id="test-val" class="field-inp" type="number" inputmode="decimal" placeholder="Enter value" oninput="updateTestPreview()">
+    <div id="test-unit-lbl" style="margin-top:-8px;margin-bottom:12px;font-size:11px;color:var(--muted)"></div>
+    <!-- Live benchmark preview -->
+    <div id="bm-preview" class="bm-preview" style="display:none"></div>
     <div class="field-lbl">Date</div>
     <input id="test-date" class="field-inp" type="date">
     <div class="field-lbl">Notes (optional)</div>
