@@ -86,11 +86,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #prog-track{height:3px;background:var(--border);border-radius:2px;overflow:hidden}
 #prog-fill{height:100%;background:var(--orange);border-radius:2px;transition:width .3s;width:0%}
 #prog-pct{font-size:11px;color:var(--muted);margin-top:4px}
-.phase-zone-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;margin:4px 14px 6px;background:rgba(255,102,36,.1);color:var(--orange)}
+.phase-zone-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;padding:3px 10px;border-radius:10px;margin:4px 14px 6px;background:rgba(255,255,255,.06);color:var(--orange)}
 .zd{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0}
 .banner{margin:0 14px 7px;padding:9px 12px;border-radius:var(--rs);font-size:12px;line-height:1.5}
-.banner.game{background:rgba(245,166,35,.07);border-left:3px solid var(--amber);color:#C9A44A}
-.banner.warmup{background:rgba(46,204,113,.06);border-left:3px solid var(--green);color:#5DBF82}
+.banner.game{background:rgba(255,255,255,.04);border-left:3px solid #888;color:#CCC}
+.banner.warmup{background:rgba(255,255,255,.03);border-left:3px solid #555;color:#AAA}
 #prog-ex-list{padding:0 14px 20px;display:flex;flex-direction:column;gap:7px}
 /* ── WORKOUT OVERLAY ── */
 #wo{display:none;position:fixed;inset:0;background:var(--bg);z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch}
@@ -142,7 +142,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .sn{font-size:11px;color:var(--muted);text-align:center;font-weight:600}
 .si{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);font-size:15px;font-weight:700;padding:8px 4px;text-align:center;width:100%;-webkit-appearance:none;outline:none}
 .si:focus{border-color:var(--orange)}
-.si.v{border-color:rgba(255,102,36,.35);color:var(--orange)}
+.si.v{border-color:rgba(255,255,255,.25);color:var(--orange)}
 .rpe-grp{display:flex;gap:2px}
 .rb{flex:1;padding:8px 1px;border-radius:5px;border:1px solid var(--border);background:var(--s3);color:var(--sub);font-size:11px;font-weight:700;cursor:pointer;text-align:center;line-height:1}
 .rb.s{background:#FFF;color:#000;border-color:#FFF}
@@ -164,6 +164,41 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .notes-t{display:flex;align-items:center;gap:5px;margin-top:9px;font-size:11.5px;color:var(--muted);cursor:pointer;-webkit-user-select:none}
 .notes-b{margin-top:6px;font-size:11.5px;color:var(--sub);line-height:1.65;font-style:italic;display:none}
 .notes-b.o{display:block}
+/* ── OVR / VBT DATA LOGGING ── */
+.data-log-btn{width:100%;margin-top:9px;padding:8px 12px;border-radius:var(--rs);border:1px dashed #2E2E2E;background:transparent;color:#555;font-size:11px;font-weight:700;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px;transition:all .15s}
+.data-log-btn::before{content:'';width:6px;height:6px;border-radius:50%;background:#2E2E2E;flex-shrink:0;transition:background .15s}
+.data-log-btn.has-data{color:#BBBBBB;border-color:#3A3A3A;border-style:solid}
+.data-log-btn.has-data::before{background:#BBBBBB}
+.data-log-btn:active{background:var(--s3)}
+.modal-tabs{display:flex;gap:3px;margin-bottom:14px;background:var(--s3);border-radius:var(--rs);padding:3px}
+.mtab{flex:1;padding:7px;border:none;background:transparent;color:var(--sub);font-size:12px;font-weight:700;cursor:pointer;border-radius:6px}
+.mtab.active{background:var(--s2);color:var(--text)}
+.zone-banner{padding:9px 12px;border-radius:var(--rs);margin-bottom:12px;font-size:12px;font-weight:700;border:1px solid #3A3A3A;background:#1A1A1A;color:#CCC}
+.zone-banner span{display:block;font-size:10px;font-weight:500;color:var(--muted);margin-top:2px}
+.data-preview{background:var(--s3);border-radius:var(--rs);border:1px solid var(--border);padding:12px;margin:10px 0}
+.dp-stat-row{display:flex;justify-content:space-between;margin-bottom:6px}
+.dp-stat{text-align:center;flex:1}
+.dp-stat .dpv{font-size:18px;font-weight:800;color:#FFF}
+.dp-stat .dpl{font-size:9px;color:var(--muted);margin-top:2px;text-transform:uppercase;letter-spacing:.3px}
+.dp-table{margin-top:10px;border-top:1px solid var(--border);padding-top:8px}
+.dp-row{display:grid;font-size:11px;margin-bottom:3px;padding:4px 6px;border-radius:5px}
+.dp-row.dp-hdr{color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.3px;font-weight:700}
+.dp-row-ovr{grid-template-columns:28px 60px 50px 60px 60px}
+.dp-row-vbt{grid-template-columns:36px 1fr 1fr 1fr 60px}
+.dp-row:not(.dp-hdr){background:var(--s2);color:#CCC}
+.dp-row:not(.dp-hdr):nth-child(even){background:var(--s1)}
+.dp-best{color:#FFF;font-weight:800}
+.zone-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.dot-good{background:#CCCCCC}
+.dot-warn{background:#888888}
+.dot-bad{background:#555555}
+.vloss-good{color:#CCC}
+.vloss-warn{color:#888}
+.vloss-bad{color:#555}
+.sync-row{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--sub);margin:10px 0;cursor:pointer}
+.sync-row input{accent-color:#CCC;width:16px;height:16px}
+.e1rm-row{display:flex;gap:8px}
+.e1rm-row .field-inp{flex:1}
 /* ── PROGRESS SCREEN ── */
 #progress-header{background:var(--s1);border-bottom:1px solid var(--border);padding:16px 16px 12px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
 #progress-header h1{font-size:20px;font-weight:800}
@@ -343,10 +378,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 <div id="screen-progress" class="screen">
   <div id="progress-header"><h1>Progress</h1></div>
   <div class="prog-filter" id="prog-filter">
-    <button class="pf-btn active" onclick="setPF('vertical')">Vertical</button>
-    <button class="pf-btn" onclick="setPF('sprint')">Sprint</button>
-    <button class="pf-btn" onclick="setPF('lifts')">Top Lifts</button>
-    <button class="pf-btn" onclick="setPF('readiness')">Readiness</button>
+    <button class="pf-btn active" data-pf="vertical" onclick="setPF('vertical')">Vertical</button>
+    <button class="pf-btn" data-pf="sprint" onclick="setPF('sprint')">Sprint</button>
+    <button class="pf-btn" data-pf="rsi" onclick="setPF('rsi')">RSI</button>
+    <button class="pf-btn" data-pf="lifts" onclick="setPF('lifts')">Top Lifts</button>
+    <button class="pf-btn" data-pf="readiness" onclick="setPF('readiness')">Readiness</button>
   </div>
   <div class="chart-card"><h3 id="chart-title">Vertical Jump</h3><canvas id="main-chart" height="200"></canvas></div>
   <div id="pr-list"></div>
@@ -519,7 +555,7 @@ function parseSetCount(presc){
 function zC(z){if(!z)return'rpe';if(z.includes('COD')||z.includes('Agility')||z.includes('Reactive'))return'agil';if(z.includes('0.75')||z.includes('Speed-Str'))return'speed';if(z.includes('0.55')||z.includes('Str-Speed'))return'str';if(z.includes('0.40')||z.includes('Max'))return'max';if(z.includes('0.90')||z.includes('Snatch')||z.includes('Explosive')||z.includes('1.30')||z.includes('1.50'))return'oly';if(z.includes('OVR')||z.includes('Sprint'))return'ovr';if(z.includes('Eccentric')||z.includes('Full ROM')||z.includes('Mobility'))return'rec';return'rpe';}
 const ZCOL={speed:'#AAAAAA',str:'#AAAAAA',max:'#AAAAAA',oly:'#AAAAAA',ovr:'#AAAAAA',rpe:'#555555',rec:'#888888',agil:'#AAAAAA'};
 function rSec(z){if(!z)return 90;if(z.includes('COD')||z.includes('Agility')||z.includes('Reactive'))return 90;if(z.includes('Sprint'))return 120;if(z.includes('0.75'))return 180;if(z.includes('0.55'))return 120;if(z.includes('0.40'))return 270;if(z.includes('0.90')||z.includes('Explosive')||z.includes('1.30'))return 180;if(z.includes('OVR'))return 150;return 90;}
-function toast(m,c='#2ECC71'){const t=document.createElement('div');t.className='toast';t.style.background=c;t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2400);}
+function toast(m,c='#2A2A2A'){const t=document.createElement('div');t.className='toast';t.style.background=c;t.style.border='1px solid #444';t.style.color='#FFF';t.textContent=m;document.body.appendChild(t);setTimeout(()=>t.remove(),2400);}
 
 // ── PROGRAM DATA ──
 const PH=[
@@ -724,7 +760,7 @@ function rdMessage(sc){
   if(sc>=45)return'Moderate readiness. Train smart — reduce load if needed.';
   return'Low readiness. Consider active recovery today.';
 }
-function getRecThresh(){return parseInt(($('rec-thresh')||{value:'45'}).value)||45;}
+function getRecThresh(){return parseInt(LS.g('gk_rec_thresh'))||45;}
 
 function openCI(){
   const d=LS.g('gk_rd_'+TODAY);
@@ -806,7 +842,17 @@ function renderToday(){
     const exPrev=visEx.slice(0,4).map(ex=>`<div class="ts-ex${ex.p?' pri':''}">${ex.n}</div>`).join('')+(visEx.length>4?`<div class="ts-ex">+${visEx.length-4} more</div>`:'');
     html.push(`<div class="today-session" onclick="openTodayWO()"><div class="ts-header"><div class="ts-dot${isDone?' done':''}"></div><div class="ts-title"><h3>${tday.t}</h3><p>${tph.label} · ${tph.weeks[todayMatch.wi].l}</p></div><div class="ts-chevron">${isDone?'✓':'›'}</div></div><div class="ts-body"><div class="ts-meta"><span class="ts-chip">${visEx.length} exercises</span><span class="ts-chip">${isDone?'✓ Done':'Tap to start'}</span></div><div class="ts-exlist">${exPrev}</div></div></div>`);
   } else {
-    html.push('<div class="no-session"><p>No session scheduled today. Rest or optional active recovery.</p></div>');
+    // Find next scheduled session
+    let nextInfo='';
+    const todayDate=new Date(TODAY);
+    const sortedDates=Object.entries(DL).map(([d,v])=>({date:d,...v})).sort((a,b)=>a.date.localeCompare(b.date));
+    const upcoming=sortedDates.find(e=>e.date>TODAY);
+    if(upcoming){
+      const uph=PH[upcoming.pi];const uday=uph.days.find(d=>d.k===upcoming.dk);
+      const daysUntil=Math.round((new Date(upcoming.date)-todayDate)/(1000*60*60*24));
+      nextInfo=`<div style="margin-top:8px;font-size:12px;color:#666">Next: <span style="color:#AAA;font-weight:700">${uday?.t||''}</span> · ${daysUntil===1?'tomorrow':upcoming.date}</div>`;
+    }
+    html.push(`<div class="no-session"><p>Rest day. Recovery + mobility.</p>${nextInfo}</div>`);
   }
 
   // streak
@@ -919,6 +965,19 @@ function card(ex,i,d,wi,isCust,ai){
     const nw=document.createElement('div');
     nw.innerHTML=`<div class="notes-t" onclick="toggleNotes(${i})"><span id="na-${i}">▸</span> Coach notes</div><div class="notes-b" id="nb-${i}">${ex.nt||''}</div>`;
     body.appendChild(nw);
+    // OVR / VBT data button
+    const dtype=exDataType(ex.v);
+    if(dtype){
+      const dkey=dtype==='ovr'?`gk_ovr_${S.pi}_${S.wi}_${d.k}_${i}`:`gk_vbt_${S.pi}_${S.wi}_${d.k}_${i}`;
+      const dsess=LS.g(dkey)||[];
+      const db=document.createElement('button');
+      db.className='data-log-btn'+(dsess.length?' has-data':'');
+      db.innerHTML=dtype==='ovr'
+        ?(dsess.length?`📊 OVR Data · ${dsess.length} session${dsess.length>1?'s':''}`:'+ Log OVR Jump Data')
+        :(dsess.length?`📊 VBT Data · ${dsess.length} session${dsess.length>1?'s':''}`:'+ Log VBT Velocity');
+      db.onclick=()=>dtype==='ovr'?openOVRModal(S.pi,S.wi,d.k,i,ex.n):openVBTModal(S.pi,S.wi,d.k,i,ex.n,ex.v);
+      body.appendChild(db);
+    }
     el.appendChild(body);
   }
   return el;
@@ -969,9 +1028,19 @@ function td(ei,dk,si){
   if(sets.every(s=>s.done)){
     setTimeout(()=>{
       const d=day();const rm=LS.g(rmKey(S.pi,d.k))||[];
-      let nxt=ei+1;while(nxt<d.ex.length&&rm.includes(nxt))nxt++;
-      if(nxt<d.ex.length){const ov=LS.g(ovKey(S.pi,d.k,nxt));S.act=nxt;renderWOList();toast('▶ '+(ov?ov.n:d.ex[nxt].n));}
-      else{S.act=-1;renderWOList();}
+      const cx=(LS.g(addKey(S.pi,d.k))||[]).filter(e=>!e.deleted);
+      // Try advancing within built-in exercises
+      if(ei<1000){
+        let nxt=ei+1;while(nxt<d.ex.length&&rm.includes(nxt))nxt++;
+        if(nxt<d.ex.length){const ov=LS.g(ovKey(S.pi,d.k,nxt));S.act=nxt;renderWOList();toast('▶ '+(ov?.n||d.ex[nxt].n));return;}
+        // Fall through to custom exercises
+        if(cx.length){S.act=1000;renderWOList();toast('▶ '+cx[0].n);return;}
+      } else {
+        // Advance within custom exercises
+        const ai=ei-1000;
+        if(ai+1<cx.length){S.act=1000+(ai+1);renderWOList();toast('▶ '+cx[ai+1].n);return;}
+      }
+      S.act=-1;renderWOList();
     },700);
   }
 }
@@ -1015,23 +1084,28 @@ function updWOProg(){
 function checkPR(ei,dk,si,setData){
   if(!setData.lbs||!setData.reps)return;
   const w=parseFloat(setData.lbs),r=parseInt(setData.reps);
-  if(!w||!r)return;
+  if(!w||!r||r>12)return; // skip high-rep sets (not good for e1RM)
   const e1rm=w*(1+r/30);
   const d=day();
-  const ex=d.ex[ei];
-  if(!ex)return;
+  // Get exercise name — handle custom exercises (ei >= 1000)
+  let exName;
+  if(ei>=1000){const cx=LS.g(addKey(S.pi,dk))||[];exName=cx[ei-1000]?.n;}
+  else{const ov=LS.g(ovKey(S.pi,dk,ei));exName=ov?.n||d.ex[ei]?.n;}
+  if(!exName)return;
+  // Only track PRs for strength exercises (not jumps/sprints)
+  const vzone=ei>=1000?(LS.g(addKey(S.pi,dk))||[])[ei-1000]?.v:'';
+  if(exDataType(d.ex[ei]?.v||vzone)==='ovr')return;
   const key=`gk_pr_${S.pi}_${dk}_${ei}`;
   const old=LS.g(key);
   if(!old||e1rm>old.e1rm){
-    LS.s(key,{e1rm:Math.round(e1rm*10)/10,lbs:w,reps:r,date:TODAY,name:ex.n});
-    if(old)toast(`🏆 New PR! ${ex.n.split(' ')[0]} ${Math.round(e1rm)}lbs e1RM`,'var(--orange)');
+    LS.s(key,{e1rm:Math.round(e1rm*10)/10,lbs:w,reps:r,date:TODAY,name:exName});
+    if(old)toast(`🏆 New PR! ${exName.split(' ')[0]} ${Math.round(e1rm)}lbs e1RM`);
   }
 }
 
 // ── FINISH ──
 function finish(){
   LS.s(sk(S.pi,S.wi,S.dk),true);
-  updateStreak();
   const d=day();let tot=0,dn=0;
   const rm=LS.g(rmKey(S.pi,d.k))||[];
   const cx=LS.g(addKey(S.pi,d.k))||[];
@@ -1171,8 +1245,7 @@ function confirmAddEx(){
 // ── PROGRESS SCREEN ──
 function setPF(f){
   PF=f;
-  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.toggle('active',b.textContent.toLowerCase().includes(f.toLowerCase())||
-    (f==='vertical'&&b.textContent==='Vertical')||(f==='sprint'&&b.textContent==='Sprint')||(f==='lifts'&&b.textContent==='Top Lifts')||(f==='readiness'&&b.textContent==='Readiness')));
+  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.toggle('active',b.dataset.pf===f));
   renderProgress();
 }
 function renderProgress(){
@@ -1196,38 +1269,39 @@ function renderChart(){
       labels.push(ds.slice(5));data.push(rdScore(rd));
     }
   } else if(PF==='vertical'){
-    title.textContent='CMJ / Vertical Height (cm)';
-    color='#AAAAAA';
-    // gather from manual notes/PR data keyed to CMJ exercises
+    title.textContent='CMJ Height (cm) — best per session';
+    color='#CCCCCC';
+    // Primary: athlete test entries (CMJ + Vertical Jump + OVR sessions)
     const pts=[];
-    PH.forEach((ph,pi)=>ph.weeks.forEach((_,wi)=>ph.days.forEach(day=>{
-      day.ex.forEach((ex,ei)=>{
-        if(!ex.n.includes('CMJ')&&!ex.n.includes('Jump')&&!ex.n.includes('Hurdle'))return;
-        const sets=LS.g(lk(pi,wi,day.k,ei))||[];
-        sets.filter(s=>s.done&&s.lbs).forEach(s=>{
-          const dt=ph.dates?Object.entries(ph.dates).find(([k])=>k.endsWith('_'+day.k))?.[1]:'';
-          if(dt)pts.push({date:dt,val:parseFloat(s.lbs)});
-        });
-      });
-    })));
-    pts.sort((a,b)=>a.date.localeCompare(b.date)).slice(-14).forEach(p=>{labels.push(p.date.slice(5));data.push(p.val);});
-    if(!data.length){title.textContent='Vertical Jump (no data yet)';labels=['Start'];data=[null];}
+    ['cmj','vj'].forEach(tid=>{
+      (LS.g('gk_test_'+tid)||[]).forEach(e=>{if(e.date&&e.val)pts.push({date:e.date,val:e.val});});
+    });
+    // Also pull from OVR jump sessions
+    Object.keys(localStorage).filter(k=>k.startsWith('gk_ovr_')).forEach(k=>{
+      (LS.g(k)||[]).forEach(s=>{if(s.date&&s.best?.height)pts.push({date:s.date,val:s.best.height});});
+    });
+    pts.sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).forEach(p=>{labels.push(p.date.slice(5));data.push(p.val);});
+    if(!data.length){title.textContent='CMJ / Vertical (no data yet — log in Athlete tab)';labels=['Log test →'];data=[null];}
   } else if(PF==='sprint'){
-    title.textContent='Sprint Times (s) — lower is better';
+    title.textContent='10m Sprint (s) — lower is better';
     color='#AAAAAA';
     const pts=[];
-    PH.forEach((ph,pi)=>ph.weeks.forEach((_,wi)=>ph.days.forEach(day=>{
-      day.ex.forEach((ex,ei)=>{
-        if(!ex.v.includes('Sprint'))return;
-        const sets=LS.g(lk(pi,wi,day.k,ei))||[];
-        sets.filter(s=>s.done&&s.lbs).forEach(s=>{
-          const dt=ph.dates?Object.entries(ph.dates).find(([k])=>k.endsWith('_'+day.k))?.[1]:'';
-          if(dt)pts.push({date:dt,val:parseFloat(s.lbs)});
-        });
-      });
-    })));
-    pts.sort((a,b)=>a.date.localeCompare(b.date)).slice(-14).forEach(p=>{labels.push(p.date.slice(5));data.push(p.val);});
-    if(!data.length){title.textContent='Sprint Times (no data yet)';labels=['Start'];data=[null];}
+    ['sprint10','sprint40'].forEach(tid=>{
+      (LS.g('gk_test_'+tid)||[]).forEach(e=>{if(e.date&&e.val)pts.push({date:e.date,val:e.val,tid});});
+    });
+    pts.sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).forEach(p=>{labels.push(p.date.slice(5));data.push(p.val);});
+    if(!data.length){title.textContent='Sprint Times (no data yet — log in Athlete tab)';labels=['Log test →'];data=[null];}
+  } else if(PF==='rsi'){
+    title.textContent='RSI — Reactive Strength Index';
+    color='#BBBBBB';
+    const pts=[];
+    (LS.g('gk_test_rsi')||[]).forEach(e=>{if(e.date&&e.val)pts.push({date:e.date,val:e.val});});
+    // Also from OVR sessions
+    Object.keys(localStorage).filter(k=>k.startsWith('gk_ovr_')).forEach(k=>{
+      (LS.g(k)||[]).forEach(s=>{if(s.date&&s.best?.rsi)pts.push({date:s.date,val:s.best.rsi});});
+    });
+    pts.sort((a,b)=>a.date.localeCompare(b.date)).slice(-20).forEach(p=>{labels.push(p.date.slice(5));data.push(p.val);});
+    if(!data.length){title.textContent='RSI (no data yet — log in Athlete tab)';labels=['Log test →'];data=[null];}
   } else {
     title.textContent='Top Lifts — Estimated 1RM (lbs)';
     color='#AAAAAA';
@@ -1238,11 +1312,11 @@ function renderChart(){
     prs.sort((a,b)=>b.e1rm-a.e1rm).slice(0,8).forEach(p=>{labels.push(p.name.split(' ').slice(0,2).join(' '));data.push(Math.round(p.e1rm));});
     if(!data.length){title.textContent='Top Lifts (no data yet)';labels=['No data'];data=[0];}
     // bar chart for lifts
-    mainChart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:color+'44',borderColor:color,borderWidth:2,borderRadius:6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8890B0',font:{size:10}}},y:{ticks:{color:'#8890B0',font:{size:11}},grid:{color:'#2A2D38'}}}}});
+    mainChart=new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:color+'44',borderColor:color,borderWidth:2,borderRadius:6}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#666666',font:{size:10}}},y:{ticks:{color:'#666666',font:{size:11}},grid:{color:'#222222'}}}}});
     return;
   }
 
-  mainChart=new Chart(ctx,{type:'line',data:{labels,datasets:[{data,borderColor:color,backgroundColor:color+'22',borderWidth:2.5,pointBackgroundColor:color,pointRadius:4,tension:0.3,fill:true,spanGaps:true}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#8890B0',font:{size:10}}},y:{ticks:{color:'#8890B0',font:{size:11}},grid:{color:'#2A2D38'}}}}});
+  mainChart=new Chart(ctx,{type:'line',data:{labels,datasets:[{data,borderColor:color,backgroundColor:color+'22',borderWidth:2.5,pointBackgroundColor:color,pointRadius:4,tension:0.3,fill:true,spanGaps:true}]},options:{responsive:true,plugins:{legend:{display:false}},scales:{x:{ticks:{color:'#666666',font:{size:10}}},y:{ticks:{color:'#666666',font:{size:11}},grid:{color:'#222222'}}}}});
 }
 
 function renderPRs(){
@@ -1497,6 +1571,243 @@ function saveStats(){
   closeStatsModal();renderAthlete();toast('Profile saved ✓');
 }
 
+// ── OVR / VBT DATA LOGGING ──
+let _ADM={type:null,pi:0,wi:0,dk:'',ei:0,name:'',vzone:''};
+let _ovrReps=[],_vbtSets=[];
+
+function exDataType(v){
+  if(!v)return null;
+  if(/Sprint/i.test(v))return null; // Sprint OVR added later
+  if(/OVR/i.test(v)||/OVR Jump/i.test(v))return 'ovr';
+  if(/\d+\.?\d*\s*[–-]\s*\d+\.?\d*\s*m\/s/i.test(v))return 'vbt';
+  return null;
+}
+
+// ── Parse helpers ──
+function _parseTable(text){
+  const lines=text.trim().split(/\r?\n/).filter(l=>l.trim().length>1);
+  if(lines.length<2)return null;
+  const sep=lines[0].includes('\t')?'\t':',';
+  const raw=lines[0].split(sep).map(h=>h.trim().replace(/['"]/g,''));
+  const headers=raw.map(h=>h.toLowerCase().replace(/[^a-z0-9]/g,''));
+  const rows=lines.slice(1).map(line=>{
+    const vals=line.split(sep).map(v=>v.trim().replace(/['"]/g,''));
+    const obj={};headers.forEach((h,i)=>obj[h]=vals[i]);
+    return obj;
+  }).filter(r=>Object.values(r).some(v=>v&&!isNaN(parseFloat(v))));
+  return{headers,rows,raw};
+}
+function _col(headers,patterns){for(const p of patterns){const f=headers.find(h=>h.includes(p));if(f)return f;}return null;}
+function _toMs(v){const n=parseFloat(v);if(!n)return null;return n<5?Math.round(n*1000):Math.round(n);}
+
+// ── OVR Modal ──
+function openOVRModal(pi,wi,dk,ei,name){
+  _ADM={type:'ovr',pi,wi,dk,ei,name};
+  _ovrReps=[];
+  $('ovr-modal-title').textContent=name;
+  $('ovr-paste-area').value='';
+  $('ovr-notes').value='';
+  $('ovr-preview').style.display='none';
+  $('ovr-preview').innerHTML='';
+  ovrTab('paste');
+  $('ovr-modal').classList.add('show');
+}
+function closeOVRModal(){$('ovr-modal').classList.remove('show');}
+function ovrTab(t){
+  ['paste','manual'].forEach(x=>{
+    $('ovr-'+x+'-tab').style.display=x===t?'block':'none';
+    document.querySelectorAll('#ovr-modal .mtab').forEach((b,i)=>b.classList.toggle('active',(i===0&&t==='paste')||(i===1&&t==='manual')));
+  });
+}
+function parseOVRTable(){
+  const text=$('ovr-paste-area').value.trim();
+  if(!text){toast('Paste OVR table first');return;}
+  const p=_parseTable(text);
+  if(!p){toast('Could not parse — check format');return;}
+  const{headers,rows}=p;
+  const hCol=_col(headers,['heightcm','height','ht','jump']);
+  const rsiCol=_col(headers,['rsi','reactive']);
+  const ctCol=_col(headers,['contacttime','contact','ct','gc','ground']);
+  const ftCol=_col(headers,['flighttime','flight','hang','ft','air']);
+  const velCol=_col(headers,['takeoffvel','velocity','vel','speed']);
+  const reps=rows.map((r,idx)=>{
+    let height=hCol?parseFloat(r[hCol]):null;
+    // Convert inches to cm if label contained 'in'
+    if(hCol&&hCol.includes('in')&&height&&height<100)height=Math.round(height*2.54*10)/10;
+    const rsi=rsiCol?parseFloat(r[rsiCol]):null;
+    const ct=ctCol?_toMs(r[ctCol]):null;
+    const ft=ftCol?_toMs(r[ftCol]):null;
+    const vel=velCol?parseFloat(r[velCol]):null;
+    return{rep:idx+1,height,rsi,ct,ft,vel};
+  }).filter(r=>r.height||r.rsi);
+  if(!reps.length){toast('No jump data found — check columns');return;}
+  _ovrReps=reps;
+  renderOVRPreview(reps);
+}
+function parseOVRManual(){
+  const h=parseFloat($('ovr-m-height').value)||null;
+  const rsi=parseFloat($('ovr-m-rsi').value)||null;
+  const ct=parseFloat($('ovr-m-ct').value)||null;
+  const ft=parseFloat($('ovr-m-ft').value)||null;
+  if(!h&&!rsi){toast('Enter at least height or RSI');return;}
+  _ovrReps=[{rep:1,height:h,rsi,ct,ft,vel:null}];
+  renderOVRPreview(_ovrReps);
+}
+function renderOVRPreview(reps){
+  const prev=$('ovr-preview');
+  const heights=reps.map(r=>r.height).filter(Boolean);
+  const rsis=reps.map(r=>r.rsi).filter(Boolean);
+  const cts=reps.map(r=>r.ct).filter(Boolean);
+  const avg=arr=>arr.length?Math.round(arr.reduce((a,b)=>a+b,0)/arr.length*10)/10:null;
+  const best=arr=>arr.length?Math.round(Math.max(...arr)*10)/10:null;
+  const bH=best(heights),aH=avg(heights),bRSI=best(rsis),aRSI=avg(rsis),aCT=avg(cts);
+  const bestRepIdx=heights.length?heights.indexOf(Math.max(...heights)):0;
+  let html=`<div class="data-preview">`;
+  html+=`<div class="dp-stat-row">`;
+  if(bH)html+=`<div class="dp-stat"><div class="dpv">${bH}<span style="font-size:11px;color:#666">cm</span></div><div class="dpl">Best Jump</div></div>`;
+  if(aH)html+=`<div class="dp-stat"><div class="dpv">${aH}</div><div class="dpl">Avg Height</div></div>`;
+  if(bRSI)html+=`<div class="dp-stat"><div class="dpv">${bRSI}</div><div class="dpl">Best RSI</div></div>`;
+  if(aCT)html+=`<div class="dp-stat"><div class="dpv">${aCT}</div><div class="dpl">Avg CT (ms)</div></div>`;
+  html+=`</div>`;
+  if(reps.length>1){
+    html+=`<div class="dp-table"><div class="dp-row dp-hdr dp-row-ovr"><span>#</span><span>Ht cm</span><span>RSI</span><span>CT ms</span><span>Vel m/s</span></div>`;
+    reps.forEach((r,i)=>{
+      const isBest=i===bestRepIdx;
+      html+=`<div class="dp-row dp-row-ovr${isBest?' dp-best':''}"><span>${r.rep}</span><span>${r.height||'—'}</span><span>${r.rsi||'—'}</span><span>${r.ct||'—'}</span><span>${r.vel||'—'}</span></div>`;
+    });
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+  prev.innerHTML=html;prev.style.display='block';
+}
+function saveOVRSession(){
+  if(!_ovrReps.length){toast('Parse or enter data first');return;}
+  const key=`gk_ovr_${_ADM.pi}_${_ADM.wi}_${_ADM.dk}_${_ADM.ei}`;
+  const sessions=LS.g(key)||[];
+  const heights=_ovrReps.map(r=>r.height).filter(Boolean);
+  const rsis=_ovrReps.map(r=>r.rsi).filter(Boolean);
+  const cts=_ovrReps.map(r=>r.ct).filter(Boolean);
+  const session={date:TODAY,reps:_ovrReps,best:{height:heights.length?Math.max(...heights):null,rsi:rsis.length?Math.max(...rsis):null,avgCT:cts.length?Math.round(cts.reduce((a,b)=>a+b,0)/cts.length):null},notes:$('ovr-notes').value.trim()};
+  sessions.push(session);
+  LS.s(key,sessions);
+  // Sync to athlete tests if checked
+  if($('ovr-sync')&&$('ovr-sync').checked){
+    if(session.best.height){const e=LS.g('gk_test_cmj')||[];e.push({val:session.best.height,date:TODAY,notes:'OVR import'});LS.s('gk_test_cmj',e);}
+    if(session.best.rsi){const e=LS.g('gk_test_rsi')||[];e.push({val:session.best.rsi,date:TODAY,notes:'OVR import'});LS.s('gk_test_rsi',e);}
+  }
+  closeOVRModal();renderWOList();
+  toast(`OVR saved · Best: ${session.best.height?session.best.height+'cm':'—'} | RSI: ${session.best.rsi||'—'}`);
+}
+
+// ── VBT Modal ──
+function openVBTModal(pi,wi,dk,ei,name,vzone){
+  _ADM={type:'vbt',pi,wi,dk,ei,name,vzone};
+  _vbtSets=[];
+  $('vbt-modal-title').textContent=name;
+  $('vbt-paste-area').value='';
+  $('vbt-notes').value='';
+  $('vbt-preview').style.display='none';
+  $('vbt-preview').innerHTML='';
+  // Target zone banner
+  const zb=$('vbt-zone-banner');
+  if(zb){zb.innerHTML=`Target Zone: <strong>${vzone}</strong><span>Sets below zone → reduce load. Loss >20% across sets → stop or deload.</span>`;}
+  // Build manual set rows
+  const mr=$('vbt-manual-rows');
+  if(mr){mr.innerHTML='';for(let s=1;s<=6;s++){mr.innerHTML+=`<div style="display:flex;gap:6px;align-items:center;margin-bottom:6px"><span style="font-size:11px;color:#666;width:36px;flex-shrink:0">Set ${s}</span><input class="field-inp" id="vbt-mv-${s}" type="number" step="0.01" placeholder="Mean vel (m/s)" style="flex:1"><input class="field-inp" id="vbt-pv-${s}" type="number" step="0.01" placeholder="Peak vel" style="flex:1"></div>`;}}
+  vbtTab('paste');
+  $('vbt-modal').classList.add('show');
+}
+function closeVBTModal(){$('vbt-modal').classList.remove('show');}
+function vbtTab(t){
+  ['paste','manual'].forEach(x=>{
+    $('vbt-'+x+'-tab').style.display=x===t?'block':'none';
+    document.querySelectorAll('#vbt-modal .mtab').forEach((b,i)=>b.classList.toggle('active',(i===0&&t==='paste')||(i===1&&t==='manual')));
+  });
+}
+function parseVBTTable(){
+  const text=$('vbt-paste-area').value.trim();
+  if(!text){toast('Paste VBT table first');return;}
+  const p=_parseTable(text);
+  if(!p){toast('Could not parse — check format');return;}
+  const{headers,rows}=p;
+  const setCol=_col(headers,['set']);
+  const repCol=_col(headers,['rep','repetition']);
+  const mvCol=_col(headers,['meanvelocity','meanvel','mv','mean','averagevel','avgvel']);
+  const pvCol=_col(headers,['peakvelocity','peakvel','pv','peak','maxvelocity','maxvel']);
+  const mpCol=_col(headers,['meanpower','mp','averagepower','avgpower']);
+  if(!mvCol&&!pvCol){toast('No velocity columns found');return;}
+  const setMap={};
+  rows.forEach((r,idx)=>{
+    const sn=setCol?parseInt(r[setCol])||1:1;
+    if(!setMap[sn])setMap[sn]=[];
+    setMap[sn].push({rep:repCol?parseInt(r[repCol])||setMap[sn].length+1:setMap[sn].length+1,mv:mvCol?parseFloat(r[mvCol]):null,pv:pvCol?parseFloat(r[pvCol]):null,mp:mpCol?parseFloat(r[mpCol]):null});
+  });
+  _vbtSets=Object.entries(setMap).map(([sn,reps])=>{
+    const mvs=reps.map(r=>r.mv).filter(Boolean);
+    return{setNum:parseInt(sn),reps,avgMV:mvs.length?Math.round(mvs.reduce((a,b)=>a+b,0)/mvs.length*1000)/1000:null,bestMV:mvs.length?Math.max(...mvs):null};
+  });
+  renderVBTPreview(_vbtSets);
+}
+function parseVBTManual(){
+  const sets=[];
+  for(let s=1;s<=6;s++){
+    const mv=parseFloat(($(`vbt-mv-${s}`)||{}).value)||null;
+    const pv=parseFloat(($(`vbt-pv-${s}`)||{}).value)||null;
+    if(mv||pv)sets.push({setNum:s,reps:[{rep:1,mv,pv}],avgMV:mv,bestMV:mv||pv});
+  }
+  if(!sets.length){toast('Enter at least one set');return;}
+  _vbtSets=sets;
+  renderVBTPreview(sets);
+}
+function _parseVZone(vzStr){
+  const m=vzStr.match(/([\d.]+)\s*[–-]\s*([\d.]+)/);
+  if(m)return{min:parseFloat(m[1]),max:parseFloat(m[2])};
+  return null;
+}
+function renderVBTPreview(sets){
+  const prev=$('vbt-preview');
+  const zone=_parseVZone(_ADM.vzone);
+  const firstSet=sets.find(s=>s.avgMV);
+  const lastSet=[...sets].reverse().find(s=>s.avgMV);
+  const vloss=firstSet&&lastSet&&firstSet!==lastSet?Math.round((1-lastSet.avgMV/firstSet.avgMV)*100):null;
+  let html=`<div class="data-preview">`;
+  // Summary stats
+  html+=`<div class="dp-stat-row">`;
+  if(sets.length)html+=`<div class="dp-stat"><div class="dpv">${sets.length}</div><div class="dpl">Sets</div></div>`;
+  if(firstSet)html+=`<div class="dp-stat"><div class="dpv">${firstSet.avgMV}</div><div class="dpl">Set 1 Vel</div></div>`;
+  if(vloss!==null)html+=`<div class="dp-stat"><div class="dpv ${vloss<10?'vloss-good':vloss<20?'vloss-warn':'vloss-bad'}">${vloss}%</div><div class="dpl">Vel Loss</div></div>`;
+  html+=`</div>`;
+  // Per-set table
+  html+=`<div class="dp-table"><div class="dp-row dp-hdr dp-row-vbt"><span>Set</span><span>Mean m/s</span><span>Peak m/s</span><span>Reps</span><span>Zone</span></div>`;
+  sets.forEach(s=>{
+    let zoneStr='–';let dotCls='dot-warn';
+    if(zone&&s.avgMV){
+      if(s.avgMV>=zone.min&&s.avgMV<=zone.max){zoneStr='✓ In';dotCls='dot-good';}
+      else if(s.avgMV<zone.min){zoneStr='↓ Low';dotCls='dot-bad';}
+      else{zoneStr='↑ High';dotCls='dot-warn';}
+    }
+    html+=`<div class="dp-row dp-row-vbt"><span>${s.setNum}</span><span>${s.avgMV||'—'}</span><span>${s.bestMV||'—'}</span><span>${s.reps.length}</span><span><span class="zone-dot ${dotCls}"></span>${zoneStr}</span></div>`;
+  });
+  html+=`</div>`;
+  if(vloss!==null){
+    const vlCls=vloss<10?'vloss-good':vloss<20?'vloss-warn':'vloss-bad';
+    const vlMsg=vloss<10?'Excellent — minimal fatigue':vloss<20?'Moderate fatigue — consider stopping':'High fatigue — stop or deload next set';
+    html+=`<div style="margin-top:8px;font-size:11px;padding:6px 8px;border-radius:6px;background:var(--s2)"><span class="${vlCls}" style="font-weight:700">${vlMsg}</span></div>`;
+  }
+  html+=`</div>`;
+  prev.innerHTML=html;prev.style.display='block';
+}
+function saveVBTSession(){
+  if(!_vbtSets.length){toast('Parse or enter data first');return;}
+  const key=`gk_vbt_${_ADM.pi}_${_ADM.wi}_${_ADM.dk}_${_ADM.ei}`;
+  const sessions=LS.g(key)||[];
+  sessions.push({date:TODAY,sets:_vbtSets,targetZone:_ADM.vzone,notes:$('vbt-notes').value.trim()});
+  LS.s(key,sessions);
+  closeVBTModal();renderWOList();
+  const s1=_vbtSets.find(s=>s.avgMV);
+  toast(`VBT saved · ${_vbtSets.length} sets${s1?' · Set 1: '+s1.avgMV+' m/s':''}`);
+}
+
 // ── INIT ──
 (()=>{
   const t=TODAY,m=DL[t];
@@ -1555,6 +1866,71 @@ function saveStats(){
     <div class="field-lbl">Weight (lbs)</div>
     <input id="st-weight" class="field-inp" type="number" placeholder="e.g. 185">
     <button class="btn-primary" onclick="saveStats()">Save</button>
+  </div>
+</div>
+
+<!-- OVR JUMP DATA MODAL -->
+<div class="ov-wrap" id="ovr-modal">
+  <div class="ov-inner">
+    <div class="ov-head"><span id="ovr-modal-title">OVR Jump Data</span><button onclick="closeOVRModal()">✕</button></div>
+    <div class="modal-tabs">
+      <button class="mtab active" onclick="ovrTab('paste')">Paste Table</button>
+      <button class="mtab" onclick="ovrTab('manual')">Manual Entry</button>
+    </div>
+    <!-- Paste tab -->
+    <div id="ovr-paste-tab">
+      <div class="field-lbl">Copy table from OVR app → paste below</div>
+      <textarea id="ovr-paste-area" class="field-ta" rows="5" placeholder="Rep&#9;Height (cm)&#9;RSI&#9;Contact Time (s)&#9;Flight Time (s)&#10;1&#9;58.2&#9;2.1&#9;0.215&#9;0.386&#10;2&#9;56.8&#9;1.9&#9;0.234&#9;0.378"></textarea>
+      <button class="btn-primary" style="margin-bottom:0" onclick="parseOVRTable()">Parse Table</button>
+    </div>
+    <!-- Manual tab -->
+    <div id="ovr-manual-tab" style="display:none">
+      <div class="field-lbl">Best Jump Height (cm)</div>
+      <input id="ovr-m-height" class="field-inp" type="number" inputmode="decimal" placeholder="e.g. 58.5">
+      <div class="field-lbl">Best RSI</div>
+      <input id="ovr-m-rsi" class="field-inp" type="number" step="0.01" inputmode="decimal" placeholder="e.g. 1.8">
+      <div class="field-lbl">Avg Ground Contact Time (ms)</div>
+      <input id="ovr-m-ct" class="field-inp" type="number" inputmode="numeric" placeholder="e.g. 215">
+      <div class="field-lbl">Avg Flight Time (ms) — optional</div>
+      <input id="ovr-m-ft" class="field-inp" type="number" inputmode="numeric" placeholder="e.g. 390">
+      <button class="btn-primary" style="margin-bottom:0" onclick="parseOVRManual()">Preview</button>
+    </div>
+    <!-- Live preview -->
+    <div id="ovr-preview"></div>
+    <!-- Sync toggle -->
+    <label class="sync-row"><input type="checkbox" id="ovr-sync" checked> Auto-sync best height → CMJ test &amp; best RSI → RSI test</label>
+    <div class="field-lbl">Session Notes</div>
+    <input id="ovr-notes" class="field-inp" placeholder="Surface, fatigue, conditions…">
+    <button class="btn-primary" onclick="saveOVRSession()">Save Session</button>
+  </div>
+</div>
+
+<!-- VBT DATA MODAL -->
+<div class="ov-wrap" id="vbt-modal">
+  <div class="ov-inner">
+    <div class="ov-head"><span id="vbt-modal-title">VBT Velocity Data</span><button onclick="closeVBTModal()">✕</button></div>
+    <div id="vbt-zone-banner" class="zone-banner">Target Zone<span>Load accordingly</span></div>
+    <div class="modal-tabs">
+      <button class="mtab active" onclick="vbtTab('paste')">Paste Table</button>
+      <button class="mtab" onclick="vbtTab('manual')">Per Set</button>
+    </div>
+    <!-- Paste tab -->
+    <div id="vbt-paste-tab">
+      <div class="field-lbl">Copy VBT export (GymAware / Push / OVR) → paste below</div>
+      <textarea id="vbt-paste-area" class="field-ta" rows="5" placeholder="Set&#9;Rep&#9;Mean Velocity&#9;Peak Velocity&#10;1&#9;1&#9;0.95&#9;1.12&#10;1&#9;2&#9;0.88&#9;1.05&#10;2&#9;1&#9;0.91&#9;1.09"></textarea>
+      <button class="btn-primary" style="margin-bottom:0" onclick="parseVBTTable()">Parse Table</button>
+    </div>
+    <!-- Manual tab -->
+    <div id="vbt-manual-tab" style="display:none">
+      <div class="field-lbl" style="margin-bottom:8px">Mean velocity per set (m/s)</div>
+      <div id="vbt-manual-rows"></div>
+      <button class="btn-primary" style="margin-bottom:0" onclick="parseVBTManual()">Preview</button>
+    </div>
+    <!-- Preview -->
+    <div id="vbt-preview"></div>
+    <div class="field-lbl">Session Notes</div>
+    <input id="vbt-notes" class="field-inp" placeholder="Feel, bar speed, adjustments…">
+    <button class="btn-primary" onclick="saveVBTSession()">Save Session</button>
   </div>
 </div>
 
