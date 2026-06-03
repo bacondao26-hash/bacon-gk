@@ -12,6 +12,12 @@
 :root{--bg:#000000;--s1:#0F0F0F;--s2:#161616;--s3:#1E1E1E;--border:#2A2A2A;--text:#F0F0F0;--muted:#555555;--sub:#888888;--orange:#FFFFFF;--green:#AAAAAA;--blue:#FFFFFF;--purple:#AAAAAA;--red:#FFFFFF;--teal:#AAAAAA;--amber:#AAAAAA;--r:12px;--rs:8px;--safe-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;overscroll-behavior:none}
+/* ── SPLASH SCREEN ── */
+#splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:splashOut .45s ease 2.4s forwards;pointer-events:none}
+#splash-pb{font-size:88px;font-weight:900;font-style:italic;letter-spacing:-4px;color:#FFF;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;animation:splashIn .55s cubic-bezier(.4,0,.2,1) both}
+#splash-tagline{font-size:10px;font-weight:700;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;animation:splashIn .55s cubic-bezier(.4,0,.2,1) .15s both}
+@keyframes splashIn{from{opacity:0;transform:scale(.88) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes splashOut{from{opacity:1}to{opacity:0;visibility:hidden}}
 /* ── SCREENS ── */
 .screen{display:none;position:fixed;inset:0;overflow-y:auto;padding-bottom:calc(60px + var(--safe-bottom));-webkit-overflow-scrolling:touch;background:var(--bg)}
 .screen.active{display:block}
@@ -541,6 +547,43 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .cal-check{font-size:9px;color:#4CAF50;font-weight:900;margin-top:1px;line-height:1}
 .cal-dot{width:4px;height:4px;border-radius:50%;background:#333;margin-top:2px}
 .cal-dot.sched{background:#444}
+/* ── CALENDAR SCREEN ── */
+#cal-screen-hdr{background:var(--s1);border-bottom:1px solid var(--border);padding:16px 14px 10px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
+#cal-screen-hdr h1{font-size:20px;font-weight:800}
+#cal-screen-body{padding:14px 0 100px}
+.cal-day{cursor:pointer;transition:background .1s;border-radius:8px}
+.cal-day:active{background:rgba(255,255,255,.06)}
+.cal-day.rescheduled .cal-num{color:#888;text-decoration:line-through}
+.cal-dot.rescheduled-to{background:rgba(255,165,50,.6)}
+/* ── DAY DETAIL PANEL ── */
+#cal-day-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:310}
+#cal-day-overlay.show{display:block}
+#cal-day-panel{position:fixed;bottom:-100%;left:0;right:0;background:var(--s1);border-top:1px solid var(--border);border-radius:18px 18px 0 0;z-index:320;transition:bottom .3s cubic-bezier(.4,0,.2,1);padding:0 0 calc(20px + var(--safe-bottom));max-height:70vh;overflow-y:auto}
+#cal-day-panel.open{bottom:0}
+.cdp-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:10px auto 14px}
+.cdp-date{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;padding:0 16px;margin-bottom:10px}
+.cdp-session{background:var(--s2);border:1px solid var(--border);border-radius:14px;margin:0 14px 10px;padding:14px}
+.cdp-sess-title{font-size:15px;font-weight:800;color:#FFF;margin-bottom:3px}
+.cdp-sess-sub{font-size:12px;color:var(--muted)}
+.cdp-done-badge{display:inline-block;font-size:10px;font-weight:800;color:#4CAF50;background:rgba(76,175,80,.12);border:1px solid rgba(76,175,80,.25);border-radius:20px;padding:2px 8px;margin-top:6px}
+.cdp-rescheduled-note{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic}
+.cdp-actions{display:flex;gap:8px;padding:0 14px}
+.cdp-btn{flex:1;padding:12px;border-radius:12px;border:none;font-size:13px;font-weight:700;cursor:pointer}
+.cdp-btn-primary{background:#FFF;color:#000}
+.cdp-btn-secondary{background:var(--s2);color:#FFF;border:1px solid var(--border)!important}
+.cdp-btn-danger{background:transparent;color:#FF5555;border:1px solid rgba(255,85,85,.3)!important}
+/* ── RESCHEDULE MODAL ── */
+#rs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;align-items:center;justify-content:center}
+#rs-modal.show{display:flex}
+.rs-box{background:var(--s1);border:1px solid var(--border);border-radius:18px;padding:20px;width:calc(100% - 40px);max-width:340px}
+.rs-title{font-size:16px;font-weight:800;margin-bottom:4px}
+.rs-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.rs-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.4px;margin-bottom:6px}
+.rs-date-input{width:100%;padding:12px;background:var(--s2);border:1px solid var(--border);border-radius:10px;color:#FFF;font-size:14px;margin-bottom:16px;outline:none;-webkit-appearance:none}
+.rs-btns{display:flex;gap:8px}
+.rs-btn{flex:1;padding:12px;border-radius:10px;border:none;font-size:13px;font-weight:700;cursor:pointer}
+.rs-btn-cancel{background:var(--s2);color:var(--muted)}
+.rs-btn-confirm{background:#FFF;color:#000}
 /* ── MONTHLY STATS ── */
 .month-stats-row{display:flex;gap:8px;margin:0 14px 12px}
 .mstat{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center}
@@ -585,17 +628,17 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 </style>
 </head>
 <body>
+<!-- ═══ SPLASH ═══ -->
+<div id="splash">
+  <div id="splash-pb">PB</div>
+  <div id="splash-tagline">Strength &amp; Performance Coaching</div>
+</div>
+
 <!-- ═══ TODAY SCREEN ═══ -->
 <div id="screen-today" class="screen active">
   <div id="today-header">
     <div style="display:flex;align-items:center;justify-content:space-between">
-      <svg width="130" height="48" viewBox="0 0 130 48" xmlns="http://www.w3.org/2000/svg">
-        <rect width="130" height="48" rx="4" fill="#000"/>
-        <text x="65" y="26" text-anchor="middle" dominant-baseline="middle" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" letter-spacing="-1">PB</text>
-        <line x1="8" y1="34" x2="122" y2="34" stroke="#FFFFFF" stroke-width="0.7" opacity="0.6"/>
-        <line x1="8" y1="36.5" x2="122" y2="36.5" stroke="#FFFFFF" stroke-width="0.7" opacity="0.6"/>
-        <text x="65" y="43" text-anchor="middle" font-family="-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif" font-size="5.5" font-weight="600" fill="#FFFFFF" letter-spacing="1.2" opacity="0.85">STRENGTH &amp; PERFORMANCE COACHING</text>
-      </svg>
+      <span style="font-size:30px;font-weight:900;font-style:italic;letter-spacing:-1.5px;color:#FFF;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;line-height:1">PB</span>
       <div class="sub" id="today-date" style="text-align:right"></div>
     </div>
   </div>
@@ -680,6 +723,32 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
   </div>
 </div>
 
+<!-- ═══ CALENDAR SCREEN ═══ -->
+<div id="screen-calendar" class="screen">
+  <div id="cal-screen-hdr"><h1>Calendar</h1></div>
+  <div id="cal-screen-body"></div>
+</div>
+<!-- Day detail panel -->
+<div id="cal-day-overlay" onclick="closeDayPanel()"></div>
+<div id="cal-day-panel">
+  <div class="cdp-handle"></div>
+  <div class="cdp-date" id="cdp-date"></div>
+  <div id="cdp-content"></div>
+</div>
+<!-- Reschedule modal -->
+<div id="rs-modal">
+  <div class="rs-box">
+    <div class="rs-title">Reschedule Session</div>
+    <div class="rs-sub" id="rs-modal-sub">Moving session to a new date</div>
+    <div class="rs-label">MOVE TO</div>
+    <input type="date" id="rs-date-input" class="rs-date-input">
+    <div class="rs-btns">
+      <button class="rs-btn rs-btn-cancel" onclick="closeRescheduleModal()">Cancel</button>
+      <button class="rs-btn rs-btn-confirm" onclick="confirmReschedule()">Reschedule</button>
+    </div>
+  </div>
+</div>
+
 <!-- ═══ TIMER SCREEN ═══ -->
 <div id="screen-timer" class="screen">
   <div id="timer-header"><h1>Timer</h1></div>
@@ -718,6 +787,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
   </button>
   <button class="tab" id="tab-athlete" onclick="goTab('athlete')">
     <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>Athlete
+  </button>
+  <button class="tab" id="tab-calendar" onclick="goTab('calendar')">
+    <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>Calendar
   </button>
   <button class="tab" id="tab-timer" onclick="goTab('timer')">
     <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/><path d="M12 2.5v2"/></svg>Timer
@@ -1124,8 +1196,9 @@ function goTab(tab){
   if(tab==='progress')renderProgress();
   if(tab==='athlete')renderAthlete();
   if(tab==='settings')renderSettings();
+  if(tab==='calendar')renderCalendar();
   if(tab==='timer'){_resumeCDTimeouts();renderTimerTab();}
-  else{clearInterval(_CD_INTERVAL);} // stop countdown refresh when leaving timer tab
+  else{clearInterval(_CD_INTERVAL);}
 }
 
 // ── READINESS / CHECK-IN ──
@@ -1259,8 +1332,6 @@ function renderToday(){
     <div class="mstat"><div class="mstat-val">${pct30}%</div><div class="mstat-lbl">Completion</div></div>
     <div class="mstat"><div class="mstat-val">${streak} 🔥</div><div class="mstat-lbl">Streak</div></div>
   </div>`);
-  // Calendar heatmap
-  html.push(_renderCal());
   // Weekly summary card
   html.push(_weekCard());
 
@@ -1891,7 +1962,163 @@ function _calNav(dir){
   _calMonth+=dir;
   if(_calMonth<0){_calMonth=11;_calYear--;}
   if(_calMonth>11){_calMonth=0;_calYear++;}
-  renderToday();
+  renderCalendar();
+}
+
+// ── CALENDAR SCREEN ──
+function _effectiveDL(){
+  const reschedules=LS.g('gk_reschedules')||[];
+  const result=Object.assign({},DL);
+  reschedules.forEach(({from,to})=>{
+    if(result[from]){result[to]=Object.assign({},result[from],{_rescheduledFrom:from});delete result[from];}
+  });
+  return result;
+}
+function renderCalendar(){
+  const el=$('cal-screen-body');if(!el)return;
+  if(_calYear===null)_initCalMonth();
+  const eDL=_effectiveDL();
+  const year=_calYear,month=_calMonth;
+  const now=new Date();
+  const daysInMonth=new Date(year,month+1,0).getDate();
+  const firstDow=new Date(year,month,1).getDay();
+  const offset=(firstDow+6)%7;
+  const MN=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  // Build date info maps
+  const dayInfo={};
+  Object.entries(eDL).forEach(([ds,m])=>{
+    const d=new Date(ds+'T12:00:00');
+    if(d.getFullYear()===year&&d.getMonth()===month){
+      const day=d.getDate();
+      const isDone=!!LS.g(sk(m.pi,m.wi,m.dk));
+      dayInfo[day]={ds,m,isDone,rescheduledFrom:m._rescheduledFrom||null};
+    }
+  });
+  // Build original→rescheduled map for showing strikethroughs
+  const reschedules=LS.g('gk_reschedules')||[];
+  const origMovedDays=new Set();
+  reschedules.forEach(({from})=>{
+    const d=new Date(from+'T12:00:00');
+    if(d.getFullYear()===year&&d.getMonth()===month)origMovedDays.add(d.getDate());
+  });
+  const dows=['M','T','W','T','F','S','S'].map(d=>`<div class="cal-dow">${d}</div>`).join('');
+  let cells='';
+  for(let i=0;i<offset;i++)cells+=`<div class="cal-day other-month"><div class="cal-num"></div></div>`;
+  for(let day=1;day<=daysInMonth;day++){
+    const isToday=year===now.getFullYear()&&month===now.getMonth()&&day===now.getDate();
+    const info=dayInfo[day];
+    const isMoved=origMovedDays.has(day);
+    let cls=`cal-day${isToday?' today':''}${info?' has-session':''}${isMoved?' rescheduled':''}`;
+    const ds=`${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+    let dot='';
+    if(info){dot=info.isDone?`<div class="cal-check">✓</div>`:`<div class="cal-dot sched${info.rescheduledFrom?' rescheduled-to':''}"></div>`;}
+    cells+=`<div class="${cls}" onclick="openDayPanel('${ds}')"><div class="cal-num">${day}</div>${dot}</div>`;
+  }
+  // Upcoming sessions list for this month
+  const upcoming=Object.entries(eDL)
+    .filter(([ds])=>{const d=new Date(ds+'T12:00:00');return d.getFullYear()===year&&d.getMonth()===month;})
+    .sort(([a],[b])=>a.localeCompare(b));
+  let upcomingHTML='<div style="padding:16px 14px 4px;font-size:11px;font-weight:800;color:var(--muted);letter-spacing:.5px;text-transform:uppercase">SESSIONS THIS MONTH</div>';
+  if(!upcoming.length){upcomingHTML+='<div style="padding:0 14px 14px;font-size:13px;color:var(--muted)">No sessions scheduled this month.</div>';}
+  else{
+    upcomingHTML+=upcoming.map(([ds,m])=>{
+      const d=new Date(ds+'T12:00:00');
+      const wd=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
+      const ph=PH[m.pi];const day=ph.days.find(x=>x.k===m.dk);
+      const isDone=!!LS.g(sk(m.pi,m.wi,m.dk));
+      const isPast=ds<TODAY;
+      const isRescheduled=!!m._rescheduledFrom;
+      return`<div onclick="openDayPanel('${ds}')" style="display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--border);cursor:pointer;active:background:rgba(255,255,255,.04)">
+        <div style="width:36px;text-align:center;flex-shrink:0">
+          <div style="font-size:18px;font-weight:800;color:${isDone?'#4CAF50':isPast?'#444':'#FFF'};line-height:1">${d.getDate()}</div>
+          <div style="font-size:9px;color:var(--muted);font-weight:700">${wd.toUpperCase()}</div>
+        </div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:${isDone?'#4CAF50':isPast?'#666':'#FFF'};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${day?.t||m.dk}</div>
+          <div style="font-size:11px;color:var(--muted)">${ph.label} · ${ph.weeks[m.wi].l}${isRescheduled?' · <span style="color:rgba(255,165,50,.8)">Rescheduled</span>':''}</div>
+        </div>
+        ${isDone?'<div style="font-size:11px;font-weight:800;color:#4CAF50">✓ Done</div>':'<div style="color:var(--muted);font-size:16px">›</div>'}
+      </div>`;
+    }).join('');
+  }
+  el.innerHTML=`<div class="cal-wrap" style="margin:14px 14px 0"><div class="cal-nav"><button class="cal-nav-btn" onclick="_calNav(-1)">‹</button><div class="cal-month-lbl">${MN[month]} ${year}</div><button class="cal-nav-btn" onclick="_calNav(1)">›</button></div><div class="cal-grid">${dows}${cells}</div></div>${upcomingHTML}`;
+}
+
+let _dpDate=null;
+function openDayPanel(ds){
+  _dpDate=ds;
+  const eDL=_effectiveDL();
+  const session=eDL[ds];
+  const d=new Date(ds+'T12:00:00');
+  const wd=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d.getDay()];
+  const mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][d.getMonth()];
+  $('cdp-date').textContent=`${wd}, ${mo} ${d.getDate()} ${d.getFullYear()}`;
+  const panel=$('cal-day-panel');
+  const content=$('cdp-content');
+  if(!session){
+    content.innerHTML=`<div style="padding:0 14px 16px;font-size:13px;color:var(--muted)">No session scheduled on this day.</div>
+    <div class="cdp-actions"><button class="cdp-btn cdp-btn-secondary" onclick="openRescheduleToDate('${ds}')">+ Move a session here</button></div><div style="height:10px"></div>`;
+  } else {
+    const ph=PH[session.pi];const day=ph.days.find(x=>x.k===session.dk);
+    const isDone=!!LS.g(sk(session.pi,session.wi,session.dk));
+    const isRescheduled=!!session._rescheduledFrom;
+    content.innerHTML=`<div class="cdp-session">
+      <div class="cdp-sess-title">${day?.t||session.dk}</div>
+      <div class="cdp-sess-sub">${ph.label} · ${ph.weeks[session.wi].l}</div>
+      ${isDone?'<div class="cdp-done-badge">✓ Completed</div>':''}
+      ${isRescheduled?`<div class="cdp-rescheduled-note">Rescheduled from ${session._rescheduledFrom}</div>`:''}
+    </div>
+    <div class="cdp-actions" style="margin-bottom:8px">
+      <button class="cdp-btn cdp-btn-primary" onclick="closeDayPanel();goTab('program')">Open Program</button>
+      <button class="cdp-btn cdp-btn-secondary" onclick="openRescheduleModal('${ds}')">Reschedule</button>
+    </div>
+    ${isRescheduled?`<div class="cdp-actions"><button class="cdp-btn cdp-btn-danger" onclick="undoReschedule('${session._rescheduledFrom}')">Undo Reschedule</button></div>`:''}
+    <div style="height:10px"></div>`;
+  }
+  $('cal-day-overlay').classList.add('show');
+  setTimeout(()=>panel.classList.add('open'),10);
+}
+function closeDayPanel(){
+  $('cal-day-panel').classList.remove('open');
+  $('cal-day-overlay').classList.remove('show');
+}
+
+let _rsFromDate=null;
+function openRescheduleModal(fromDate){
+  _rsFromDate=fromDate;
+  const eDL=_effectiveDL();
+  const session=eDL[fromDate];
+  if(!session)return;
+  const ph=PH[session.pi];const day=ph.days.find(x=>x.k===session.dk);
+  $('rs-modal-sub').textContent=`${day?.t||session.dk} · ${ph.label} ${ph.weeks[session.wi].l}`;
+  $('rs-date-input').value=fromDate;
+  $('rs-modal').classList.add('show');
+}
+function openRescheduleToDate(toDate){
+  // Open modal to pick a session to move TO this date — simplified: just open picker
+  closeDayPanel();
+  toast('Tap a session on the calendar to reschedule it.');
+}
+function closeRescheduleModal(){$('rs-modal').classList.remove('show');}
+function confirmReschedule(){
+  const toDate=$('rs-date-input').value;
+  if(!toDate||toDate===_rsFromDate){closeRescheduleModal();return;}
+  // Find the original DL key (before any previous reschedule)
+  const eDL=_effectiveDL();
+  const session=eDL[_rsFromDate];
+  const originalFrom=session?._rescheduledFrom||_rsFromDate;
+  // Remove any existing reschedule for this original session, then add new one
+  let reschedules=(LS.g('gk_reschedules')||[]).filter(r=>r.from!==originalFrom);
+  reschedules.push({from:originalFrom,to:toDate});
+  LS.s('gk_reschedules',reschedules);
+  closeRescheduleModal();closeDayPanel();
+  toast(`Session moved to ${toDate} ✓`);
+  renderCalendar();
+}
+function undoReschedule(originalFrom){
+  let reschedules=(LS.g('gk_reschedules')||[]).filter(r=>r.from!==originalFrom);
+  LS.s('gk_reschedules',reschedules);
+  closeDayPanel();toast('Reschedule undone ✓');renderCalendar();
 }
 
 // ── TIMER ENGINE ──
@@ -3229,8 +3456,10 @@ document.addEventListener('DOMContentLoaded',()=>{
   const t=TODAY,m=DL[t];
   if(m){S.pi=m.pi;S.wi=m.wi;S.dk=m.dk;}
   else{S.dk=PH[0].days[0].k;}
-  _resumeCDTimeouts(); // resume any running countdown timers
+  _resumeCDTimeouts();
   renderToday();
+  // Remove splash from DOM after animation finishes
+  setTimeout(()=>{const s=$('splash');if(s)s.remove();},3000);
 })();
 </script>
 
