@@ -9,25 +9,26 @@
 <meta name="theme-color" content="#000000">
 <title>PerformanceHub</title>
 <style>
-:root{--bg:#000000;--s1:#0F0F0F;--s2:#161616;--s3:#1E1E1E;--border:#2A2A2A;--text:#F0F0F0;--muted:#555555;--sub:#888888;--orange:#FFFFFF;--green:#AAAAAA;--blue:#FFFFFF;--purple:#AAAAAA;--red:#FFFFFF;--teal:#AAAAAA;--amber:#AAAAAA;--r:12px;--rs:8px;--safe-bottom:env(safe-area-inset-bottom,0px)}
+:root{--bg:#0F0F0F;--s1:#181818;--s2:#212121;--s3:#2A2A2A;--border:#353535;--text:#F0F0F0;--muted:#555555;--sub:#888888;--orange:#FFFFFF;--green:#AAAAAA;--blue:#FFFFFF;--purple:#AAAAAA;--red:#FFFFFF;--teal:#AAAAAA;--amber:#AAAAAA;--r:12px;--rs:8px;--safe-bottom:env(safe-area-inset-bottom,0px)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif;overscroll-behavior:none}
 /* ── SPLASH SCREEN ── */
-#splash{position:fixed;inset:0;background:#000;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:splashOut .45s ease 2.4s forwards;pointer-events:none}
+#splash{position:fixed;inset:0;background:#262626;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;animation:splashOut .45s ease 2.4s forwards;pointer-events:none}
 #splash-pb{font-size:88px;font-weight:900;font-style:italic;letter-spacing:-4px;color:#FFF;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;animation:splashIn .55s cubic-bezier(.4,0,.2,1) both}
 #splash-tagline{font-size:10px;font-weight:700;letter-spacing:2.5px;color:rgba(255,255,255,.35);text-transform:uppercase;font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Helvetica Neue',sans-serif;animation:splashIn .55s cubic-bezier(.4,0,.2,1) .15s both}
 @keyframes splashIn{from{opacity:0;transform:scale(.88) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
 @keyframes splashOut{from{opacity:1}to{opacity:0;visibility:hidden}}
 /* ── SCREENS ── */
 .screen{display:none;position:fixed;inset:0;overflow-y:auto;padding-bottom:calc(60px + var(--safe-bottom));-webkit-overflow-scrolling:touch;background:var(--bg)}
-.screen.active{display:block}
+.screen.active{display:block;animation:screenIn .2s cubic-bezier(.4,0,.2,1) both}
+@keyframes screenIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 /* ── BOTTOM TAB ── */
-#tab-bar{position:fixed;bottom:0;left:0;right:0;background:#000;border-top:1px solid #0F0F0F;display:flex;z-index:100;padding-bottom:var(--safe-bottom)}
+#tab-bar{position:fixed;bottom:0;left:0;right:0;background:#262626;border-top:1px solid #1C1C1C;display:flex;z-index:100;padding-bottom:var(--safe-bottom)}
 .tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7px 2px;gap:2px;cursor:pointer;color:#333;font-size:9px;font-weight:600;letter-spacing:.3px;border:none;background:none;-webkit-tap-highlight-color:transparent;transition:color .15s;border-top:2px solid transparent;margin-top:-1px}
 .tab svg{width:20px;height:20px;stroke-width:1.5;fill:none}
 .tab.active{color:#FFF;border-top-color:#FFF}
 /* ── TODAY SCREEN ── */
-#today-header{background:#000;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+#today-header{background:#262626;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 #today-header h1{font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase}
 #today-header .sub{font-size:12px;color:var(--sub);margin-top:2px}
 .rd-card{margin:0 18px 4px;background:transparent;border-radius:0;border:none;border-left:2px solid #222;padding:14px 0 14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
@@ -65,19 +66,19 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .streak-row{margin:0 18px 12px;display:flex;align-items:center;gap:8px}
 .streak-label{font-size:10px;font-weight:600;color:#2A2A2A;text-transform:uppercase;letter-spacing:1.2px}
 .streak-dots{display:flex;gap:4px;flex:1}
-.sdot{width:8px;height:8px;border-radius:1px;background:#0F0F0F}
+.sdot{width:8px;height:8px;border-radius:1px;background:#1A1A1A}
 .sdot.done{background:#333}
 .sdot.today{background:#FFF}
 .streak-num{font-size:13px;font-weight:600;color:#555}
 /* ── PROGRAM SCREEN ── */
-#prog-header{background:#000;border-bottom:none;padding:14px 18px 8px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+#prog-header{background:#262626;border-bottom:none;padding:14px 18px 8px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 #prog-header h1{font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase}
 .phase-nav{display:flex;align-items:center;gap:6px;padding:10px 18px 0}
 .phase-nav button{background:none;border:none;color:#333;font-size:26px;cursor:pointer;padding:0 4px;line-height:1}
 .phase-nav button:active{color:#FFF}
 .phase-nav h2{flex:1;text-align:center;font-size:15px;font-weight:600;line-height:1.3}
 .phase-nav h2 span{display:block;font-size:11px;font-weight:400;color:#333;margin-top:2px}
-#week-tabs{display:flex;gap:0;padding:10px 18px 0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #0F0F0F}
+#week-tabs{display:flex;gap:0;padding:10px 18px 0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #1C1C1C}
 #week-tabs::-webkit-scrollbar{display:none}
 /* ── SESSION ARROW NAVIGATOR ── */
 #sess-nav{padding:2px 18px 12px}
@@ -89,12 +90,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .sn-main{font-size:16px;font-weight:500;color:#FFF}
 .sn-sub{font-size:11px;color:#333;margin-top:4px;letter-spacing:.5px}
 .sn-dots{display:flex;justify-content:center;gap:5px;margin-top:10px;flex-wrap:wrap;padding:0 18px}
-.sn-dot{width:16px;height:2px;border-radius:0;background:#111;transition:all .25s;flex-shrink:0}
+.sn-dot{width:16px;height:2px;border-radius:0;background:#1C1C1C;transition:all .25s;flex-shrink:0}
 .sn-dot.cur{width:24px;background:#FFF}
 .sn-dot.dn{background:#2A2A2A}
 .dtab.done{color:#444}
 #prog-fill-bar{padding:0 18px 8px}
-#prog-track{height:1px;background:#0F0F0F;border-radius:0;overflow:hidden}
+#prog-track{height:1px;background:#262626;border-radius:0;overflow:hidden}
 #prog-fill{height:100%;background:#FFF;border-radius:0;transition:width .3s;width:0%}
 #prog-pct{font-size:10px;color:#222;margin-top:4px;letter-spacing:.5px}
 .phase-zone-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;padding:0;margin:4px 18px 6px;background:transparent;color:#333;letter-spacing:.5px}
@@ -104,9 +105,10 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .banner.warmup{border:none;border-left:2px solid #1E1E1E;color:#333}
 #prog-ex-list{padding:0 18px 20px;display:flex;flex-direction:column;gap:0}
 /* ── WORKOUT OVERLAY ── */
-#wo{display:none;position:fixed;inset:0;background:#000;z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch}
-#wo.show{display:block}
-#wo-header{position:sticky;top:0;background:#000;border-bottom:1px solid #0A0A0A;z-index:10;padding-top:env(safe-area-inset-top,0px)}
+#wo{display:none;position:fixed;inset:0;background:#262626;z-index:200;overflow-y:auto;-webkit-overflow-scrolling:touch}
+#wo.show{display:block;animation:woSlideUp .28s cubic-bezier(.4,0,.2,1) both}
+@keyframes woSlideUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+#wo-header{position:sticky;top:0;background:#262626;border-bottom:1px solid #1A1A1A;z-index:10;padding-top:env(safe-area-inset-top,0px)}
 .wo-nav{display:flex;align-items:center;padding:10px 18px;gap:8px}
 .wo-back{background:none;border:none;color:#FFF;font-size:14px;font-weight:500;cursor:pointer;padding:4px 0;flex-shrink:0}
 .wo-title{flex:1;text-align:center}
@@ -114,12 +116,12 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .wo-title span{display:block;font-size:11px;color:#333}
 .wo-fin{background:#FFF;border:none;color:#000;font-size:12px;font-weight:700;padding:7px 14px;border-radius:6px;cursor:pointer;flex-shrink:0}
 #wo-prog-bar{padding:0 18px 8px}
-#wo-track{height:1px;background:#111;border-radius:0;overflow:hidden}
+#wo-track{height:1px;background:#1C1C1C;border-radius:0;overflow:hidden}
 #wo-fill{height:100%;background:#FFF;border-radius:0;transition:width .3s}
 #wo-pct{font-size:10px;color:#2A2A2A;margin-top:4px;letter-spacing:.5px}
 #wo-banners{padding:0}
 #wo-ex-list{padding:0 18px 80px;display:flex;flex-direction:column;gap:0}
-#wo-btm{position:sticky;bottom:0;background:#000;border-top:1px solid #0A0A0A;padding:10px 18px;padding-bottom:calc(10px + var(--safe-bottom));display:flex;align-items:center;gap:10px;z-index:10}
+#wo-btm{position:sticky;bottom:0;background:#262626;border-top:1px solid #1A1A1A;padding:10px 18px;padding-bottom:calc(10px + var(--safe-bottom));display:flex;align-items:center;gap:10px;z-index:10}
 #wo-btm-txt{font-size:11px;color:#2A2A2A;flex:1;letter-spacing:.3px}
 /* ── EXERCISE CARDS ── */
 .ex-card{border-radius:0;border:none;border-left:2px solid #1A1A1A;background:transparent;overflow:visible;transition:border-left-color .15s;padding-left:14px;margin-bottom:2px}
@@ -140,7 +142,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .z-rpe{color:#333}
 .z-rec{color:#444}
 .z-agil{color:#444}
-.ex-body{padding:0 0 12px}
+.ex-body{padding:0 0 12px;animation:bodyIn .18s ease both}
+@keyframes bodyIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 .ex-top{display:flex;align-items:center;justify-content:space-between;padding:8px 0 10px;border-top:1px solid #0D0D0D}
 .ex-bname{font-size:15px;font-weight:500;flex:1;padding-right:10px}
 .ex-presc{font-size:24px;font-weight:500;color:#FFF;letter-spacing:-.5px;flex-shrink:0}
@@ -185,7 +188,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .modal-tabs{display:flex;gap:3px;margin-bottom:14px;background:var(--s3);border-radius:var(--rs);padding:3px}
 .mtab{flex:1;padding:7px;border:none;background:transparent;color:var(--sub);font-size:12px;font-weight:700;cursor:pointer;border-radius:6px}
 .mtab.active{background:var(--s2);color:var(--text)}
-.zone-banner{padding:9px 12px;border-radius:var(--rs);margin-bottom:12px;font-size:12px;font-weight:700;border:1px solid #3A3A3A;background:#1A1A1A;color:#CCC}
+.zone-banner{padding:9px 12px;border-radius:var(--rs);margin-bottom:12px;font-size:12px;font-weight:700;border:1px solid #3A3A3A;background:#262626;color:#CCC}
 .zone-banner span{display:block;font-size:10px;font-weight:500;color:var(--muted);margin-top:2px}
 .data-preview{background:var(--s3);border-radius:var(--rs);border:1px solid var(--border);padding:12px;margin:10px 0}
 .dp-stat-row{display:flex;justify-content:space-between;margin-bottom:6px}
@@ -212,13 +215,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .e1rm-row{display:flex;gap:8px}
 .e1rm-row .field-inp{flex:1}
 /* ── PROGRESS SCREEN ── */
-#progress-header{background:#000;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+#progress-header{background:#262626;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 #progress-header h1{font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase}
-.prog-filter{display:flex;gap:0;padding:10px 18px 0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #0F0F0F}
+.prog-filter{display:flex;gap:0;padding:10px 18px 0;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid #1C1C1C}
 .prog-filter::-webkit-scrollbar{display:none}
 .pf-btn{flex-shrink:0;padding:6px 14px;border-radius:0;border:none;border-bottom:2px solid transparent;background:transparent;color:#333;font-size:11px;font-weight:600;letter-spacing:.3px;cursor:pointer;margin-bottom:-1px}
 .pf-btn.active{color:#FFF;border-bottom-color:#FFF}
-.chart-card{margin:0 18px 18px;background:transparent;border-radius:0;border:none;border-top:1px solid #0F0F0F;padding:14px 0 0}
+.chart-card{margin:0 18px 18px;background:transparent;border-radius:0;border:none;border-top:1px solid #1C1C1C;padding:14px 0 0}
 .chart-card h3{font-size:10px;font-weight:600;letter-spacing:1.2px;color:#333;text-transform:uppercase;margin-bottom:14px}
 .chart-card canvas{width:100%!important}
 .pr-section{margin:0 18px 14px}
@@ -229,13 +232,13 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .pr-date{font-size:10px;color:#333;margin-top:2px;text-align:right}
 .empty-state{text-align:left;padding:20px 0 20px 16px;color:#333;font-size:12px;border-left:2px solid #1A1A1A;margin:0 18px}
 /* ── SETTINGS SCREEN ── */
-#settings-header{background:#000;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+#settings-header{background:#262626;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 #settings-header h1{font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase}
 .settings-section{margin:16px 18px 0}
 .settings-section h3{font-size:10px;font-weight:600;color:#2A2A2A;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
 .settings-row{background:transparent;border-radius:0;border:none;border-left:2px solid #1A1A1A;margin-bottom:3px;overflow:hidden}
 .sr{display:flex;align-items:center;padding:10px 0 10px 14px;gap:12px}
-.sr+.sr{border-top:1px solid #0A0A0A}
+.sr+.sr{border-top:1px solid #1A1A1A}
 .sr label{flex:1;font-size:14px;font-weight:400}
 .sr .val{font-size:13px;color:#333}
 .sr-slider{padding:10px 0 10px 14px}
@@ -244,9 +247,11 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .danger-btn{width:100%;padding:12px;background:transparent;border:none;border-left:2px solid #333;border-radius:0;color:#555;font-size:13px;font-weight:600;cursor:pointer;margin-top:12px;text-align:left;letter-spacing:.3px}
 .danger-btn:active{background:rgba(247,85,85,.1)}
 /* ── MODALS ── */
-.ov-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;align-items:center;justify-content:center}
-.ov-wrap.show{display:flex;flex-direction:column}
-.ov-inner{width:calc(100% - 28px);max-width:480px;margin:auto;background:#0C0C0C;border-radius:16px;padding:20px;flex-shrink:0;border:1px solid #1A1A1A}
+.ov-wrap{display:none;position:fixed;inset:0;background:rgba(10,10,10,.94);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;align-items:center;justify-content:center}
+.ov-wrap.show{display:flex;flex-direction:column;animation:fadeIn .18s ease both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.ov-inner{width:calc(100% - 28px);max-width:480px;margin:auto;background:#181818;border-radius:16px;padding:20px;flex-shrink:0;border:1px solid #1A1A1A;animation:modalUp .22s cubic-bezier(.4,0,.2,1) both}
+@keyframes modalUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 .ov-head{display:flex;align-items:center;margin-bottom:16px}
 .ov-head span{font-size:15px;font-weight:700;flex:1}
 .ov-head button{background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1;padding:0 2px}
@@ -261,8 +266,8 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .btn-danger{width:100%;padding:13px;background:transparent;color:var(--red);border:1px solid var(--red);border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer}
 .btn-secondary{width:100%;padding:13px;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:var(--r);font-size:14px;font-weight:700;cursor:pointer;margin-bottom:6px}
 /* ── DONE OVERLAY ── */
-#done-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:600;flex-direction:column;align-items:center;justify-content:flex-start;padding:50px 24px 40px;overflow-y:auto}
-#done-ov.show{display:flex}
+#done-ov{display:none;position:fixed;inset:0;background:rgba(10,10,10,.94);z-index:600;flex-direction:column;align-items:center;justify-content:flex-start;padding:50px 24px 40px;overflow-y:auto}
+#done-ov.show{display:flex;animation:woSlideUp .28s cubic-bezier(.4,0,.2,1) both}
 #done-ov .emoji{font-size:56px;margin-bottom:12px}
 #done-ov h1{font-size:28px;font-weight:800;margin-bottom:6px}
 #done-ov p{font-size:14px;color:var(--sub);margin-bottom:20px}
@@ -371,7 +376,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #perio-suggest .ps-btns button{flex:1;padding:9px;border-radius:8px;border:1px solid #333;background:var(--s3);color:#CCC;font-size:12px;font-weight:700;cursor:pointer}
 #perio-suggest .ps-btns button.ps-yes{background:#FFF;color:#000;border-color:#FFF}
 /* ── SESSION PREVIEW ── */
-#prev-sess-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.95);z-index:700;overflow-y:auto;padding:20px 14px 50px;padding-top:calc(20px + env(safe-area-inset-top,0px))}
+#prev-sess-ov{display:none;position:fixed;inset:0;background:rgba(10,10,10,.97);z-index:700;overflow-y:auto;padding:20px 14px 50px;padding-top:calc(20px + env(safe-area-inset-top,0px))}
 #prev-sess-ov.show{display:block}
 .prev-sess-card{background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:border-color .15s}
 .prev-sess-card:active{opacity:.8}
@@ -497,7 +502,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .ss-divider{display:flex;align-items:center;gap:6px;margin:4px 2px}
 .ss-divider::before,.ss-divider::after{content:'';flex:1;height:1px;background:#2A2A2A}
 .ss-plus{font-size:9px;font-weight:800;letter-spacing:.8px;color:#555;white-space:nowrap}
-.ss-label{position:absolute;top:-8px;left:10px;background:#111;color:#555;font-size:9px;font-weight:800;letter-spacing:.8px;padding:0 6px;text-transform:uppercase}
+.ss-label{position:absolute;top:-8px;left:10px;background:#1C1C1C;color:#555;font-size:9px;font-weight:800;letter-spacing:.8px;padding:0 6px;text-transform:uppercase}
 /* ── DRAG HANDLES ── */
 .drag-handle{display:flex;align-items:center;justify-content:center;width:32px;min-height:44px;color:#555;cursor:grab;flex-shrink:0;touch-action:none;user-select:none;-webkit-user-select:none;transition:opacity .1s}
 .drag-handle:active{cursor:grabbing}
@@ -529,7 +534,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .cal-dot{width:4px;height:4px;border-radius:50%;background:#333;margin-top:2px}
 .cal-dot.sched{background:#444}
 /* ── CALENDAR SCREEN ── */
-#cal-screen-hdr{background:#000;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+#cal-screen-hdr{background:#262626;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
 #cal-screen-hdr h1{font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase}
 #cal-screen-body{padding:14px 0 100px}
 .cal-day{cursor:pointer;transition:background .1s;border-radius:8px}
@@ -539,7 +544,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 /* ── DAY DETAIL PANEL ── */
 #cal-day-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:310}
 #cal-day-overlay.show{display:block}
-#cal-day-panel{position:fixed;bottom:-100%;left:0;right:0;background:#0A0A0A;border-top:1px solid #1A1A1A;border-radius:0;z-index:320;transition:bottom .3s cubic-bezier(.4,0,.2,1);padding:0 0 calc(20px + var(--safe-bottom));max-height:70vh;overflow-y:auto}
+#cal-day-panel{position:fixed;bottom:-100%;left:0;right:0;background:#161616;border-top:1px solid #1A1A1A;border-radius:0;z-index:320;transition:bottom .3s cubic-bezier(.4,0,.2,1);padding:0 0 calc(20px + var(--safe-bottom));max-height:70vh;overflow-y:auto}
 #cal-day-panel.open{bottom:0}
 .cdp-handle{width:36px;height:4px;background:#333;border-radius:2px;margin:10px auto 14px}
 .cdp-date{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.5px;text-transform:uppercase;padding:0 16px;margin-bottom:10px}
@@ -556,7 +561,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 /* ── RESCHEDULE MODAL ── */
 #rs-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:400;align-items:center;justify-content:center}
 #rs-modal.show{display:flex}
-.rs-box{background:#0C0C0C;border:1px solid #1A1A1A;border-radius:0;padding:20px;width:calc(100% - 40px);max-width:340px}
+.rs-box{background:#181818;border:1px solid #1A1A1A;border-radius:0;padding:20px;width:calc(100% - 40px);max-width:340px}
 .rs-title{font-size:16px;font-weight:800;margin-bottom:4px}
 .rs-sub{font-size:12px;color:var(--muted);margin-bottom:16px}
 .rs-label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.4px;margin-bottom:6px}
@@ -566,7 +571,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .rs-btn-cancel{background:var(--s2);color:var(--muted)}
 .rs-btn-confirm{background:#FFF;color:#000}
 /* ── MONTHLY STATS ── */
-.month-stats-row{display:flex;gap:0;margin:16px 18px 16px;border-top:1px solid #0F0F0F;padding-top:16px}
+.month-stats-row{display:flex;gap:0;margin:16px 18px 16px;border-top:1px solid #1C1C1C;padding-top:16px}
 .mstat{flex:1;background:transparent;border:none;border-radius:0;padding:0 12px 0 0;text-align:left}
 .mstat:not(:first-child){border-left:1px solid #111;padding-left:14px}
 .mstat-val{font-size:22px;font-weight:500;color:#FFF;line-height:1}
@@ -605,8 +610,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 
 <!-- ═══ PROGRAM SCREEN ═══ -->
 <div id="screen-program" class="screen">
-  <div id="prog-header">
+  <div id="prog-header" style="display:flex;align-items:center;justify-content:space-between">
     <h1>Program</h1>
+    <button onclick="openTemplates()" style="background:none;border:none;color:#555;font-size:11px;font-weight:600;cursor:pointer;padding:4px 0;letter-spacing:.5px">+ Template</button>
   </div>
   <div class="phase-nav">
     <button onclick="prevW()">&#8249;</button>
@@ -3119,6 +3125,11 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 // ── INIT ──
 (()=>{
+  // Restore custom/template phases
+  const _reps=LS.g('gk_phase_replacements')||{};
+  Object.keys(_reps).forEach(i=>{const idx=parseInt(i);if(idx<PH.length)PH[idx]=_reps[idx];});
+  const _customs=LS.g('gk_custom_phases')||[];
+  _customs.forEach(p=>{if(!PH.find(x=>x.id===p.id))PH.push(p);});
   const t=TODAY,m=DL[t];
   if(m){S.pi=m.pi;S.wi=m.wi;S.dk=m.dk;}
   else{S.dk=PH[0].days[0].k;}
@@ -3130,7 +3141,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
 <!-- ═══ ATHLETE SCREEN ═══ -->
 <div id="screen-athlete" class="screen">
-  <div id="athlete-header" style="background:#000;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))">
+  <div id="athlete-header" style="background:#262626;border-bottom:none;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px))">
     <h1 style="font-size:11px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase">Athlete</h1>
   </div>
   <div id="athlete-body" style="padding-bottom:20px"></div>
@@ -4142,7 +4153,319 @@ function generateInsightsForAthlete(a){
   const role=getRole();
   if(role==='coach'||role==='admin'){applyRole();}
 })();
+
+// ── PROGRAM TEMPLATES ──
+const PROG_TEMPLATES=[
+  {id:'in_season_soccer',name:'In-Season Soccer',desc:'Maintain strength & power during the competitive season. Gym + field mixed.',daysPerWeek:'3 days · gym + field',
+   days:[
+    {k:'mon',t:'Lower Power + Speed',slots:[
+      {cat:'Sprint / Speed',presc:'6×20m',hint:'e.g. Flying 20s, acceleration runs'},
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Depth Drop to Jump'},
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Box Jump'},
+      {cat:'Hip Hinge',presc:'4×4',hint:'e.g. Romanian Deadlift'},
+      {cat:'Single Leg',presc:'3×6ea',hint:'e.g. Bulgarian Split Squat'},
+      {cat:'Reactive Core',presc:'3×10',hint:'e.g. Rotational MB Throw'},
+    ]},
+    {k:'wed',t:'Upper Strength',slots:[
+      {cat:'Power / Ballistic',presc:'3×3-4',hint:'e.g. Med Ball Chest Pass'},
+      {cat:'Power / Ballistic',presc:'3×3-4',hint:'e.g. Jump Squat'},
+      {cat:'Vertical Push',presc:'3×5',hint:'e.g. Overhead Press'},
+      {cat:'Horizontal Push',presc:'3×5',hint:'e.g. Bench Press'},
+      {cat:'Vertical Pull',presc:'3×5',hint:'e.g. Pull-up'},
+      {cat:'Horizontal Pull',presc:'3×5',hint:'e.g. Barbell Row'},
+      {cat:'Anti-Rotational Core',presc:'3×10',hint:'e.g. Pallof Press'},
+    ]},
+    {k:'fri',t:'Lower Strength + Conditioning',slots:[
+      {cat:'Conditioning',presc:'3×4min',hint:'e.g. Small-sided games, intervals'},
+      {cat:'Knee Dominant',presc:'4×4-6',hint:'e.g. Back Squat'},
+      {cat:'Hip Hinge',presc:'3×5',hint:'e.g. Deadlift'},
+      {cat:'Single Leg',presc:'3×8ea',hint:'e.g. Reverse Lunge'},
+      {cat:'Posterior Chain',presc:'3×8-10',hint:'e.g. Nordic Curl'},
+      {cat:'Core',presc:'3×12',hint:'e.g. Dead Bug'},
+    ]},
+  ]},
+  {id:'offseason_soccer',name:'Offseason Soccer',desc:'Build strength, size and athletic qualities in the off-season. Gym + field.',daysPerWeek:'4 days · gym + field',
+   days:[
+    {k:'mon',t:'Lower Power',slots:[
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Box Jump'},
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Depth Jump'},
+      {cat:'Knee Dominant',presc:'4×5',hint:'e.g. Back Squat'},
+      {cat:'Hip Hinge',presc:'4×5',hint:'e.g. Romanian Deadlift'},
+      {cat:'Single Leg',presc:'3×6ea',hint:'e.g. Bulgarian Split Squat'},
+      {cat:'Calf / Ankle',presc:'3×12',hint:'e.g. Calf Raise'},
+    ]},
+    {k:'tue',t:'Upper Hypertrophy',slots:[
+      {cat:'Horizontal Push',presc:'4×8-10',hint:'e.g. Bench Press'},
+      {cat:'Horizontal Pull',presc:'4×8-10',hint:'e.g. Barbell Row'},
+      {cat:'Vertical Push',presc:'3×10-12',hint:'e.g. DB Shoulder Press'},
+      {cat:'Vertical Pull',presc:'3×10-12',hint:'e.g. Lat Pulldown'},
+      {cat:'Elbow Flexion',presc:'3×12',hint:'e.g. Bicep Curl'},
+      {cat:'Elbow Extension',presc:'3×12',hint:'e.g. Tricep Pushdown'},
+    ]},
+    {k:'thu',t:'Lower Hypertrophy + Speed',slots:[
+      {cat:'Sprint / Speed',presc:'6×30m',hint:'e.g. Acceleration runs'},
+      {cat:'Knee Dominant',presc:'4×8-10',hint:'e.g. Leg Press'},
+      {cat:'Hip Hinge',presc:'4×8-10',hint:'e.g. Romanian Deadlift'},
+      {cat:'Single Leg',presc:'3×10ea',hint:'e.g. Step-up'},
+      {cat:'Posterior Chain',presc:'3×10',hint:'e.g. Nordic Curl'},
+      {cat:'Core',presc:'3×12',hint:'e.g. Ab Wheel'},
+    ]},
+    {k:'fri',t:'Upper Strength + Power',slots:[
+      {cat:'Power / Ballistic',presc:'4×3',hint:'e.g. Push Press'},
+      {cat:'Power / Ballistic',presc:'4×3',hint:'e.g. Med Ball Slam'},
+      {cat:'Vertical Push',presc:'4×4-6',hint:'e.g. Overhead Press'},
+      {cat:'Horizontal Push',presc:'4×4-6',hint:'e.g. Bench Press'},
+      {cat:'Vertical Pull',presc:'4×4-6',hint:'e.g. Weighted Pull-up'},
+      {cat:'Horizontal Pull',presc:'4×4-6',hint:'e.g. Pendlay Row'},
+    ]},
+  ]},
+  {id:'hypertrophy',name:'Hypertrophy Block',desc:'High volume, moderate intensity. 4-day upper/lower split.',daysPerWeek:'4 days · gym',
+   days:[
+    {k:'mon',t:'Upper A',slots:[
+      {cat:'Horizontal Push',presc:'4×8-10',hint:'e.g. Bench Press'},
+      {cat:'Horizontal Pull',presc:'4×8-10',hint:'e.g. Barbell Row'},
+      {cat:'Vertical Push',presc:'3×10-12',hint:'e.g. Incline DB Press'},
+      {cat:'Vertical Pull',presc:'3×10-12',hint:'e.g. Lat Pulldown'},
+      {cat:'Elbow Flexion',presc:'3×12-15',hint:'e.g. Barbell Curl'},
+      {cat:'Elbow Extension',presc:'3×12-15',hint:'e.g. Skull Crusher'},
+    ]},
+    {k:'tue',t:'Lower A',slots:[
+      {cat:'Knee Dominant',presc:'4×8-10',hint:'e.g. Back Squat'},
+      {cat:'Hip Hinge',presc:'4×8-10',hint:'e.g. Romanian Deadlift'},
+      {cat:'Single Leg',presc:'3×10-12ea',hint:'e.g. Bulgarian Split Squat'},
+      {cat:'Leg Curl',presc:'3×12-15',hint:'e.g. Lying Leg Curl'},
+      {cat:'Calf',presc:'4×15-20',hint:'e.g. Standing Calf Raise'},
+      {cat:'Core',presc:'3×15',hint:'e.g. Cable Crunch'},
+    ]},
+    {k:'thu',t:'Upper B',slots:[
+      {cat:'Vertical Push',presc:'4×8-10',hint:'e.g. Overhead Press'},
+      {cat:'Vertical Pull',presc:'4×8-10',hint:'e.g. Weighted Pull-up'},
+      {cat:'Horizontal Push',presc:'3×10-12',hint:'e.g. Cable Fly'},
+      {cat:'Horizontal Pull',presc:'3×10-12',hint:'e.g. Seated Cable Row'},
+      {cat:'Elbow Flexion',presc:'3×12-15',hint:'e.g. Hammer Curl'},
+      {cat:'Elbow Extension',presc:'3×12-15',hint:'e.g. Tricep Pushdown'},
+    ]},
+    {k:'fri',t:'Lower B',slots:[
+      {cat:'Hip Hinge',presc:'4×8-10',hint:'e.g. Conventional Deadlift'},
+      {cat:'Knee Dominant',presc:'4×10-12',hint:'e.g. Leg Press'},
+      {cat:'Single Leg',presc:'3×10-12ea',hint:'e.g. Reverse Lunge'},
+      {cat:'Leg Curl',presc:'3×12-15',hint:'e.g. Nordic Curl'},
+      {cat:'Calf',presc:'4×15-20',hint:'e.g. Seated Calf Raise'},
+      {cat:'Core',presc:'3×15',hint:'e.g. Plank / Dead Bug'},
+    ]},
+  ]},
+  {id:'power_speed',name:'Power / Speed Block',desc:'Maximize explosive power and sprint speed. Low reps, high intent.',daysPerWeek:'3 days · gym + field',
+   days:[
+    {k:'mon',t:'Lower Power',slots:[
+      {cat:'Sprint / Speed',presc:'6×20m',hint:'e.g. Flying 20s, block starts'},
+      {cat:'Jump / Plyometric',presc:'4×4-5',hint:'e.g. Depth Jump'},
+      {cat:'Jump / Plyometric',presc:'4×4-5',hint:'e.g. Box Jump'},
+      {cat:'Knee Dominant',presc:'5×3',hint:'e.g. Back Squat'},
+      {cat:'Hip Hinge',presc:'5×3',hint:'e.g. Trap Bar Deadlift'},
+      {cat:'Single Leg',presc:'3×4ea',hint:'e.g. Pistol Squat'},
+    ]},
+    {k:'wed',t:'Upper Power',slots:[
+      {cat:'Power / Ballistic',presc:'4×3',hint:'e.g. Push Press'},
+      {cat:'Power / Ballistic',presc:'4×3',hint:'e.g. Med Ball Slam'},
+      {cat:'Vertical Push',presc:'5×3',hint:'e.g. Overhead Press'},
+      {cat:'Horizontal Push',presc:'5×3',hint:'e.g. Bench Press'},
+      {cat:'Vertical Pull',presc:'5×3',hint:'e.g. Weighted Pull-up'},
+      {cat:'Horizontal Pull',presc:'5×3',hint:'e.g. Pendlay Row'},
+    ]},
+    {k:'fri',t:'Full Body Power',slots:[
+      {cat:'Sprint / Speed',presc:'4×40m',hint:'e.g. Max velocity runs'},
+      {cat:'Olympic / Ballistic',presc:'5×3',hint:'e.g. Power Clean'},
+      {cat:'Olympic / Ballistic',presc:'5×3',hint:'e.g. Hang Snatch'},
+      {cat:'Knee Dominant',presc:'4×4',hint:'e.g. Jump Squat'},
+      {cat:'Hip Hinge',presc:'4×4',hint:'e.g. Romanian Deadlift'},
+      {cat:'Reactive Core',presc:'3×8',hint:'e.g. Rotational MB Throw'},
+    ]},
+  ]},
+  {id:'strength',name:'Strength Block',desc:'Linear progression on the big lifts. 4 days, low reps, high load.',daysPerWeek:'4 days · gym',
+   days:[
+    {k:'mon',t:'Lower Strength A',slots:[
+      {cat:'Knee Dominant',presc:'5×5',hint:'e.g. Back Squat'},
+      {cat:'Hip Hinge',presc:'4×4',hint:'e.g. Romanian Deadlift'},
+      {cat:'Single Leg',presc:'3×5ea',hint:'e.g. Bulgarian Split Squat'},
+      {cat:'Posterior Chain',presc:'3×6',hint:'e.g. Nordic Curl'},
+      {cat:'Core',presc:'3×8',hint:'e.g. Ab Wheel'},
+    ]},
+    {k:'wed',t:'Upper Strength A',slots:[
+      {cat:'Horizontal Push',presc:'5×5',hint:'e.g. Bench Press'},
+      {cat:'Horizontal Pull',presc:'5×5',hint:'e.g. Barbell Row'},
+      {cat:'Vertical Push',presc:'4×4',hint:'e.g. Overhead Press'},
+      {cat:'Vertical Pull',presc:'4×4',hint:'e.g. Weighted Pull-up'},
+      {cat:'Anti-Rotational Core',presc:'3×8',hint:'e.g. Pallof Press'},
+    ]},
+    {k:'fri',t:'Lower Strength B',slots:[
+      {cat:'Hip Hinge',presc:'5×3-5',hint:'e.g. Conventional Deadlift'},
+      {cat:'Knee Dominant',presc:'4×6',hint:'e.g. Front Squat'},
+      {cat:'Single Leg',presc:'3×5ea',hint:'e.g. Reverse Lunge'},
+      {cat:'Calf / Ankle',presc:'3×10',hint:'e.g. Calf Raise'},
+      {cat:'Core',presc:'3×8',hint:'e.g. Hanging Leg Raise'},
+    ]},
+    {k:'sat',t:'Upper Strength B',slots:[
+      {cat:'Vertical Push',presc:'5×5',hint:'e.g. Push Press'},
+      {cat:'Vertical Pull',presc:'5×5',hint:'e.g. Weighted Chin-up'},
+      {cat:'Horizontal Push',presc:'4×6',hint:'e.g. Incline Bench'},
+      {cat:'Horizontal Pull',presc:'4×6',hint:'e.g. Seated Cable Row'},
+      {cat:'Anti-Rotational Core',presc:'3×10',hint:'e.g. Pallof Press'},
+    ]},
+  ]},
+  {id:'dup',name:'DUP',desc:'Daily Undulating Periodization. Mon: Hypertrophy → Wed: Strength → Fri: Power. Auto-progressive load.',daysPerWeek:'3 days · auto-progressive',isDUP:true,
+   days:[
+    {k:'mon',t:'Hypertrophy Day',dupZone:'hyp',slots:[
+      {cat:'Primary Lift A',presc:'4×8-10',hint:'e.g. Back Squat or Bench'},
+      {cat:'Primary Lift B',presc:'4×8-10',hint:'e.g. Deadlift or Row'},
+      {cat:'Accessory Push',presc:'3×12',hint:'e.g. DB Press, Dips'},
+      {cat:'Accessory Pull',presc:'3×12',hint:'e.g. Pull-up, Cable Row'},
+      {cat:'Single Leg / Isolation',presc:'3×12ea',hint:'e.g. Lunge, Leg Curl'},
+      {cat:'Core',presc:'3×15',hint:'e.g. Cable Crunch'},
+    ]},
+    {k:'wed',t:'Strength Day',dupZone:'str',slots:[
+      {cat:'Primary Lift A',presc:'5×5',hint:'Same lift as Monday'},
+      {cat:'Primary Lift B',presc:'5×5',hint:'Same lift as Monday'},
+      {cat:'Accessory Push',presc:'3×6-8',hint:'Heavier than Monday'},
+      {cat:'Accessory Pull',presc:'3×6-8',hint:'Heavier than Monday'},
+      {cat:'Single Leg / Isolation',presc:'3×6ea',hint:'Heavier than Monday'},
+      {cat:'Core',presc:'3×8',hint:'e.g. Hanging Leg Raise'},
+    ]},
+    {k:'fri',t:'Power Day',dupZone:'pow',slots:[
+      {cat:'Primary Lift A',presc:'5×3',hint:'Same lift — max intent'},
+      {cat:'Primary Lift B',presc:'5×3',hint:'Same lift — max intent'},
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Jump Squat'},
+      {cat:'Power / Ballistic',presc:'4×4',hint:'e.g. Med Ball Slam'},
+      {cat:'Accessory Push',presc:'3×5',hint:'Speed focus'},
+      {cat:'Accessory Pull',presc:'3×5',hint:'Speed focus'},
+    ]},
+  ]},
+];
+
+let _tmpl={screen:'browser',id:null,weeks:6,mode:'add',replaceIdx:0,fillDay:0,filled:{}};
+
+function openTemplates(){
+  _tmpl={screen:'browser',id:null,weeks:6,mode:'add',replaceIdx:0,fillDay:0,filled:{}};
+  const ov=$('tmpl-ov');ov.style.display='block';
+  renderTmplScreen();
+}
+function closeTmpl(){$('tmpl-ov').style.display='none';}
+function tmplBack(){
+  if(_tmpl.screen==='browser'){closeTmpl();return;}
+  if(_tmpl.screen==='detail'){_tmpl.screen='browser';renderTmplScreen();return;}
+  if(_tmpl.screen==='fill'){
+    if(_tmpl.fillDay>0){_tmpl.fillDay--;renderTmplScreen();return;}
+    _tmpl.screen='detail';renderTmplScreen();
+  }
+}
+function renderTmplScreen(){
+  const titles={browser:'Templates',detail:'',fill:'Fill Exercises'};
+  const t=PROG_TEMPLATES.find(x=>x.id===_tmpl.id);
+  $('tmpl-hdr-title').textContent=_tmpl.screen==='detail'&&t?t.name:titles[_tmpl.screen]||'Templates';
+  const el=$('tmpl-content');
+  if(_tmpl.screen==='browser')_renderTmplBrowser(el);
+  else if(_tmpl.screen==='detail')_renderTmplDetail(el);
+  else if(_tmpl.screen==='fill')_renderTmplFill(el);
+}
+function _renderTmplBrowser(el){
+  el.innerHTML=`<div style="padding:12px 18px 20px">`+
+  PROG_TEMPLATES.map(t=>`<div onclick="_tmpl.id='${t.id}';_tmpl.screen='detail';renderTmplScreen()" style="border-left:2px solid #2A2A2A;padding:10px 0 10px 14px;margin-bottom:4px;cursor:pointer;transition:border-left-color .15s" onmousedown="this.style.borderLeftColor='#EFEFEF'" onmouseup="this.style.borderLeftColor='#2A2A2A'">
+    <div style="font-size:14px;font-weight:500;color:#EFEFEF">${t.name}</div>
+    <div style="font-size:11px;color:#444;margin-top:3px">${t.daysPerWeek}</div>
+  </div>`).join('')+`</div>`;
+}
+function _renderTmplDetail(el){
+  const t=PROG_TEMPLATES.find(x=>x.id===_tmpl.id);
+  const w=_tmpl.weeks;
+  const wBtns=[4,5,6,7,8].map(n=>`<button onclick="_tmpl.weeks=${n};renderTmplScreen()" style="padding:6px 11px;border:1px solid ${n===w?'#EFEFEF':'#222'};background:transparent;color:${n===w?'#EFEFEF':'#444'};font-size:12px;cursor:pointer;border-radius:0;transition:all .15s">${n}w</button>`).join('');
+  const dayPrev=t.days.map(d=>`<div style="margin-bottom:12px">
+    <div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:1px;margin-bottom:5px">${d.k.toUpperCase()} — ${d.t}</div>
+    ${d.slots.map(s=>`<div style="font-size:11px;color:#555;padding:2px 0 2px 10px;border-left:1px solid #1C1C1C;margin-bottom:2px">${s.cat} · ${s.presc}</div>`).join('')}
+  </div>`).join('');
+  const phOpts=PH.map((p,i)=>`<option value="${i}">${p.label}</option>`).join('');
+  el.innerHTML=`<div style="padding:12px 18px 30px">
+    <div style="font-size:12px;color:#555;line-height:1.6;margin-bottom:16px;border-left:2px solid #1C1C1C;padding-left:12px">${t.desc}</div>
+    <div style="font-size:10px;color:#2A2A2A;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px">Duration</div>
+    <div style="display:flex;gap:4px;margin-bottom:18px">${wBtns}</div>
+    <div style="font-size:10px;color:#2A2A2A;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:10px">Structure</div>
+    <div style="margin-bottom:18px">${dayPrev}</div>
+    <div style="font-size:10px;color:#2A2A2A;text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px">Add to program</div>
+    <div style="display:flex;gap:4px;margin-bottom:12px">
+      <button onclick="_tmpl.mode='add';renderTmplScreen()" style="flex:1;padding:9px;border:1px solid ${_tmpl.mode==='add'?'#EFEFEF':'#222'};background:transparent;color:${_tmpl.mode==='add'?'#EFEFEF':'#444'};font-size:11px;cursor:pointer;border-radius:0;letter-spacing:.3px">Add as next phase</button>
+      <button onclick="_tmpl.mode='replace';renderTmplScreen()" style="flex:1;padding:9px;border:1px solid ${_tmpl.mode==='replace'?'#EFEFEF':'#222'};background:transparent;color:${_tmpl.mode==='replace'?'#EFEFEF':'#444'};font-size:11px;cursor:pointer;border-radius:0;letter-spacing:.3px">Replace a phase</button>
+    </div>
+    ${_tmpl.mode==='replace'?`<div style="margin-bottom:14px"><select onchange="_tmpl.replaceIdx=parseInt(this.value)" class="field-sel" style="margin-bottom:0">${phOpts}</select></div>`:''}
+    <button onclick="_tmpl.screen='fill';_tmpl.fillDay=0;_tmpl.filled={};PROG_TEMPLATES.find(x=>x.id===_tmpl.id).days.forEach((_,i)=>{_tmpl.filled[i]=[];});renderTmplScreen()" style="width:100%;padding:13px;background:#EFEFEF;color:#0F0F0F;border:none;font-size:14px;font-weight:600;cursor:pointer;border-radius:0;letter-spacing:.3px">Fill Exercises →</button>
+  </div>`;
+}
+function _renderTmplFill(el){
+  const t=PROG_TEMPLATES.find(x=>x.id===_tmpl.id);
+  const di=_tmpl.fillDay;
+  const day=t.days[di];
+  const filled=_tmpl.filled[di]||[];
+  const isLast=di===t.days.length-1;
+  const progBars=t.days.map((_,i)=>`<div style="height:2px;flex:1;background:${i<di?'#EFEFEF':i===di?'#888':'#1C1C1C'};transition:background .2s"></div>`).join('');
+  const slots=day.slots.map((s,si)=>`<div style="margin-bottom:12px">
+    <div style="font-size:10px;color:#333;text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px">${s.cat} · ${s.presc}</div>
+    <input class="field-inp" placeholder="${s.hint}" value="${(filled[si]||'').replace(/"/g,'&quot;')}"
+      oninput="if(!_tmpl.filled[${di}])_tmpl.filled[${di}]=[];_tmpl.filled[${di}][${si}]=this.value"
+      style="margin-bottom:0;font-size:13px">
+  </div>`).join('');
+  el.innerHTML=`<div style="padding:12px 18px 30px">
+    <div style="display:flex;gap:3px;margin-bottom:14px">${progBars}</div>
+    <div style="font-size:10px;color:#444;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px">${day.k.toUpperCase()} · ${di+1} of ${t.days.length}</div>
+    <div style="font-size:16px;font-weight:500;color:#EFEFEF;margin-bottom:16px">${day.t}</div>
+    ${slots}
+    <div style="display:flex;gap:8px;margin-top:4px">
+      ${di>0?`<button onclick="_tmpl.fillDay--;renderTmplScreen()" style="padding:12px 16px;border:1px solid #222;background:transparent;color:#555;font-size:13px;cursor:pointer;border-radius:0">←</button>`:''}
+      ${isLast
+        ?`<button onclick="tmplGenerate()" style="flex:1;padding:12px;background:#EFEFEF;color:#0F0F0F;border:none;font-size:14px;font-weight:600;cursor:pointer;border-radius:0;letter-spacing:.3px">Generate ✓</button>`
+        :`<button onclick="_tmpl.fillDay++;renderTmplScreen()" style="flex:1;padding:12px;background:#EFEFEF;color:#0F0F0F;border:none;font-size:14px;font-weight:600;cursor:pointer;border-radius:0;letter-spacing:.3px">Next →</button>`}
+    </div>
+    <button onclick="tmplGenerate()" style="width:100%;padding:8px;background:transparent;color:#2A2A2A;border:none;font-size:11px;cursor:pointer;margin-top:6px;letter-spacing:.3px">Skip & generate with placeholders</button>
+  </div>`;
+}
+function tmplGenerate(){
+  const t=PROG_TEMPLATES.find(x=>x.id===_tmpl.id);
+  const weeks=_tmpl.weeks;
+  const filled=_tmpl.filled;
+  const weeksArr=Array.from({length:weeks},(_,i)=>({l:`Week ${i+1}${i===weeks-1?' ↓':''}`}));
+  const days=t.days.map((td,di)=>{
+    const exArr=td.slots.map((slot,si)=>{
+      const name=(filled[di]&&filled[di][si]&&filled[di][si].trim())||slot.cat;
+      return {n:name,v:slot.cat.includes('Speed')||slot.cat.includes('Sprint')||slot.cat.includes('Condition')?'Speed':'RPE 7-8',r:Array(weeks).fill(slot.presc),nt:slot.hint};
+    });
+    return {k:td.k,t:td.t,l:td.t,v:td.dupZone||'RPE 7-8',ex:exArr,dupZone:td.dupZone||null};
+  });
+  const newPhase={id:'tmpl_'+t.id+'_'+Date.now(),label:t.name,sub:`${weeks}-week block`,isDUP:!!t.isDUP,weeks:weeksArr,dates:{},days};
+  if(_tmpl.mode==='replace'){
+    const reps=LS.g('gk_phase_replacements')||{};
+    reps[_tmpl.replaceIdx]=newPhase;
+    LS.s('gk_phase_replacements',reps);
+    PH[_tmpl.replaceIdx]=newPhase;
+    S.pi=_tmpl.replaceIdx;
+  } else {
+    const customs=LS.g('gk_custom_phases')||[];
+    customs.push(newPhase);
+    LS.s('gk_custom_phases',customs);
+    PH.push(newPhase);
+    S.pi=PH.length-1;
+  }
+  S.wi=0;S.dk=PH[S.pi].days[0].k;S.act=-1;
+  closeTmpl();
+  goTab('program');
+  toast(t.name+' added ✓');
+}
 </script>
+
+<!-- ═══ TEMPLATE OVERLAY ═══ -->
+<div id="tmpl-ov" style="display:none;position:fixed;inset:0;background:#0F0F0F;z-index:350;overflow-y:auto;-webkit-overflow-scrolling:touch;animation:screenIn .2s cubic-bezier(.4,0,.2,1) both">
+  <div style="position:sticky;top:0;background:#0F0F0F;border-bottom:1px solid #1C1C1C;padding:14px 18px 10px;padding-top:calc(14px + env(safe-area-inset-top,0px));display:flex;align-items:center;gap:10px;z-index:10">
+    <button onclick="tmplBack()" style="background:none;border:none;color:#555;font-size:13px;font-weight:500;cursor:pointer;padding:4px 0;flex-shrink:0">← Back</button>
+    <div id="tmpl-hdr-title" style="font-size:10px;font-weight:600;letter-spacing:1.8px;color:#333;text-transform:uppercase;flex:1;text-align:center"></div>
+    <button onclick="closeTmpl()" style="background:none;border:none;color:#555;font-size:18px;cursor:pointer;padding:4px 0;line-height:1;flex-shrink:0">✕</button>
+  </div>
+  <div id="tmpl-content" style="padding-bottom:60px"></div>
+</div>
 
 </body>
 </html>
