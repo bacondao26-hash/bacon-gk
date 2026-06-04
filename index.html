@@ -30,7 +30,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #today-header{background:var(--s1);border-bottom:1px solid var(--border);padding:12px 16px 12px;padding-top:calc(12px + env(safe-area-inset-top,0px))}
 #today-header h1{font-size:20px;font-weight:800;letter-spacing:-.3px}
 #today-header .sub{font-size:12px;color:var(--sub);margin-top:2px}
-.rd-card{margin:12px 14px;background:var(--s2);border-radius:var(--r);border:1px solid var(--border);padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
+.rd-card{margin:12px 14px;background:var(--s2);border-radius:var(--r);border:1px solid transparent;padding:14px 16px;display:flex;align-items:center;gap:12px;cursor:pointer}
 .rd-badge{width:52px;height:52px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;font-weight:800}
 .rd-badge .score{font-size:18px;line-height:1}
 .rd-badge .lbl{font-size:9px;letter-spacing:.3px;margin-top:2px;font-weight:700}
@@ -45,9 +45,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .rec-banner{margin:0 14px 10px;padding:12px 14px;border-radius:var(--r);background:rgba(255,255,255,.04);border:1px solid var(--border);border-left:3px solid #555}
 .rec-banner h4{font-size:13px;font-weight:700;color:#CCC;margin-bottom:4px}
 .rec-banner p{font-size:11.5px;color:var(--sub);line-height:1.5}
-.today-session{margin:0 14px 10px;background:var(--s2);border-radius:var(--r);border:1px solid var(--border);overflow:hidden;cursor:pointer}
+.today-session{margin:0 14px 10px;background:var(--s2);border-radius:var(--r);border:1px solid transparent;overflow:hidden;cursor:pointer}
 .today-session:active{opacity:.85}
-.ts-header{padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.ts-header{padding:14px 16px 12px;border-bottom:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:10px}
 .ts-dot{width:10px;height:10px;border-radius:50%;background:var(--orange);flex-shrink:0}
 .ts-dot.done{background:var(--green)}
 .ts-dot.rest{background:var(--muted)}
@@ -62,7 +62,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .ts-ex{font-size:12px;color:var(--sub);display:flex;align-items:center;gap:6px}
 .ts-ex::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--border);flex-shrink:0}
 .ts-ex.pri::before{background:var(--red)}
-.no-session{margin:12px 14px;padding:20px;text-align:center;background:var(--s2);border-radius:var(--r);border:1px dashed var(--border)}
+.no-session{margin:12px 14px;padding:20px;text-align:center;background:var(--s2);border-radius:var(--r);border:none}
 .no-session p{font-size:13px;color:var(--sub)}
 .streak-row{margin:0 14px 12px;display:flex;align-items:center;gap:8px}
 .streak-label{font-size:11px;font-weight:700;color:var(--sub);text-transform:uppercase;letter-spacing:.5px}
@@ -83,7 +83,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #week-tabs::-webkit-scrollbar{display:none}
 /* ── SESSION ARROW NAVIGATOR ── */
 #sess-nav{padding:2px 14px 10px}
-.sn-wrap{display:flex;align-items:center;background:var(--s2);border:1px solid var(--border);border-radius:14px;padding:3px}
+.sn-wrap{display:flex;align-items:center;background:var(--s2);border:none;border-radius:14px;padding:3px}
 .sn-arr{width:40px;height:46px;flex-shrink:0;background:none;border:none;color:var(--text);font-size:26px;cursor:pointer;border-radius:11px;transition:background .15s;display:flex;align-items:center;justify-content:center;line-height:1}
 .sn-arr:active{background:rgba(255,255,255,.08)}
 .sn-arr.dis{opacity:.2;cursor:default}
@@ -124,14 +124,14 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 #wo-btm{position:sticky;bottom:0;background:var(--s1);border-top:1px solid var(--border);padding:10px 14px;padding-bottom:calc(10px + var(--safe-bottom));display:flex;align-items:center;gap:10px;z-index:10}
 #wo-btm-txt{font-size:12px;color:var(--muted);flex:1}
 /* ── EXERCISE CARDS ── */
-.ex-card{border-radius:var(--r);border:1px solid var(--border);background:var(--s2);overflow:hidden;transition:border-color .15s}
-.ex-card.active{border-color:var(--orange)}
-.ex-card.pri{border-left:3px solid var(--red)}
-.ex-card.done-card{opacity:.5}
+.ex-card{border-radius:var(--r);border:1px solid transparent;background:var(--s2);overflow:hidden;transition:border-color .15s}
+.ex-card.active{border-color:rgba(255,255,255,.18)}
+.ex-card.pri{border-left:3px solid rgba(255,255,255,.3)}
+.ex-card.done-card{opacity:.42}
 .ex-collapsed{display:flex;align-items:center;padding:11px 13px;gap:10px;cursor:pointer;-webkit-user-select:none}
-.ex-icon{width:22px;height:22px;border-radius:50%;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:var(--muted)}
-.ex-card.done-card .ex-icon{background:#333;border-color:#555;color:#CCC;font-size:13px}
-.ex-card.active:not(.done-card) .ex-icon{border-color:#FFF;color:#FFF}
+.ex-icon{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0;color:var(--muted)}
+.ex-card.done-card .ex-icon{background:#2A2A2A;border-color:#444;color:#888;font-size:13px}
+.ex-card.active:not(.done-card) .ex-icon{border-color:#DDD;color:#DDD}
 .ex-ci{flex:1;min-width:0}
 .ex-cn{font-size:13.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .ex-cs{font-size:11px;color:var(--sub);margin-top:2px}
@@ -145,7 +145,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .z-rec{background:rgba(255,255,255,.05);color:#999999}
 .z-agil{background:rgba(255,255,255,.06);color:#BBBBBB}
 .ex-body{padding:0 13px 13px}
-.ex-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-top:1px solid var(--border)}
+.ex-top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-top:1px solid rgba(255,255,255,.06)}
 .ex-bname{font-size:15px;font-weight:700;flex:1;padding-right:10px}
 .ex-presc{font-size:22px;font-weight:800;color:var(--orange);letter-spacing:-.5px;flex-shrink:0}
 .pri-tag{font-size:9px;background:var(--red);color:#fff;padding:2px 5px;border-radius:6px;font-weight:700;margin-left:6px;vertical-align:middle}
@@ -162,36 +162,21 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .set-lbl{display:grid;grid-template-columns:22px 1fr 1fr 76px 34px;gap:5px;font-size:10px;color:var(--muted);margin-bottom:4px;padding:0 1px;text-transform:uppercase;letter-spacing:.5px}
 .set-row{display:grid;grid-template-columns:22px 1fr 1fr 76px 34px;gap:5px;align-items:center;margin-bottom:5px}
 .sn{font-size:11px;color:var(--muted);text-align:center;font-weight:600}
-.si{background:var(--s3);border:1px solid var(--border);border-radius:var(--rs);color:var(--text);font-size:15px;font-weight:700;padding:8px 4px;text-align:center;width:100%;-webkit-appearance:none;outline:none}
-.si:focus{border-color:var(--orange)}
-.si.v{border-color:rgba(255,255,255,.25);color:var(--orange)}
+.si{background:var(--s3);border:1px solid transparent;border-radius:var(--rs);color:var(--text);font-size:15px;font-weight:700;padding:8px 4px;text-align:center;width:100%;-webkit-appearance:none;outline:none}
+.si:focus{border-color:rgba(255,255,255,.2)}
+.si.v{color:#FFF}
 .rpe-grp{display:flex;gap:2px}
-.rb{flex:1;padding:8px 1px;border-radius:5px;border:1px solid var(--border);background:var(--s3);color:var(--sub);font-size:11px;font-weight:700;cursor:pointer;text-align:center;line-height:1}
-.rb.s{background:#FFF;color:#000;border-color:#FFF}
-.ck{width:34px;height:38px;border-radius:var(--rs);border:1.5px solid var(--border);background:var(--s3);color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.ck.d{background:#333;border-color:#666;color:#FFF}
-.add-set{width:100%;padding:8px;border-radius:var(--rs);border:1px dashed var(--border);background:transparent;color:var(--muted);font-size:12px;cursor:pointer;margin-top:3px}
-.add-set:active{background:var(--s3)}
+.rb{flex:1;padding:8px 1px;border-radius:5px;border:none;background:var(--s3);color:var(--sub);font-size:11px;font-weight:700;cursor:pointer;text-align:center;line-height:1}
+.rb.s{background:rgba(255,255,255,.15);color:#FFF}
+.ck{width:34px;height:38px;border-radius:var(--rs);border:1.5px solid rgba(255,255,255,.1);background:transparent;color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.ck.d{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3);color:#FFF}
+.add-set{width:100%;padding:8px;border-radius:var(--rs);border:none;background:rgba(255,255,255,.04);color:var(--muted);font-size:12px;cursor:pointer;margin-top:3px}
+.add-set:active{background:rgba(255,255,255,.07)}
 .ex-edit-btn{flex-shrink:0;width:26px;height:26px;border-radius:6px;border:none;background:transparent;color:var(--muted);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;margin-left:4px}
 .ex-edit-btn:active{background:var(--s3);color:var(--orange)}
 .add-ex-btn{width:100%;padding:11px;border-radius:var(--r);border:1px dashed var(--orange);background:transparent;color:var(--orange);font-size:13px;font-weight:700;cursor:pointer;margin-top:4px}
 .add-ex-btn:active{background:rgba(255,102,36,.08)}
-.rest-bar{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
-.rest-info{flex:1;font-size:12px;color:var(--muted)}
-.rest-cd{font-size:20px;font-weight:800;color:var(--orange);font-variant-numeric:tabular-nums;min-width:54px;text-align:center}
-.rest-cd.dp{color:var(--green);animation:dp .6s ease infinite alternate}
-@keyframes dp{from{opacity:.4}to{opacity:1}}
-.rest-btn{padding:7px 15px;border-radius:var(--rs);border:1px solid var(--orange);background:transparent;color:var(--orange);font-size:12px;font-weight:700;cursor:pointer;flex-shrink:0}
-.rest-btn.on{background:#FFF;color:#000}
-/* ── FLOATING REST TIMER ── */
-#wo-rest-float{position:sticky;bottom:61px;background:#0d0d0d;border-top:2px solid var(--orange);padding:11px 14px;display:flex;align-items:center;gap:10px;z-index:9;transform:translateY(110%);transition:transform .25s cubic-bezier(.4,0,.2,1);pointer-events:none}
-#wo-rest-float.active{transform:translateY(0);pointer-events:auto}
-.rf-label{flex:1;min-width:0}
-.rf-exname{display:block;font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.rf-sublbl{font-size:11px;color:var(--muted)}
-.rf-cd{font-size:30px;font-weight:900;color:var(--orange);font-variant-numeric:tabular-nums;min-width:62px;text-align:right;flex-shrink:0}
-.rf-cd.done{color:var(--green);animation:dp .6s ease infinite alternate}
-.rf-stop{padding:7px 12px;border-radius:var(--rs);border:1px solid var(--border);background:transparent;color:var(--muted);font-size:13px;cursor:pointer;flex-shrink:0}
+.rest-label{font-size:11px;color:var(--muted);margin-top:12px;text-align:center;letter-spacing:.3px;opacity:.7}
 .notes-t{display:flex;align-items:center;gap:5px;margin-top:9px;font-size:11.5px;color:var(--muted);cursor:pointer;-webkit-user-select:none}
 .notes-b{margin-top:6px;font-size:11.5px;color:var(--sub);line-height:1.65;font-style:italic;display:none}
 .notes-b.o{display:block}
@@ -263,9 +248,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .danger-btn{width:100%;padding:14px;background:transparent;border:1px solid var(--red);border-radius:var(--r);color:var(--red);font-size:14px;font-weight:700;cursor:pointer;margin-top:8px}
 .danger-btn:active{background:rgba(247,85,85,.1)}
 /* ── MODALS ── */
-.ov-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch}
-.ov-wrap.show{display:block}
-.ov-inner{margin:24px 14px 50px;background:var(--s2);border-radius:var(--r);padding:18px}
+.ov-wrap{display:none;position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:500;overflow-y:auto;-webkit-overflow-scrolling:touch;align-items:center;justify-content:center}
+.ov-wrap.show{display:flex;flex-direction:column}
+.ov-inner{width:calc(100% - 28px);max-width:480px;margin:auto;background:var(--s2);border-radius:18px;padding:18px;flex-shrink:0}
 .ov-head{display:flex;align-items:center;margin-bottom:16px}
 .ov-head span{font-size:15px;font-weight:700;flex:1}
 .ov-head button{background:none;border:none;color:var(--muted);font-size:24px;cursor:pointer;line-height:1;padding:0 2px}
@@ -586,33 +571,9 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
 .rs-btn-confirm{background:#FFF;color:#000}
 /* ── MONTHLY STATS ── */
 .month-stats-row{display:flex;gap:8px;margin:0 14px 12px}
-.mstat{flex:1;background:var(--s2);border:1px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center}
+.mstat{flex:1;background:var(--s2);border:none;border-radius:12px;padding:10px 6px;text-align:center}
 .mstat-val{font-size:19px;font-weight:900;color:#FFF;line-height:1}
 .mstat-lbl{font-size:9px;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.4px}
-/* ── TIMER SCREEN ── */
-#timer-header{background:var(--s1);border-bottom:1px solid var(--border);padding:16px 14px 10px;padding-top:calc(16px + env(safe-area-inset-top,0px))}
-#timer-header h1{font-size:20px;font-weight:800}
-#timer-body{padding:14px 14px 100px}
-.timer-card{background:var(--s2);border:1px solid var(--border);border-radius:16px;padding:20px 16px;margin-bottom:14px;text-align:center}
-.timer-card-lbl{font-size:10px;font-weight:800;letter-spacing:1px;color:var(--muted);margin-bottom:10px}
-.sw-display{font-size:54px;font-weight:900;letter-spacing:-2px;color:#FFF;font-variant-numeric:tabular-nums;line-height:1;margin-bottom:18px}
-.cd-display{font-size:42px;font-weight:900;letter-spacing:-1px;color:#FFF;font-variant-numeric:tabular-nums;line-height:1;margin:8px 0 14px}
-.cd-display.cd-done{color:#444;animation:dp .6s ease infinite alternate}
-.timer-btns{display:flex;align-items:center;justify-content:center;gap:16px}
-.t-btn-main{width:60px;height:60px;border-radius:50%;border:none;background:#FFF;color:#000;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0}
-.t-btn-main:active{opacity:.85}
-.t-btn-sec{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:var(--s3);color:var(--text);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.t-btn-sec:active{background:var(--s2)}
-.timer-section-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.timer-section-hdr span{font-size:10px;font-weight:800;letter-spacing:1px;color:var(--muted)}
-.timer-section-hdr button{background:var(--s3);border:1px solid var(--border);color:var(--text);font-size:12px;font-weight:700;padding:6px 14px;border-radius:8px;cursor:pointer}
-.cd-card{background:var(--s2);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px;position:relative}
-.cd-name{font-size:13px;font-weight:700;color:#FFF;margin-bottom:0;padding-right:30px}
-.cd-from{font-size:10px;color:var(--muted);text-align:center;margin-top:6px}
-.cd-del{position:absolute;top:10px;right:10px;background:none;border:none;color:var(--muted);font-size:16px;cursor:pointer;padding:4px 8px;line-height:1}
-.notif-bar{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin-bottom:14px;cursor:pointer}
-.notif-bar span{flex:1;font-size:12px;color:var(--sub)}
-.notif-bar strong{font-size:12px;color:#FFF}
 /* ── ENHANCED FINISH SCREEN ── */
 .done-pr-list{width:100%;margin-bottom:16px}
 .done-pr-item{display:flex;align-items:center;gap:10px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.2);border-radius:10px;padding:10px 12px;margin-bottom:6px}
@@ -749,31 +710,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
   </div>
 </div>
 
-<!-- ═══ TIMER SCREEN ═══ -->
-<div id="screen-timer" class="screen">
-  <div id="timer-header"><h1>Timer</h1></div>
-  <div id="timer-body">
-    <div id="notif-bar" class="notif-bar" onclick="requestNotifPerm()">
-      <span>🔔 <strong id="notif-status">Enable notifications</strong> — get an alert when any countdown hits 0</span>
-    </div>
-    <!-- Stopwatch -->
-    <div class="timer-card">
-      <div class="timer-card-lbl">STOPWATCH</div>
-      <div class="sw-display" id="sw-display">00:00.0</div>
-      <div class="timer-btns">
-        <button class="t-btn-sec" onclick="swReset()">↺</button>
-        <button class="t-btn-main" id="sw-toggle-btn" onclick="swToggle()">▶</button>
-      </div>
-    </div>
-    <!-- Countdowns -->
-    <div class="timer-section-hdr">
-      <span>COUNTDOWNS</span>
-      <button onclick="addCountdown()">+ Add</button>
-    </div>
-    <div id="countdown-list"></div>
-  </div>
-</div>
-
 <!-- ═══ ATHLETE TAB BAR ═══ -->
 <div id="tab-bar">
   <button class="tab active" id="tab-today" onclick="goTab('today')">
@@ -790,9 +726,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
   </button>
   <button class="tab" id="tab-calendar" onclick="goTab('calendar')">
     <svg viewBox="0 0 24 24" stroke="currentColor"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>Calendar
-  </button>
-  <button class="tab" id="tab-timer" onclick="goTab('timer')">
-    <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5"/><path d="M9.5 2.5h5"/><path d="M12 2.5v2"/></svg>Timer
   </button>
   <button class="tab" id="tab-settings" onclick="goTab('settings')">
     <svg viewBox="0 0 24 24" stroke="currentColor"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings
@@ -831,11 +764,6 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:-apple-
   </div>
   <div id="wo-banners"></div>
   <div id="wo-ex-list"></div>
-  <div id="wo-rest-float">
-    <div class="rf-label"><strong class="rf-exname" id="rf-exname">Rest</strong><span class="rf-sublbl" id="rf-sublbl">prescribed rest</span></div>
-    <span class="rf-cd" id="rf-cd">0:00</span>
-    <button class="rf-stop" onclick="stopActiveRest()">✕</button>
-  </div>
   <div id="wo-btm"><span id="wo-btm-txt"></span></div>
 </div>
 
@@ -1160,7 +1088,6 @@ const _DEFAULT_SS={
 let S={pi:0,wi:0,dk:null,act:-1};
 let RT={};
 let WO_OPEN=false;
-let _REST_TIMEOUT=null;
 let PF='vertical';
 let mainChart=null;
 
@@ -1197,8 +1124,6 @@ function goTab(tab){
   if(tab==='athlete')renderAthlete();
   if(tab==='settings')renderSettings();
   if(tab==='calendar')renderCalendar();
-  if(tab==='timer'){_resumeCDTimeouts();renderTimerTab();}
-  else{clearInterval(_CD_INTERVAL);}
 }
 
 // ── READINESS / CHECK-IN ──
@@ -1294,10 +1219,16 @@ function renderToday(){
     const tph=PH[todayMatch.pi];
     const tday=tph.days.find(d=>d.k===todayMatch.dk);
     const isDone=!!LS.g(sk(todayMatch.pi,todayMatch.wi,todayMatch.dk));
+    // Check if workout is in-progress (has some done sets but not marked complete)
+    let inProgress=false;
+    if(!isDone){
+      tday.ex.forEach((_,i)=>{const s=gl(todayMatch.pi,todayMatch.wi,todayMatch.dk,i);if(s.some(x=>x.done))inProgress=true;});
+    }
     const rm=LS.g(rmKey(todayMatch.pi,todayMatch.dk))||[];
     const visEx=tday.ex.filter((_,i)=>!rm.includes(i));
     const exPrev=visEx.slice(0,4).map(ex=>`<div class="ts-ex${ex.p?' pri':''}">${ex.n}</div>`).join('')+(visEx.length>4?`<div class="ts-ex">+${visEx.length-4} more</div>`:'');
-    html.push(`<div class="today-session" onclick="openTodayWO()"><div class="ts-header"><div class="ts-dot${isDone?' done':''}"></div><div class="ts-title"><h3>${tday.t}</h3><p>${tph.label} · ${tph.weeks[todayMatch.wi].l}</p></div><div class="ts-chevron">${isDone?'✓':'›'}</div></div><div class="ts-body"><div class="ts-meta"><span class="ts-chip">${visEx.length} exercises</span><span class="ts-chip">${isDone?'✓ Done':'Tap to start'}</span></div><div class="ts-exlist">${exPrev}</div></div></div>`);
+    const statusChip=isDone?'✓ Done':inProgress?'▶ Resume':'Tap to start';
+    html.push(`<div class="today-session" onclick="openTodayWO()"><div class="ts-header"><div class="ts-dot${isDone?' done':''}"></div><div class="ts-title"><h3>${tday.t}</h3><p>${tph.label} · ${tph.weeks[todayMatch.wi].l}</p></div><div class="ts-chevron">${isDone?'✓':'›'}</div></div><div class="ts-body"><div class="ts-meta"><span class="ts-chip">${visEx.length} exercises</span><span class="ts-chip">${statusChip}</span></div><div class="ts-exlist">${exPrev}</div></div></div>`);
   } else {
     // Find next scheduled session
     let nextInfo='';
@@ -1361,15 +1292,10 @@ function openTodayWO(){
 function openWO(){
   WO_OPEN=true;
   $('wo').classList.add('show');
-  // Request notification permission proactively for rest timer
-  if('Notification' in window && Notification.permission==='default'){
-    Notification.requestPermission();
-  }
   // Track session start time (only set once per session)
   const startKey='gk_wo_start_'+TODAY;
   if(!LS.g(startKey)) LS.s(startKey, Date.now());
   renderWO();
-  updFloatRest();
 }
 function closeWO(){
   WO_OPEN=false;
@@ -1591,9 +1517,8 @@ function card(ex,i,d,wi,isCust,ai){
     const ab=document.createElement('button');ab.className='add-set';ab.style.flex='1';ab.textContent='+ Add Set';ab.onclick=()=>addSet(i,d.k);
     const rb2=document.createElement('button');rb2.className='add-set';rb2.style.cssText='width:44px;flex-shrink:0';rb2.textContent='−';rb2.title='Remove last set';rb2.onclick=()=>removeSet(i,d.k);
     setCtrl.appendChild(ab);setCtrl.appendChild(rb2);body.appendChild(setCtrl);
-    const rt=RT[i]||{running:false,remaining:rs,done:false};
-    const rb=document.createElement('div');rb.className='rest-bar';rb.id=`rb-${i}`;
-    rb.innerHTML=`<span class="rest-info">Rest ${fR(rs)}</span><span class="rest-cd${rt.done?' dp':''}" id="rcd-${i}">${rt.done?'LIFT!':fR(rt.remaining)}</span><button class="rest-btn${rt.running?' on':''}" id="rbtn-${i}" onclick="toggleRest(${i},${rs},${JSON.stringify(ex.n)})">${rt.running?'Stop':'Start'}</button>`;
+    const rb=document.createElement('div');rb.className='rest-label';
+    rb.textContent=`Rest ${fR(rs)}`;
     body.appendChild(rb);
     const nw=document.createElement('div');
     nw.innerHTML=`<div class="notes-t" onclick="toggleNotes(${i})"><span id="na-${i}">▸</span> Coach notes</div><div class="notes-b" id="nb-${i}">${ex.nt||''}</div>`;
@@ -1665,12 +1590,6 @@ function td(ei,dk,si){
   if(btn){btn.className=`ck${sets[si].done?' d':''}`;btn.textContent=sets[si].done?'✓':'○';}
   if(sets[si].done){
     checkPR(ei,dk,si,sets[si]);
-    // Auto-start rest timer
-    const d=day();
-    let rs=90,exName='';
-    if(ei<1000){const ov=LS.g(ovKey(S.pi,dk,ei));const ex=d.ex[ei];rs=(ov?.r??ex?.r)??90;exName=ov?.n||ex?.n||'';}
-    else{const cx=LS.g(addKey(S.pi,dk))||[];const ce=cx[ei-1000];rs=ce?.r??90;exName=ce?.n||'';}
-    autoStartRest(ei,+rs,exName);
   }
   updWOProg();
   if(sets.every(s=>s.done)){
@@ -1725,107 +1644,6 @@ function removeSet(ei,dk){
   updWOProg();
 }
 function toggleNotes(i){const b=$(`nb-${i}`),a=$(`na-${i}`);if(!b)return;b.classList.toggle('o');if(a)a.textContent=b.classList.contains('o')?'▾':'▸';}
-function toggleRest(ei,def,exName){
-  if(!RT[ei])RT[ei]={running:false,remaining:def,done:false,exName:exName||''};
-  const t=RT[ei];
-  if(t.running){
-    clearInterval(t.iv);t.iv=null;t.running=false;t.endTime=null;
-    clearTimeout(_REST_TIMEOUT);LS.s('gk_rest_active',null);
-    updRest(ei);updFloatRest();
-  } else {
-    if(t.remaining<=0||t.done){t.remaining=def;t.done=false;}
-    t.running=true;t.done=false;t.exName=exName||t.exName||'';
-    t.endTime=Date.now()+t.remaining*1000;
-    LS.s('gk_rest_active',{ei,endTime:t.endTime,exName:t.exName});
-    clearTimeout(_REST_TIMEOUT);
-    _REST_TIMEOUT=setTimeout(()=>_restDone(ei),t.remaining*1000);
-    t.iv=setInterval(()=>{
-      const left=Math.ceil((t.endTime-Date.now())/1000);
-      t.remaining=Math.max(0,left);
-      if(t.remaining<=0){clearInterval(t.iv);t.iv=null;t.running=false;t.done=true;t.endTime=null;LS.s('gk_rest_active',null);}
-      updRest(ei);
-    },500);
-    updRest(ei);updFloatRest();
-  }
-}
-function autoStartRest(ei,rs,exName){
-  // Stop any currently running timer
-  Object.keys(RT).forEach(eid=>{
-    const t=RT[+eid];
-    if(t&&t.running){clearInterval(t.iv);t.iv=null;t.running=false;t.endTime=null;}
-  });
-  clearTimeout(_REST_TIMEOUT);
-  if(!RT[ei])RT[ei]={running:false,remaining:rs,done:false,exName:exName||''};
-  const t=RT[ei];
-  t.remaining=rs;t.done=false;t.running=true;t.exName=exName||t.exName||'';
-  t.endTime=Date.now()+rs*1000;
-  LS.s('gk_rest_active',{ei,endTime:t.endTime,exName:t.exName});
-  _REST_TIMEOUT=setTimeout(()=>_restDone(ei),rs*1000);
-  t.iv=setInterval(()=>{
-    const left=Math.ceil((t.endTime-Date.now())/1000);
-    t.remaining=Math.max(0,left);
-    if(t.remaining<=0){clearInterval(t.iv);t.iv=null;t.running=false;t.done=true;t.endTime=null;LS.s('gk_rest_active',null);}
-    updRest(ei);updFloatRest();
-  },500);
-  updRest(ei);updFloatRest();
-}
-function _restDone(ei){
-  const t=RT[ei];if(!t)return;
-  if(t.iv){clearInterval(t.iv);t.iv=null;}
-  t.running=false;t.done=true;t.endTime=null;
-  LS.s('gk_rest_active',null);
-  playRestDone();notifRestDone(t.exName);
-  updRest(ei);updFloatRest();
-}
-function stopActiveRest(){
-  Object.keys(RT).forEach(eid=>{
-    const t=RT[+eid];
-    if(t&&(t.running||t.done)){
-      if(t.running){clearInterval(t.iv);t.iv=null;t.running=false;t.endTime=null;}
-      t.done=false;
-      updRest(+eid);
-    }
-  });
-  clearTimeout(_REST_TIMEOUT);LS.s('gk_rest_active',null);
-  updFloatRest();
-}
-function updFloatRest(){
-  const fl=$('wo-rest-float');if(!fl)return;
-  let active=null,activeEi=-1;
-  Object.entries(RT).forEach(([eid,t])=>{
-    if(t.running||(t.done&&activeEi===-1)){active=t;activeEi=+eid;}
-  });
-  if(!active||(!active.running&&!active.done)){fl.classList.remove('active');return;}
-  fl.classList.add('active');
-  const en=$('rf-exname'),sl=$('rf-sublbl'),cd=$('rf-cd');
-  if(en)en.textContent=active.exName||'Rest';
-  if(sl)sl.textContent=active.done?'— Time to lift!':'rest';
-  if(cd){cd.textContent=active.done?'LIFT!':fR(active.remaining);cd.className=`rf-cd${active.done?' done':''}`;}
-}
-// Recalculate timers when returning from background
-document.addEventListener('visibilitychange',()=>{
-  if(document.hidden)return;
-  Object.entries(RT).forEach(([eid,t])=>{
-    if(t.running&&t.endTime){
-      const left=Math.ceil((t.endTime-Date.now())/1000);
-      t.remaining=Math.max(0,left);
-      if(t.remaining<=0){
-        if(t.iv){clearInterval(t.iv);t.iv=null;}
-        t.running=false;t.done=true;t.endTime=null;
-        LS.s('gk_rest_active',null);
-        playRestDone();notifRestDone(t.exName);
-      }
-      updRest(+eid);
-    }
-  });
-  updFloatRest();
-});
-function updRest(ei){
-  const t=RT[ei];if(!t)return;
-  const cd=$(`rcd-${ei}`),btn=$(`rbtn-${ei}`);
-  if(cd){cd.textContent=t.done?'LIFT!':fR(t.remaining);cd.className=`rest-cd${t.done?' dp':''}`;}
-  if(btn){btn.textContent=t.running?'Stop':'Start';btn.className=`rest-btn${t.running?' on':''}`;}
-}
 
 function updWOProg(){
   const d=day();let tot=0,dn=0;
@@ -2121,157 +1939,6 @@ function undoReschedule(originalFrom){
   closeDayPanel();toast('Reschedule undone ✓');renderCalendar();
 }
 
-// ── TIMER ENGINE ──
-// Stopwatch
-const _SW={running:false,startAt:0,elapsed:0,_raf:null};
-function swToggle(){
-  if(_SW.running){
-    _SW.elapsed+=Date.now()-_SW.startAt;_SW.running=false;
-    cancelAnimationFrame(_SW._raf);$('sw-toggle-btn').textContent='▶';
-  } else {
-    _SW.startAt=Date.now();_SW.running=true;
-    $('sw-toggle-btn').textContent='⏸';_swTick();
-  }
-}
-function swReset(){
-  _SW.running=false;_SW.elapsed=0;_SW.startAt=0;
-  cancelAnimationFrame(_SW._raf);
-  const el=$('sw-display');if(el)el.textContent='00:00.0';
-  const btn=$('sw-toggle-btn');if(btn)btn.textContent='▶';
-}
-function _swTick(){
-  const el=$('sw-display');
-  if(!el||!_SW.running)return;
-  const ms=_SW.elapsed+(Date.now()-_SW.startAt);
-  const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000),ds=Math.floor((ms%1000)/100);
-  el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${ds}`;
-  _SW._raf=requestAnimationFrame(_swTick);
-}
-function _swResume(){if(_SW.running)_swTick();}
-
-// Countdowns
-let _CD_INTERVAL=null;
-const _CD_TIMEOUTS={};
-function _getCDList(){return LS.g('gk_cds')||[];}
-function _saveCDList(l){LS.s('gk_cds',l);}
-function _fmtCD(ms){const s=Math.max(0,Math.ceil(ms/1000));const m=Math.floor(s/60);return`${String(m).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;}
-function _cdRemaining(cd){return cd.running?Math.max(0,cd.remaining-(Date.now()-cd.startAt)):Math.max(0,cd.remaining);}
-
-function addCountdown(){
-  const name=prompt('Timer name (e.g. "Rest 90s"):');if(!name)return;
-  const durStr=prompt('Duration in seconds:');const dur=parseInt(durStr);
-  if(!dur||dur<1){toast('Invalid duration');return;}
-  const id='cd_'+Date.now();
-  const list=_getCDList();
-  list.push({id,name,duration:dur*1000,remaining:dur*1000,running:false,startAt:0});
-  _saveCDList(list);_buildCDCards();
-}
-function _cdToggle(id){
-  const list=_getCDList();const cd=list.find(c=>c.id===id);if(!cd)return;
-  if(_cdRemaining(cd)<=0){// reset on tap when done
-    cd.remaining=cd.duration;cd.running=false;cd.startAt=0;
-    clearTimeout(_CD_TIMEOUTS[id]);
-  } else if(cd.running){// pause
-    cd.remaining=_cdRemaining(cd);cd.running=false;cd.startAt=0;
-    clearTimeout(_CD_TIMEOUTS[id]);
-  } else {// start/resume
-    cd.startAt=Date.now();cd.running=true;
-    clearTimeout(_CD_TIMEOUTS[id]);
-    _CD_TIMEOUTS[id]=setTimeout(()=>_cdDone(id),cd.remaining);
-  }
-  _saveCDList(list);_buildCDCards();
-}
-function _cdReset(id){
-  const list=_getCDList();const cd=list.find(c=>c.id===id);if(!cd)return;
-  clearTimeout(_CD_TIMEOUTS[id]);
-  cd.remaining=cd.duration;cd.running=false;cd.startAt=0;
-  _saveCDList(list);_buildCDCards();
-}
-function _cdDelete(id){
-  clearTimeout(_CD_TIMEOUTS[id]);
-  _saveCDList(_getCDList().filter(c=>c.id!==id));_buildCDCards();
-}
-function _cdDone(id){
-  const list=_getCDList();const cd=list.find(c=>c.id===id);
-  if(cd){cd.remaining=0;cd.running=false;_saveCDList(list);}
-  // Beep
-  try{const ctx=new(window.AudioContext||window.webkitAudioContext)();
-    [0,150,300].forEach(t=>{const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);o.frequency.value=880;g.gain.setValueAtTime(.35,ctx.currentTime+t/1000);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t/1000+.4);o.start(ctx.currentTime+t/1000);o.stop(ctx.currentTime+t/1000+.4);});}catch(e){}
-  // Notification
-  if('Notification' in window&&Notification.permission==='granted'){
-    try{new Notification('⏱ '+(cd?.name||'Timer'),{body:'Time is up! Rest over.',silent:false});}catch(e){}
-  }
-  if($('screen-timer')&&$('screen-timer').classList.contains('active'))_buildCDCards();
-}
-function _resumeCDTimeouts(){
-  const list=_getCDList();
-  list.forEach(cd=>{
-    if(cd.running){
-      const rem=_cdRemaining(cd);
-      clearTimeout(_CD_TIMEOUTS[cd.id]);
-      if(rem>0)_CD_TIMEOUTS[cd.id]=setTimeout(()=>_cdDone(cd.id),rem);
-      else _cdDone(cd.id);
-    }
-  });
-}
-function _buildCDCards(){
-  const container=$('countdown-list');if(!container)return;
-  container.innerHTML='';
-  const list=_getCDList();
-  list.forEach(cd=>{
-    const rem=_cdRemaining(cd);
-    const isDone=rem<=0;
-    const div=document.createElement('div');div.className='cd-card';
-    div.innerHTML=`<button class="cd-del" onclick="_cdDelete('${cd.id}')">✕</button>
-      <div class="cd-name">${cd.name}</div>
-      <div class="cd-display${isDone?' cd-done':''}" id="${cd.id}-disp">${_fmtCD(rem)}</div>
-      <div class="timer-btns">
-        <button class="t-btn-sec" onclick="_cdReset('${cd.id}')">↺</button>
-        <button class="t-btn-main" id="${cd.id}-btn" onclick="_cdToggle('${cd.id}')">${isDone?'↺':cd.running?'⏸':'▶'}</button>
-      </div>
-      <div class="cd-from">From ${_fmtCD(cd.duration)}</div>`;
-    container.appendChild(div);
-  });
-}
-function _tickCDDisplays(){
-  const list=_getCDList();
-  list.forEach(cd=>{
-    const rem=_cdRemaining(cd);
-    const el=$(cd.id+'-disp');const btn=$(cd.id+'-btn');
-    if(el){el.textContent=_fmtCD(rem);el.className='cd-display'+(rem<=0?' cd-done':'');}
-    if(btn&&!rem)btn.textContent='↺';
-  });
-  // Sync stopwatch if running
-  if(_SW.running){
-    const ms=_SW.elapsed+(Date.now()-_SW.startAt);
-    const m=Math.floor(ms/60000),s=Math.floor((ms%60000)/1000),ds=Math.floor((ms%1000)/100);
-    const el=$('sw-display');if(el)el.textContent=`${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}.${ds}`;
-  }
-}
-function renderTimerTab(){
-  // Notification status
-  const nb=$('notif-bar'),ns=$('notif-status');
-  if(nb&&ns){
-    if(!('Notification' in window)){nb.style.display='none';}
-    else if(Notification.permission==='granted'){nb.style.display='none';}
-    else{ns.textContent=Notification.permission==='denied'?'Notifications blocked in browser settings':'Enable notifications';}
-  }
-  // Stopwatch — resume RAF if running
-  _swResume();
-  // Countdowns
-  _buildCDCards();
-  // Start 1-second ticker for CD displays
-  clearInterval(_CD_INTERVAL);
-  _CD_INTERVAL=setInterval(_tickCDDisplays,500);
-}
-function requestNotifPerm(){
-  if(!('Notification' in window)){toast('Notifications not supported');return;}
-  if(Notification.permission==='granted'){toast('Notifications already on ✓');return;}
-  Notification.requestPermission().then(p=>{
-    if(p==='granted'){toast('✓ Notifications enabled');renderTimerTab();}
-    else toast('Notifications blocked');
-  });
-}
 
 function _weekDates(){
   const now=new Date();const dow=now.getDay();
@@ -2507,6 +2174,14 @@ function saveExEdit(){
   const prescChanged=rOv&&rOv!==(_perioPending?.oldPresc||'');
   if(EE.isCust){const cx=LS.g(addKey(EE.pi,EE.dk))||[];if(cx[EE.ai])cx[EE.ai]={...cx[EE.ai],...ov};LS.s(addKey(EE.pi,EE.dk),cx);}
   else{LS.s(ovKey(EE.pi,EE.dk,EE.ei),ov);}
+  // Regenerate set rows if prescription changed during a workout
+  if(rOv&&WO_OPEN){
+    const newN=parseSetCount(rOv),newR=parseRepCount(rOv);
+    const cur=gl(EE.pi,S.wi,EE.dk,EE.ei);
+    const rebuilt=[];
+    for(let i=0;i<newN;i++){rebuilt.push(cur[i]?{...cur[i],reps:cur[i].reps||newR}:{reps:newR,lbs:'',done:false});}
+    sl(EE.pi,S.wi,EE.dk,EE.ei,rebuilt);
+  }
   closeExEdit();if(WO_OPEN)renderWOList();else renderProgList();
   if(prescChanged){
     _perioPending={rOv,ei:EE.ei,dk:EE.dk,pi:EE.pi};
@@ -3094,23 +2769,9 @@ function _beep(freq=880,dur=0.18,vol=0.3){
   g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+dur);
   o.start(ac.currentTime);o.stop(ac.currentTime+dur);
 }
-function playRestDone(){
-  _beep(660,0.1,0.25);
-  setTimeout(()=>_beep(880,0.12,0.28),130);
-  setTimeout(()=>_beep(1100,0.22,0.3),280);
-  if(navigator.vibrate)navigator.vibrate([80,50,120,50,200]);
-}
 function _unlockAudio(){const ac=_getAC();if(ac&&ac.state==='suspended')ac.resume();}
 document.addEventListener('touchstart',_unlockAudio,{once:true});
 document.addEventListener('click',_unlockAudio,{once:true});
-function notifRestDone(exName){
-  if(!('Notification' in window))return;
-  if(Notification.permission==='granted'){
-    try{new Notification('Rest done! 🔔',{body:`Time to lift — ${exName||'next set'}`,icon:'',silent:true});}catch(e){}
-  } else if(Notification.permission==='default'){
-    Notification.requestPermission().then(p=>{if(p==='granted')notifRestDone(exName);});
-  }
-}
 
 // ── Parse helpers ──
 function _parseTable(text){
@@ -3456,7 +3117,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const t=TODAY,m=DL[t];
   if(m){S.pi=m.pi;S.wi=m.wi;S.dk=m.dk;}
   else{S.dk=PH[0].days[0].k;}
-  _resumeCDTimeouts();
   renderToday();
   // Remove splash from DOM after animation finishes
   setTimeout(()=>{const s=$('splash');if(s)s.remove();},3000);
